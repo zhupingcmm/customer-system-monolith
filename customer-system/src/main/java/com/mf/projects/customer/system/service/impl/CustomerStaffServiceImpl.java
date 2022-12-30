@@ -3,9 +3,10 @@ package com.mf.projects.customer.system.service.impl;
 import com.mf.projects.cs.infrastructure.page.PageObject;
 import com.mf.projects.customer.system.entity.staff.CustomerStaff;
 import com.mf.projects.customer.system.service.ICustomerStaffService;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
-
+@Service
 public class CustomerStaffServiceImpl implements ICustomerStaffService {
     @Override
     public PageObject<CustomerStaff> findCustomerStaffs(Long pageSize, Long pageIndex) {
@@ -14,6 +15,11 @@ public class CustomerStaffServiceImpl implements ICustomerStaffService {
 
     @Override
     public List<CustomerStaff> findCustomerStaffs() {
+        return null;
+    }
+
+    @Override
+    public Boolean createCustomerStaff(CustomerStaff customerStaff) {
         return null;
     }
 }

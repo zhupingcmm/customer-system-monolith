@@ -10,4 +10,7 @@ public interface ICustomerStaffService {
     PageObject<CustomerStaff> findCustomerStaffs(Long pageSize, Long pageIndex);
 
     List<CustomerStaff> findCustomerStaffs();
+
+
+    Boolean createCustomerStaff(CustomerStaff customerStaff);
 }

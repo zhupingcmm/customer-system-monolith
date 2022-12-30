@@ -1,0 +1,16 @@
+POST localhost:8080/customerStaffs/
+Content-Type: application/json
+
+{
+  "groupId" : "1",
+  "accountId" : "100",
+  "staffName" : "tianyalan",
+  "nickname" : "tianyalan",
+  "status" : "ONLINE",
+  "avatar" : "1.jpg",
+  "phone" : "13355667789",
+  "gender" : "MALE",
+  "goodAt" : "擅长",
+  "welcomeMessage" : "你好，我是天涯兰",
+  "remark" : "这是客服天涯兰"
+}
