@@ -1,7 +1,6 @@
 package com.mf.projects.cs.infrastructure.page;
 
-import lombok.Data;
-import lombok.ToString;
+import lombok.*;
 import lombok.experimental.Accessors;
 
 import java.util.List;
@@ -9,6 +8,9 @@ import java.util.List;
 @Data
 @ToString
 @Accessors(chain = true)
+//@Builder
+//@AllArgsConstructor
+@NoArgsConstructor
 public class PageObject<T> {
 
     private Long total;
@@ -18,6 +20,9 @@ public class PageObject<T> {
     private Long pageSize;
 
     private List<T> list;
+
+
+
 
 
 }

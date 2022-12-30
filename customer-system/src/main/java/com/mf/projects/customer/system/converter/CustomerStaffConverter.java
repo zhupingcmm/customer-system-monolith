@@ -5,6 +5,8 @@ import com.mf.projects.customer.system.entity.staff.CustomerStaff;
 import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;
 
+import java.util.List;
+
 @Mapper
 public interface CustomerStaffConverter {
 
@@ -15,4 +17,6 @@ public interface CustomerStaffConverter {
 
     // ENTITY - VO
     CustomerStaffVO covertToVO(CustomerStaff customerStaff);
+
+    List<CustomerStaffVO> covertToVOs(List<CustomerStaff> customerStaffs);
 }

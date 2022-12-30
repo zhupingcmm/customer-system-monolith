@@ -19,7 +19,32 @@ public class CustomerStaffServiceImpl implements ICustomerStaffService {
     }
 
     @Override
+    public PageObject<CustomerStaff> findCustomerStaffsByName(String staffName, Long pageSize, Long pageIndex) {
+        return null;
+    }
+
+    @Override
+    public CustomerStaff findCustomerStaffById(Long staffId) {
+        return null;
+    }
+
+    @Override
     public Boolean createCustomerStaff(CustomerStaff customerStaff) {
         return null;
+    }
+
+    @Override
+    public Boolean updateCustomerStaff(CustomerStaff customerStaff) {
+        return null;
+    }
+
+    @Override
+    public Boolean deleteCustomerStaffById(Long staffId) {
+        return null;
+    }
+
+    @Override
+    public void syncOutsourcingCustomerStaffsBySystemId(Long systemId) {
+
     }
 }
