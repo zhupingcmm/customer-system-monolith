@@ -11,12 +11,9 @@ public interface ICustomerStaffService {
 
     List<CustomerStaff> findCustomerStaffs();
 
-
     PageObject<CustomerStaff> findCustomerStaffsByName(String staffName, Long pageSize, Long pageIndex);
 
     CustomerStaff findCustomerStaffById(Long staffId);
-
-
 
     Boolean createCustomerStaff(CustomerStaff customerStaff);
 
