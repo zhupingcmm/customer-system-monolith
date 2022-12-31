@@ -2,6 +2,23 @@ POST localhost:8080/customerStaffs/
 Content-Type: application/json
 
 {
+  "groupId" : 1,
+  "nickname" : "tianyalan",
+  "accountId" : "100",
+  "staffName" : "tianyalan",
+  "avatar" : "1.jpg",
+  "phone" : "13355667789",
+  "gender" : "MALE",
+  "status" : "ONLINE",
+  "goodAt" : "擅长",
+  "welcomeMessage" : "你好，我是天涯兰",
+  "remark" : "这是客服天涯兰"
+}
+#####
+PUT localhost:8080/customerStaffs/
+Content-Type: application/json
+
+{
   "groupId" : "1",
   "accountId" : "100",
   "staffName" : "tianyalan",
@@ -14,3 +31,20 @@ Content-Type: application/json
   "welcomeMessage" : "你好，我是天涯兰",
   "remark" : "这是客服天涯兰"
 }
+
+#####
+GET localhost:8080/customerStaffs/1
+Content-Type: application/json
+
+
+#####
+GET localhost:8080/customerStaffs/page/20/1
+Content-Type: application/json
+
+#####
+DELETE localhost:8080/customerStaffs/1
+Content-Type: application/json
+
+#####
+GET localhost:8080/customerStaffs/sync/1
+Content-Type: application/json
