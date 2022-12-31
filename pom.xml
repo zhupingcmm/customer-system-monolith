@@ -11,6 +11,7 @@
         <module>cs-dependency</module>
         <module>customer-system</module>
         <module>cs-infrastructure-utility</module>
+        <module>outsouring-system</module>
     </modules>
 
     <properties>

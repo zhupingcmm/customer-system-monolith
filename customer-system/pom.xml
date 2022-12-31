@@ -15,12 +15,12 @@
 
 	<dependencies>
 
-<!--		<dependency>-->
-<!--			<groupId>org.geekbang.projects</groupId>-->
-<!--			<artifactId>cs-infrastructure-utility</artifactId>-->
-<!--			<version>0.0.1-snapshot</version>-->
-<!--			<scope>compile</scope>-->
-<!--		</dependency>-->
+		<dependency>
+			<groupId>com.mf.projects</groupId>
+			<artifactId>cs-infrastructure-utility</artifactId>
+			<version>1.0.0</version>
+			<scope>compile</scope>
+		</dependency>
 
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
