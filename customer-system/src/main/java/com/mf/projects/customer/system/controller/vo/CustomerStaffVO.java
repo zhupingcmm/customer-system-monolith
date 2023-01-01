@@ -6,11 +6,11 @@ import lombok.Data;
 import lombok.experimental.Accessors;
 
 import java.time.LocalDateTime;
-import java.util.Date;
 
 @Data
 @Accessors(chain = true)
 public class CustomerStaffVO {
+    private Long id;
     private Long groupId;
     private String nickname;
     private String accountId;

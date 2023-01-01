@@ -1,3 +1,4 @@
+###
 POST localhost:8081/customerStaffs/
 Content-Type: application/json
 
@@ -21,12 +22,13 @@ PUT localhost:8081/customerStaffs/
 Content-Type: application/json
 
 {
+  "id": 1,
   "groupId" : "1",
   "accountId" : "100",
   "staffName" : "tianyalan",
   "nickname" : "tianyalan",
   "status" : "ONLINE",
-  "avatar" : "1.jpg",
+  "avatar" : "2.jpg",
   "phone" : "13355667789",
   "gender" : "MALE",
   "goodAt" : "擅长",
@@ -40,11 +42,11 @@ Content-Type: application/json
 
 
 #####
-GET localhost:8080/customerStaffs/page/20/1
+GET localhost:8081/customerStaffs/page/20/1
 Content-Type: application/json
 
 #####
-DELETE localhost:8080/customerStaffs/1
+DELETE localhost:8081/customerStaffs/1
 Content-Type: application/json
 
 #####

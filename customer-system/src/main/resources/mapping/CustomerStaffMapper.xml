@@ -29,4 +29,43 @@
     <select id="findCustomerStaffById" resultMap="CustomerStaffMap" parameterType="java.lang.Long">
         select * from `customer_system`.customer_staff where id = #{staffId}
     </select>
+    <delete id="deleteCustomerStaffById" parameterType="java.lang.Long">
+        delete  from `customer_system`.customer_staff where id = #{staffId};
+    </delete>
+    <update id="updateCustomerStaff" parameterType="com.mf.projects.customer.system.entity.staff.CustomerStaff">
+        update `customer_system`.customer_staff
+        <set>
+            group_id = #{groupId},
+            account_id = #{accountId},
+            staff_name = #{staffName},
+            nickname = #{nickname},
+            status = #{status},
+            avatar = #{avatar},
+            phone = #{phone},
+            gender = #{gender},
+            good_at = #{goodAt},
+            welcome_message = #{welcomeMessage},
+            remark = #{remark}
+        </set>
+        <where>
+            id = #{id};
+        </where>
+    </update>
+
+    <select id="findAllCustomerStaffs" resultMap="CustomerStaffMap">
+        select * from  `customer_system`.customer_staff
+    </select>
+
+    <select id="findCustomerStaffs" resultMap="CustomerStaffMap">
+        select * from  `customer_system`.customer_staff
+        limit #{start}, #{offset}
+    </select>
+
+    <select id="findCustomerStaffsByName" resultMap="CustomerStaffMap">
+        select * from  `customer_system`.customer_staff
+        <where>
+            staff_name = #{staffName}
+        </where>
+        limit #{start}, #{offset}
+    </select>
 </mapper>
