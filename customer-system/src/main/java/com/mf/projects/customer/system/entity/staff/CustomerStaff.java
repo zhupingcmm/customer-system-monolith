@@ -1,9 +1,9 @@
 package com.mf.projects.customer.system.entity.staff;
 
-import com.baomidou.mybatisplus.annotation.IdType;
-import com.baomidou.mybatisplus.annotation.TableId;
-import com.baomidou.mybatisplus.annotation.TableLogic;
-import com.baomidou.mybatisplus.annotation.TableName;
+//import com.baomidou.mybatisplus.annotation.IdType;
+//import com.baomidou.mybatisplus.annotation.TableId;
+//import com.baomidou.mybatisplus.annotation.TableLogic;
+//import com.baomidou.mybatisplus.annotation.TableName;
 import com.mf.projects.customer.system.entity.staff.enums.Gender;
 import com.mf.projects.customer.system.entity.staff.enums.Status;
 import lombok.Data;
@@ -16,7 +16,7 @@ import java.time.LocalDateTime;
 @Data
 @EqualsAndHashCode(callSuper = false)
 @Accessors(chain = true)
-@TableName("customer_staff")
+//@TableName("customer_staff")
 public class CustomerStaff implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -24,7 +24,7 @@ public class CustomerStaff implements Serializable {
     /**
      * 主键
      */
-    @TableId(value = "id", type = IdType.AUTO)
+//    @TableId(value = "id", type = IdType.AUTO)
     private Long id;
 
     /**
@@ -95,7 +95,7 @@ public class CustomerStaff implements Serializable {
     /**
      * 是否删除，1=删除,0=未删除
      */
-    @TableLogic
+//    @TableLogic
     private Boolean isDeleted;
 
     /**

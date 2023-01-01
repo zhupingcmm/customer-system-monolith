@@ -8,8 +8,6 @@ import java.util.List;
 @Data
 @ToString
 @Accessors(chain = true)
-//@Builder
-//@AllArgsConstructor
 @NoArgsConstructor
 public class PageObject<T> {
 

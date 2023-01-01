@@ -1,4 +1,4 @@
-POST localhost:8080/customerStaffs/
+POST localhost:8081/customerStaffs/
 Content-Type: application/json
 
 {
@@ -11,11 +11,13 @@ Content-Type: application/json
   "gender" : "MALE",
   "status" : "ONLINE",
   "goodAt" : "擅长",
+  "isAutoReply": 1,
   "welcomeMessage" : "你好，我是天涯兰",
+  "isDeleted": 0,
   "remark" : "这是客服天涯兰"
 }
 #####
-PUT localhost:8080/customerStaffs/
+PUT localhost:8081/customerStaffs/
 Content-Type: application/json
 
 {
@@ -33,7 +35,7 @@ Content-Type: application/json
 }
 
 #####
-GET localhost:8080/customerStaffs/1
+GET localhost:8081/customerStaffs/1
 Content-Type: application/json
 
 

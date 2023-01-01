@@ -20,8 +20,10 @@ public class CustomerStaffVO {
     private Gender gender;
     private Status status;
     private String goodAt;
+    private Boolean isAutoReply;
     private String welcomeMessage;
     private String remark;
+    private Boolean isDeleted;
     private LocalDateTime createTime;
     private LocalDateTime updateTime;
 }
