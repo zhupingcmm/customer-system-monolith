@@ -52,3 +52,7 @@ Content-Type: application/json
 #####
 GET localhost:8080/customerStaffs/sync/1
 Content-Type: application/json
+
+#####
+GET localhost:8081/customerStaffs/async/2
+Content-Type: application/json

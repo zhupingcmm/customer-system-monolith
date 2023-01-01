@@ -5,10 +5,13 @@ import com.mf.projects.cs.infrastructure.vo.Result;
 import com.mf.projects.customer.system.controller.vo.CustomerStaffVO;
 import com.mf.projects.customer.system.converter.CustomerStaffConverter;
 import com.mf.projects.customer.system.service.ICustomerStaffService;
+import lombok.extern.slf4j.Slf4j;
 import lombok.val;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.context.request.async.WebAsyncTask;
 
+@Slf4j
 @RestController
 @RequestMapping("/customerStaffs")
 public class CustomerStaffController {
@@ -44,6 +47,35 @@ public class CustomerStaffController {
         val customerStaff = customerStaffService.findCustomerStaffById(staffId);
         val customerStaffVO = CustomerStaffConverter.INSTANCE.covertToVO(customerStaff);
         return Result.success(customerStaffVO);
+    }
+
+    @GetMapping("/async/{staffId}")
+    public WebAsyncTask<CustomerStaffVO> asyncFindCustomerStaffById(@PathVariable("staffId") Long staffId) {
+        log.info("The main thread name is %s", Thread.currentThread().getName());
+
+        WebAsyncTask<CustomerStaffVO> task = new WebAsyncTask<>(5 * 1000, () -> {
+
+            Thread.sleep(10000);
+            val customerStaff = customerStaffService.findCustomerStaffById(staffId);
+            return CustomerStaffConverter.INSTANCE.covertToVO(customerStaff);
+        });
+        task.onTimeout(() -> {
+            log.info("Task timeout");
+            return new CustomerStaffVO();
+        });
+
+        task.onError(() -> {
+            log.info("Task on error");
+            return new CustomerStaffVO();
+        });
+
+        task.onCompletion(() -> {
+            log.info("Task on Completion");
+        });
+
+        log.info("Task is running!!!");
+        return task;
+
     }
 
     @GetMapping("/page/{pagesize}/{pageindex}")
