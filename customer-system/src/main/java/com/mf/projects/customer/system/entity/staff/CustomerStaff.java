@@ -4,6 +4,7 @@ package com.mf.projects.customer.system.entity.staff;
 //import com.baomidou.mybatisplus.annotation.TableId;
 //import com.baomidou.mybatisplus.annotation.TableLogic;
 //import com.baomidou.mybatisplus.annotation.TableName;
+import com.mf.projects.cs.infrastructure.base.BaseBean;
 import com.mf.projects.customer.system.entity.staff.enums.Gender;
 import com.mf.projects.customer.system.entity.staff.enums.Status;
 import lombok.Data;
@@ -17,9 +18,8 @@ import java.time.LocalDateTime;
 @EqualsAndHashCode(callSuper = false)
 @Accessors(chain = true)
 //@TableName("customer_staff")
-public class CustomerStaff implements Serializable {
+public class CustomerStaff extends BaseBean {
 
-    private static final long serialVersionUID = 1L;
 
     /**
      * 主键
