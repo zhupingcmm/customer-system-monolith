@@ -1,0 +1,42 @@
+#####
+POST localhost:8801/customerstatffs/hangzhou/
+Content-Type: application/json
+
+{
+  "nickname": "zp",
+  "avatar": "2.jpg",
+  "phone": "13975569898",
+  "gender": "MALE",
+  "goodAt": "bb",
+  "remark": "remark",
+  "isDeleted": false
+}
+
+#####
+PUT localhost:8801/customerstatffs/hangzhou/
+Content-Type: application/json
+
+{
+  "id": 1,
+  "nickname": "jingxiao",
+  "avatar": "4.jpg",
+  "phone": "13775569898",
+  "gender": "MALE",
+  "goodAt": "ac",
+  "remark": "remark",
+  "isDeleted": false
+}
+
+#####
+DELETE localhost:8801/customerstatffs/hangzhou/?id=1
+Content-Type: application/json
+
+
+####
+GET localhost:8801/customerstatffs/hangzhou/
+Content-Type: application/json
+
+
+####
+GET localhost:8801/customerstatffs/hangzhou/updated?updateTime=1668830509000
+Content-Type: application/json
