@@ -4,6 +4,7 @@ import com.mf.projects.cs.infrastructure.base.BaseBean;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
+import org.hibernate.annotations.DynamicUpdate;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
@@ -17,6 +18,7 @@ import java.util.Date;
 @Entity
 @EntityListeners(AuditingEntityListener.class)
 @Table(name = "hangzhou_customer_staff")
+@DynamicUpdate
 public class HangZhouCustomerStaff extends BaseBean {
 
     @Id
