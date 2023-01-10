@@ -43,7 +43,6 @@ public class HangZhouStaffControllerTests {
 
         given(customerStaffService.createCustomerStaff(customerStaff)).willReturn(customerStaff);
         mockMvc.perform(post("/customerstatffs/hangzhou/")
-//                        .header(MediaType.APPLICATION_JSON)
                         .accept(MediaType.APPLICATION_JSON)
                         .contentType(MediaType.APPLICATION_JSON)
                         .content("{\n" +
