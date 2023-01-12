@@ -11,3 +11,23 @@ Content-Type: application/json
   "remark": "remark",
   "isDeleted": false
 }
+
+#####
+PUT localhost:8802/customerstaffs/beijing
+Content-Type: application/json
+
+{
+  "id": 2,
+  "nickname": "jx",
+  "avatar": "5.jpg",
+  "phone": "13975569898",
+  "gender": "MALE",
+  "goodAt": "bb",
+  "remark": "remark",
+  "isDeleted": false
+}
+
+
+####
+DELETE localhost:8802/customerstaffs/beijing/1
+Content-Type: application/json
