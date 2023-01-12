@@ -1,0 +1,28 @@
+server:
+  port: 8802
+spring:
+  application:
+    name: beijing-customer-system
+  datasource:
+    dynamic:
+      primary: master
+      druid:
+        initial-size: 3
+        min-idle: 3
+        max-active: 40
+        max-wait: 6000
+      datasource:
+        master:
+          driver-class-name: com.mysql.cj.jdbc.Driver
+          url: jdbc:mysql://127.0.0.1:3306/customer_beijing?useInformationSchema=false&charset=utf8mb4&useSSL=false&allowMultiQueries=true&allowPublicKeyRetrieval=true
+          username: root
+          password: 1234
+mybatis-plus:
+  mapper-locations: classpath:mapper/*.xml
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+  global-config:
+    db-config:
+      logic-delete-field: is_deleted
+      logic-not-delete-value: 0
+      logic-delete-value: 1

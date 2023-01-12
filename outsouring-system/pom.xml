@@ -15,6 +15,7 @@
 
     <modules>
         <module>outsouring-system-hangzhou</module>
+        <module>outsouring-system-beijing</module>
     </modules>
 
 </project>

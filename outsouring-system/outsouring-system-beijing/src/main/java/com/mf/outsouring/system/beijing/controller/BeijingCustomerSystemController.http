@@ -1,0 +1,13 @@
+#####
+POST localhost:8802/customerstaffs/beijing
+Content-Type: application/json
+
+{
+  "nickname": "cmm",
+  "avatar": "1.jpg",
+  "phone": "13975569898",
+  "gender": "MALE",
+  "goodAt": "bb",
+  "remark": "remark",
+  "isDeleted": false
+}
