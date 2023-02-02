@@ -1,0 +1,18 @@
+###
+POST localhost:8081/oursouringsystem
+Content-Type: application/json
+
+{
+  "systemName" : "杭州客服中心",
+  "description" : "这是位于杭州的客服中心",
+  "systemUrl" : "localhost:10003/customerStaffs/hangzhou/",
+  "appId" : "1",
+  "appKey" : "appKey_hangzhou",
+  "appSecret" : "appSecret_hangzhou",
+  "isDeleted": false
+}
+
+
+####
+GET localhost:8081/oursouringsystem/1
+Content-Type: application/json

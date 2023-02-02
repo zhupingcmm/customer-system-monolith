@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mf.projects.customer.system.mapper.OutsourcingSystemMapper">
+    <resultMap id="OutsourcingSystemMap" type="com.mf.projects.customer.system.entity.tenant.OutsourcingSystem">
+        <result property="id" column="id"/>
+        <result property="systemName" column="system_name"/>
+<!--        <result property="systemCode" column="system_code"/>-->
+        <result property="description" column="description"/>
+        <result property="systemUrl" column="system_url"/>
+        <result property="appId" column="app_id"/>
+        <result property="appKey" column="app_key"/>
+        <result property="appSecret" column="app_secret"/>
+        <result property="isDeleted" column="is_deleted"/>
+        <result property="createTime" column="create_time"/>
+        <result property="updateTime" column="update_time"/>
+    </resultMap>
+    <insert id="addOutsourcingSystem" parameterType="com.mf.projects.customer.system.entity.tenant.OutsourcingSystem">
+        insert into `customer_system`.outsourcing_system
+            (system_name, description, system_url, app_id, app_key, app_secret, is_deleted)
+        values
+            (#{systemName}, #{description}, #{systemUrl}, #{appId}, #{appKey}, #{appSecret}, #{isDeleted})
+    </insert>
+    <select id="findOutsourcingSystemById" resultMap="OutsourcingSystemMap" parameterType="long">
+        select * from `customer_system`.outsourcing_system
+        <where>
+            app_id = #{systemId}
+        </where>
+    </select>
+</mapper>
