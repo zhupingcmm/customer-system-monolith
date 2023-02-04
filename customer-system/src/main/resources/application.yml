@@ -11,3 +11,13 @@ spring:
 mybatis:
   type-aliases-package: com.mf.projects.customer.system.entity
   mapper-locations: classpath:mapping/*Mapper.xml
+
+xxl:
+  job:
+    accessToken: default_token
+    admin:
+      addresses: http://127.0.0.1:8080/xxl-job-admin
+    executor:
+      appname: customer-system
+      logpath: C:/xxl-job-executor/logs
+      logretentiondays: 30
