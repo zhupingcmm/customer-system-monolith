@@ -31,7 +31,7 @@
             (group_id, staff_name, nickname, account_id, system_id, avatar, phone, gender, good_at, is_auto_reply, welcome_message, status, remark, is_deleted)
         values
             <foreach collection="customerStaffs" item="model" separator=",">
-                (#{groupId}, #{staffName}, #{nickname}, #{accountId}, #{systemId}, #{avatar}, #{phone}, #{gender}, #{goodAt}, #{isAutoReply}, #{welcomeMessage}, #{status}, #{remark}, #{isDeleted})
+                (#{model.groupId}, #{model.staffName}, #{model.nickname}, #{model.accountId}, #{model.systemId}, #{model.avatar}, #{model.phone}, #{model.gender}, #{model.goodAt}, #{model.isAutoReply}, #{model.welcomeMessage}, #{model.status}, #{model.remark}, #{model.isDeleted})
             </foreach>
     </insert>
     <select id="findCustomerStaffById" resultMap="CustomerStaffMap" parameterType="java.lang.Long">

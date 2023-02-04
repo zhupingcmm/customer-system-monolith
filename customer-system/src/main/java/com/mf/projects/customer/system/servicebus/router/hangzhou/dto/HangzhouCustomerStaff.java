@@ -19,5 +19,7 @@ public class HangzhouCustomerStaff extends BaseBean {
     private String gender;
     private String goodAt;
     private String remark;
-    private Date createTime;
+    private Boolean isDeleted;
+    private Date createAt;
+    private Date updateAt;
 }
