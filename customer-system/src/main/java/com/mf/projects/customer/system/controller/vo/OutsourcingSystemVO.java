@@ -32,7 +32,7 @@ public class OutsourcingSystemVO {
      * 系统ID
      */
 
-    private String appId;
+    private Long appId;
 
     /**
      * 系统公钥

@@ -43,7 +43,7 @@ public class OutsourcingSystem extends BaseBean {
      * 系统ID
      */
 
-    private String appId;
+    private Long appId;
 
     /**
      * 系统公钥

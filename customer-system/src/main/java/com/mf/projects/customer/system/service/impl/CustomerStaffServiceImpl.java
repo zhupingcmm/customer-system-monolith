@@ -4,6 +4,8 @@ import com.mf.projects.cs.infrastructure.page.PageObject;
 import com.mf.projects.customer.system.entity.staff.CustomerStaff;
 import com.mf.projects.customer.system.mapper.CustomerStaffMapper;
 import com.mf.projects.customer.system.service.ICustomerStaffService;
+import com.mf.projects.customer.system.service.IOutsourcingSystemService;
+import com.mf.projects.customer.system.servicebus.endpoint.CustomerStaffEndpoint;
 import lombok.val;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -14,6 +16,12 @@ public class CustomerStaffServiceImpl implements ICustomerStaffService {
 
     @Autowired
     private CustomerStaffMapper customerStaffMapper;
+
+    @Autowired
+    private IOutsourcingSystemService outsourcingSystemService;
+
+    @Autowired
+    private CustomerStaffEndpoint customerStaffEndpoint;
     @Override
     public PageObject<CustomerStaff> findCustomerStaffs(Long pageSize, Long pageIndex) {
         Long start = (pageIndex -1) * pageSize;
@@ -69,5 +77,9 @@ public class CustomerStaffServiceImpl implements ICustomerStaffService {
     @Override
     public void syncOutsourcingCustomerStaffsBySystemId(Long systemId) {
 
+        val outsourcingSystem = outsourcingSystemService.findOutsourcingSystemById(systemId);
+
+        val customerStaffs = customerStaffEndpoint.fetchCustomerStaffs(outsourcingSystem);
+        customerStaffMapper.createCustomerStaffs(customerStaffs);
     }
 }

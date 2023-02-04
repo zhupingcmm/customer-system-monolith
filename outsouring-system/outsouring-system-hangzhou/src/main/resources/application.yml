@@ -1,5 +1,5 @@
 server:
-  port: 8801
+  port: 10013
 spring:
   application:
     name: hangzhou-system

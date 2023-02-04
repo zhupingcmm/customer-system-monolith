@@ -20,11 +20,19 @@
         <result property="createTime" column="create_time"/>
         <result property="updateTime" column="update_time"/>
     </resultMap>
-    <insert id="createCustomerStaff" parameterType="com.mf.projects.customer.system.entity.staff.CustomerStaff">
+    <insert id="createCustomerStaff" parameterType="CustomerStaff">
         insert into `customer_system`.customer_staff
         (group_id, staff_name, nickname, account_id, system_id, avatar, phone, gender, good_at, is_auto_reply, welcome_message, status, remark, is_deleted)
         values
         (#{groupId}, #{staffName}, #{nickname}, #{accountId}, #{systemId}, #{avatar}, #{phone}, #{gender}, #{goodAt}, #{isAutoReply}, #{welcomeMessage}, #{status}, #{remark}, #{isDeleted})
+    </insert>
+    <insert id="createCustomerStaffs" parameterType="CustomerStaff">
+        insert into `customer_system`.customer_staff
+            (group_id, staff_name, nickname, account_id, system_id, avatar, phone, gender, good_at, is_auto_reply, welcome_message, status, remark, is_deleted)
+        values
+            <foreach collection="customerStaffs" item="model" separator=",">
+                (#{groupId}, #{staffName}, #{nickname}, #{accountId}, #{systemId}, #{avatar}, #{phone}, #{gender}, #{goodAt}, #{isAutoReply}, #{welcomeMessage}, #{status}, #{remark}, #{isDeleted})
+            </foreach>
     </insert>
     <select id="findCustomerStaffById" resultMap="CustomerStaffMap" parameterType="java.lang.Long">
         select * from `customer_system`.customer_staff where id = #{staffId}
@@ -32,7 +40,7 @@
     <delete id="deleteCustomerStaffById" parameterType="java.lang.Long">
         delete  from `customer_system`.customer_staff where id = #{staffId};
     </delete>
-    <update id="updateCustomerStaff" parameterType="com.mf.projects.customer.system.entity.staff.CustomerStaff">
+    <update id="updateCustomerStaff" parameterType="CustomerStaff">
         update `customer_system`.customer_staff
         <set>
             group_id = #{groupId},

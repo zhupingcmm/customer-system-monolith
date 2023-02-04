@@ -50,7 +50,7 @@ DELETE localhost:8081/customerStaffs/1
 Content-Type: application/json
 
 #####
-GET localhost:8080/customerStaffs/sync/1
+GET localhost:8081/customerStaffs/sync/3
 Content-Type: application/json
 
 #####

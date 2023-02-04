@@ -17,8 +17,10 @@ public interface CustomerStaffMapper {
 
     int createCustomerStaff(CustomerStaff customerStaff);
 
+    int createCustomerStaffs(@Param("customerStaffs") List<CustomerStaff> customerStaffs);
+
     int updateCustomerStaff(CustomerStaff customerStaff);
 
     int deleteCustomerStaffById(Long staffId);
-//    void syncOutsourcingCustomerStaffsBySystemId(Long systemId);
+
 }
