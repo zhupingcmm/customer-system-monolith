@@ -16,8 +16,6 @@ public class CustomerStaffIntegrationClient {
     @DubboReference(version = "${integration.service.version}")
     private CustomerStaffIntegrationService integrationService;
 
-
-
     public List<CustomerStaff> getCustomerStaffs(OutsourcingSystem outsourcingSystem){
         val dto = CustomerIntegrationConverter.INSTANCE.convertToDto(outsourcingSystem);
 
@@ -26,7 +24,5 @@ public class CustomerStaffIntegrationClient {
         return CustomerIntegrationConverter.INSTANCE.convertCustomerStaffListDTO(staffs);
 
     }
-
-
 
 }
