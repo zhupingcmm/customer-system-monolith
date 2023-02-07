@@ -177,12 +177,12 @@
 			<groupId>com.xuxueli</groupId>
 			<artifactId>xxl-job-core</artifactId>
 		</dependency>
-		<dependency>
-			<groupId>com.mf.projects</groupId>
-			<artifactId>cs-infrastructure-utility</artifactId>
-			<version>1.0.0</version>
-			<scope>compile</scope>
-		</dependency>
+<!--		<dependency>-->
+<!--			<groupId>com.mf.projects</groupId>-->
+<!--			<artifactId>cs-infrastructure-utility</artifactId>-->
+<!--			<version>1.0.0</version>-->
+<!--			<scope>compile</scope>-->
+<!--		</dependency>-->
 
 	</dependencies>
 

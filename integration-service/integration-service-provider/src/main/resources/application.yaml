@@ -1,0 +1,19 @@
+server:
+  port: 8083
+spring:
+  application:
+    name: integration-service-provider
+
+dubbo:
+  protocol:
+    name: dubbo
+    port: -1
+  registry:
+    address: zookeeper://127.0.0.1:2181
+    file: C:/dubbo/middle-service/cache
+  scan:
+    base-packages: com.mf.integration.service.provider
+integration:
+  service:
+    version: 1.0.0
+

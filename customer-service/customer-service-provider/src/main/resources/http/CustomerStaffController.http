@@ -1,0 +1,58 @@
+###
+POST localhost:8081/customerStaffs/
+Content-Type: application/json
+
+{
+  "groupId" : 1,
+  "nickname" : "tianyalan",
+  "accountId" : "100",
+  "staffName" : "tianyalan",
+  "avatar" : "1.jpg",
+  "phone" : "13355667789",
+  "gender" : "MALE",
+  "status" : "ONLINE",
+  "goodAt" : "擅长",
+  "isAutoReply": 1,
+  "welcomeMessage" : "你好，我是天涯兰",
+  "isDeleted": 0,
+  "remark" : "这是客服天涯兰"
+}
+#####
+PUT localhost:8081/customerStaffs/
+Content-Type: application/json
+
+{
+  "id": 1,
+  "groupId" : "1",
+  "accountId" : "100",
+  "staffName" : "tianyalan",
+  "nickname" : "tianyalan",
+  "status" : "ONLINE",
+  "avatar" : "2.jpg",
+  "phone" : "13355667789",
+  "gender" : "MALE",
+  "goodAt" : "擅长",
+  "welcomeMessage" : "你好，我是天涯兰",
+  "remark" : "这是客服天涯兰"
+}
+
+#####
+GET localhost:8081/customerStaffs/1
+Content-Type: application/json
+
+
+#####
+GET localhost:8081/customerStaffs/page/20/1
+Content-Type: application/json
+
+#####
+DELETE localhost:8081/customerStaffs/1
+Content-Type: application/json
+
+#####
+GET localhost:8082/customerStaffs/sync/3
+Content-Type: application/json
+
+#####
+GET localhost:8082/customerStaffs/async/2
+Content-Type: application/json
