@@ -30,5 +30,8 @@ public class OutsourcingSystemDTO extends BaseBean {
      */
     private String systemUrl;
 
+    /**
+     * 系统 ID
+     */
     private Long appId;
 }

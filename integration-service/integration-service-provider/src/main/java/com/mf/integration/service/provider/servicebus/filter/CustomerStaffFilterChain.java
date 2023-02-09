@@ -11,7 +11,7 @@ public class CustomerStaffFilterChain {
         if (chain == null) {
             chain = filter;
         } else {
-            chain.getLast().setNext(chain);
+            chain.getLast().setNext(filter);
         }
     }
 

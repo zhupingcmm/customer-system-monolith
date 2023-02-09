@@ -5,5 +5,5 @@ import domain.PlatformCustomerStaff;
 import java.util.List;
 
 public interface CustomerStaffTransformer<T> {
-    List<PlatformCustomerStaff> transformCustomerStaffs(List<T> staffs);
+    List<PlatformCustomerStaff> transformCustomerStaffs(Long systemId, List<T> staffs);
 }

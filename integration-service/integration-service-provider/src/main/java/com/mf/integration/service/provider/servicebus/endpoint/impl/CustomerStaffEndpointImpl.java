@@ -4,6 +4,7 @@ package com.mf.integration.service.provider.servicebus.endpoint.impl;
 import com.mf.integration.service.provider.servicebus.endpoint.CustomerStaffEndpoint;
 import com.mf.integration.service.provider.servicebus.filter.CustomerStaffFilterChain;
 import com.mf.integration.service.provider.servicebus.filter.impl.CustomerStaffEmptyFilter;
+import com.mf.integration.service.provider.servicebus.filter.impl.CustomerStaffSpecialCharactersFilter;
 import com.mf.integration.service.provider.servicebus.router.OutsourcingSystemRouterFactory;
 import com.mf.integration.service.provider.servicebus.transfomer.CustomerStaffTransformerFactory;
 import domain.OutsourcingSystemDTO;
@@ -30,6 +31,7 @@ public class CustomerStaffEndpointImpl implements CustomerStaffEndpoint<Platform
     public CustomerStaffEndpointImpl() {
         customerStaffFilterChain = new CustomerStaffFilterChain();
         customerStaffFilterChain.addFilter(new CustomerStaffEmptyFilter());
+        customerStaffFilterChain.addFilter(new CustomerStaffSpecialCharactersFilter());
     }
 
     @Override
@@ -43,7 +45,8 @@ public class CustomerStaffEndpointImpl implements CustomerStaffEndpoint<Platform
         // 获取 数据转换器
         val transformer = customerStaffTransformerFactory.getTransformer(outsourcingSystem);
         // 进行数据转换
-        val customerStaffs = transformer.transformCustomerStaffs(originStaffs);
+        Long systemId = outsourcingSystem.getAppId();
+        val customerStaffs = transformer.transformCustomerStaffs(systemId, originStaffs);
 
         //进行数据的过滤
         List<PlatformCustomerStaff> finalStaffs = new ArrayList<>();

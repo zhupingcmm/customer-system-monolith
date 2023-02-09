@@ -11,7 +11,7 @@ import java.util.List;
 @Service(value = "beijing_transformer")
 public class BeijingCustomerStaffTransformer implements CustomerStaffTransformer<BeijingCustomerStaff> {
     @Override
-    public List<PlatformCustomerStaff> transformCustomerStaffs(List<BeijingCustomerStaff> staffs) {
+    public List<PlatformCustomerStaff> transformCustomerStaffs(Long systemId, List<BeijingCustomerStaff> staffs) {
         return null;
     }
 }

@@ -17,14 +17,14 @@ import java.util.List;
 @Service(value = "hangzhou_transformer")
 public class HangzhouCustomerStaffTransformer implements CustomerStaffTransformer<HangzhouCustomerStaff> {
     @Override
-    public List<PlatformCustomerStaff> transformCustomerStaffs(List<HangzhouCustomerStaff> staffs) {
+    public List<PlatformCustomerStaff> transformCustomerStaffs(Long systemId, List<HangzhouCustomerStaff> staffs) {
         List<PlatformCustomerStaff> customerStaffs = new ArrayList<>();
 
         val hangzhouCustomerStaffs = JSON.parseArray(JSON.toJSONString(staffs), HangzhouCustomerStaff.class);
 
         hangzhouCustomerStaffs.forEach(staff -> {
             PlatformCustomerStaff customerStaff = new PlatformCustomerStaff();
-
+            customerStaff.setSystemId(systemId);
             customerStaff.setStaffName(staff.getNickname());
             customerStaff.setNickname(staff.getNickname());
             customerStaff.setAvatar(staff.getAvatar());
@@ -52,7 +52,7 @@ public class HangzhouCustomerStaffTransformer implements CustomerStaffTransforme
                 customerStaff.setUpdateTime(updatedTimeLocalDateTime);
             }
 
-            customerStaff.setAccountId(-1L);
+            customerStaff.setAccountId(staff.getId());
             customerStaff.setStatus(Status.OFFLINE);
             customerStaffs.add(customerStaff);
 

@@ -8,11 +8,14 @@ import com.mf.customer.service.provider.mapper.CustomerStaffMapper;
 import com.mf.customer.service.provider.service.ICustomerStaffService;
 import com.mf.customer.service.provider.service.IOutsourcingSystemService;
 import com.mf.projects.cs.infrastructure.page.PageObject;
+import lombok.extern.slf4j.Slf4j;
 import lombok.val;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+
+@Slf4j
 @Service
 public class CustomerStaffServiceImpl implements ICustomerStaffService {
 
@@ -80,9 +83,24 @@ public class CustomerStaffServiceImpl implements ICustomerStaffService {
     public void syncOutsourcingCustomerStaffsBySystemId(Long systemId) {
         // 获取外部系统信息
         val outsourcingSystem = outsourcingSystemService.findOutsourcingSystemById(systemId);
+
         // 通过外部系统信息，获取外部客户系统的客户信息
         List<CustomerStaff> customerStaffs = integrationClient.getCustomerStaffs(outsourcingSystem);
-        // 更新DB
-        customerStaffMapper.createCustomerStaffs(customerStaffs);
+
+        customerStaffs.forEach(staff -> {
+            val dbStaff = customerStaffMapper.findCustomerStaff(staff.getAccountId(), staff.getSystemId());
+            log.debug("find staff from db {}", dbStaff);
+            if (dbStaff != null) {
+                // 在数据库中，比较 update time
+                if ( dbStaff.getUpdateTime() != null && staff.getUpdateTime() != dbStaff.getUpdateTime()) {
+                    // update time 不相等，说明数据发生了更新
+                    customerStaffMapper.updateCustomerStaff(staff);
+                }
+            } else {
+                // 不在数据库中，直接插入
+                customerStaffMapper.createCustomerStaff(staff);
+            }
+
+        });
     }
 }

@@ -14,6 +14,7 @@ public interface CustomerStaffMapper {
 
     List<CustomerStaff> findCustomerStaffsByName(@Param("staffName") String staffName, @Param("start") Long start, @Param("offset") Long offset);
 
+    CustomerStaff findCustomerStaff(@Param("accountId") Long accountId, @Param("systemId") Long systemId);
     CustomerStaff findCustomerStaffById(Long staffId);
 
     int createCustomerStaff(CustomerStaff customerStaff);

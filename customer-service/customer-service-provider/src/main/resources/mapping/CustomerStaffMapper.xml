@@ -76,4 +76,10 @@
         </where>
         limit #{start}, #{offset}
     </select>
+    <select id="findCustomerStaff" resultMap="CustomerStaffMap">
+        select update_time from `customer_system`.customer_staff
+        <where>
+            system_id = #{systemId} and account_id = #{accountId}
+        </where>
+    </select>
 </mapper>
