@@ -6,7 +6,7 @@ import domain.OutsourcingSystemDTO;
 import org.springframework.stereotype.Component;
 
 @Component
-public class CustomerStaffTransformerFactory {
+public class CustomerStaffTransformerFactory{
 
     public CustomerStaffTransformer getTransformer(OutsourcingSystemDTO outsourcingSystem){
         if (OutSystem.SHANGHAI.getId().equals(outsourcingSystem.getAppId())) {

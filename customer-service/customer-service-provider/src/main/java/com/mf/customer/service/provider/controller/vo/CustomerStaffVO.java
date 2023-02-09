@@ -1,8 +1,8 @@
 package com.mf.customer.service.provider.controller.vo;
 
 
-import com.mf.customer.service.provider.entity.staff.enums.Gender;
-import com.mf.customer.service.provider.entity.staff.enums.Status;
+import com.mf.projects.cs.infrastructure.base.enums.Gender;
+import com.mf.projects.cs.infrastructure.base.enums.Status;
 import lombok.Data;
 import lombok.experimental.Accessors;
 

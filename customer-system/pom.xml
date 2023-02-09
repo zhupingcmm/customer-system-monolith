@@ -23,6 +23,12 @@
 		</dependency>
 
 		<dependency>
+			<groupId>com.mf.projects</groupId>
+			<artifactId>customer-service-definition</artifactId>
+			<version>1.0.0</version>
+		</dependency>
+
+		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
@@ -87,10 +93,7 @@
 			<scope>test</scope>
 		</dependency>
 
-		<dependency>
-			<groupId>com.h2database</groupId>
-			<artifactId>h2</artifactId>
-		</dependency>
+
 
 		<dependency>
 			<groupId>org.projectlombok</groupId>
@@ -109,49 +112,10 @@
 		</dependency>
 
 		<dependency>
-			<groupId>mysql</groupId>
-			<artifactId>mysql-connector-java</artifactId>
-		</dependency>
-
-		<dependency>
-			<groupId>com.alibaba</groupId>
-			<artifactId>druid-spring-boot-starter</artifactId>
-		</dependency>
-
-<!--		<dependency>-->
-<!--			<groupId>com.baomidou</groupId>-->
-<!--			<artifactId>mybatis-plus-boot-starter</artifactId>-->
-<!--		</dependency>-->
-
-<!--		<dependency>-->
-<!--			<groupId>com.baomidou</groupId>-->
-<!--			<artifactId>mybatis-plus-boot-starter-test</artifactId>-->
-<!--			<scope>test</scope>-->
-<!--		</dependency>-->
-
-<!--		<dependency>-->
-<!--			<groupId>com.baomidou</groupId>-->
-<!--			<artifactId>dynamic-datasource-spring-boot-starter</artifactId>-->
-<!--		</dependency>-->
-
-		<!-- Mybatis-Plus自动生成代码依赖包-->
-<!--		<dependency>-->
-<!--			<groupId>com.baomidou</groupId>-->
-<!--			<artifactId>mybatis-plus-generator</artifactId>-->
-<!--			<version>3.5.2</version>-->
-<!--			<scope>test</scope>-->
-<!--		</dependency>-->
-
-		<dependency>
 			<groupId>org.apache.velocity</groupId>
 			<artifactId>velocity-engine-core</artifactId>
 			<version>2.0</version>
 			<scope>test</scope>
-		</dependency>
-
-		<dependency>
-			<groupId>org.mybatis.spring.boot</groupId>
-			<artifactId>mybatis-spring-boot-starter</artifactId>
 		</dependency>
 
 		<dependency>
@@ -167,22 +131,37 @@
 			<artifactId>mapstruct-processor</artifactId>
 		</dependency>
 
-<!--		<dependency>-->
-<!--			<groupId>org.springframework.experimental</groupId>-->
-<!--			<artifactId>graphql-spring-boot-starter</artifactId>-->
-<!--			<version>1.0.0-M1</version>-->
-<!--		</dependency>-->
+
 
 		<dependency>
 			<groupId>com.xuxueli</groupId>
 			<artifactId>xxl-job-core</artifactId>
 		</dependency>
-<!--		<dependency>-->
-<!--			<groupId>com.mf.projects</groupId>-->
-<!--			<artifactId>cs-infrastructure-utility</artifactId>-->
-<!--			<version>1.0.0</version>-->
-<!--			<scope>compile</scope>-->
-<!--		</dependency>-->
+
+		<!-- dubbo  -->
+		<dependency>
+			<groupId>org.apache.dubbo</groupId>
+			<artifactId>dubbo-spring-boot-starter</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.apache.dubbo</groupId>
+			<artifactId>dubbo-dependencies-zookeeper</artifactId>
+			<type>pom</type>
+			<exclusions>
+				<exclusion>
+					<groupId>org.slf4j</groupId>
+					<artifactId>slf4j-log4j12</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+
+		<!--替换curator默认版本，确保和Zookeeper服务器兼容-->
+		<dependency>
+			<groupId>org.apache.curator</groupId>
+			<artifactId>curator-framework</artifactId>
+			<version>4.2.0</version>
+		</dependency>
 
 	</dependencies>
 

@@ -18,7 +18,7 @@ import java.util.List;
 
 @Slf4j
 @Service
-public class CustomerStaffEndpointImpl implements CustomerStaffEndpoint {
+public class CustomerStaffEndpointImpl implements CustomerStaffEndpoint<PlatformCustomerStaff> {
 
     @Autowired
     private OutsourcingSystemRouterFactory outsourcingSystemRouterFactory;
@@ -34,19 +34,19 @@ public class CustomerStaffEndpointImpl implements CustomerStaffEndpoint {
 
     @Override
     public List<PlatformCustomerStaff> fetchCustomerStaffs(OutsourcingSystemDTO outsourcingSystem) {
-        // 获取 路由
+        // 获取外部系统路由
         val outsourcingSystemRouter = outsourcingSystemRouterFactory.getOutsourcingSystemRouter(outsourcingSystem);
 
         // 获取外部系统客服信息
         val originStaffs = outsourcingSystemRouter.fetchOutsourcingStaffs(outsourcingSystem.getSystemUrl());
 
-        //进行数据转换
+        // 获取 数据转换器
         val transformer = customerStaffTransformerFactory.getTransformer(outsourcingSystem);
+        // 进行数据转换
         val customerStaffs = transformer.transformCustomerStaffs(originStaffs);
 
         //进行数据的过滤
         List<PlatformCustomerStaff> finalStaffs = new ArrayList<>();
-
         customerStaffs.forEach(staff -> {
             val finalStaff = customerStaffFilterChain.execute((PlatformCustomerStaff) staff);
             if (finalStaff != null) finalStaffs.add(finalStaff);

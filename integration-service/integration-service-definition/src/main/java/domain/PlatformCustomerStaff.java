@@ -1,8 +1,8 @@
 package domain;
 
 import com.mf.projects.cs.infrastructure.base.BaseBean;
-import domain.enums.Gender;
-import domain.enums.Status;
+import com.mf.projects.cs.infrastructure.base.enums.Gender;
+import com.mf.projects.cs.infrastructure.base.enums.Status;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 

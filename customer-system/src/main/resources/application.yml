@@ -2,15 +2,20 @@ server:
   port: 8081
 spring:
   application:
-    name: customer-service
-  datasource:
-    driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/customer_system?useInformationSchema=false&charset=utf8mb4&useSSL=false&allowMultiQueries=true&allowPublicKeyRetrieval=true
-    username: root
-    password: 1234
-mybatis:
-  type-aliases-package: com.mf.projects.customer.system.entity
-  mapper-locations: classpath:mapping/*Mapper.xml
+    name: customer-system
+
+dubbo:
+  protocol:
+    name: dubbo
+    port: -1
+  registry:
+    address: zookeeper://127.0.0.1:2181
+    file: C:/dubbo/customer-system/cache
+  scan:
+    base-packages: com.mf.projects.customer.system
+customer:
+  service:
+    version: 1.0.0
 
 xxl:
   job:

@@ -1,28 +1,26 @@
-package com.mf.customer.service.provider.job;
+package com.mf.projects.customer.system.job;
 
-
-import com.mf.customer.service.provider.service.ICustomerStaffService;
 import com.xxl.job.core.biz.model.ReturnT;
 import com.xxl.job.core.context.XxlJobHelper;
 import com.xxl.job.core.handler.annotation.XxlJob;
 import lombok.extern.slf4j.Slf4j;
 import lombok.val;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.apache.dubbo.config.annotation.DubboReference;
 import org.springframework.stereotype.Component;
+import service.CustomerStaffSyncService;
 
 @Slf4j
 @Component
 public class CustomerStaffSyncJobHandler {
 
-
-    @Autowired
-    private ICustomerStaffService customerStaffService;
+    @DubboReference(version = "${customer.service.version}")
+    private CustomerStaffSyncService customerStaffSyncService;
 
     @XxlJob("syncCustomerStaff")
     public ReturnT<String> syncCustomerStaff(){
-        log.info("start sync customer staff from outsourcing system");
         val jobParam = XxlJobHelper.getJobParam();
-        customerStaffService.syncOutsourcingCustomerStaffsBySystemId(Long.parseLong(jobParam));
+        log.info("start sync customer staff data from outsourcing system and system id is {}", jobParam);
+        customerStaffSyncService.syncOutsourcingCustomerStaffsBySystemId(Long.parseLong(jobParam));
         return ReturnT.SUCCESS;
     }
 }

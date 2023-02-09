@@ -10,10 +10,10 @@ import service.CustomerStaffIntegrationService;
 import java.util.List;
 
 @DubboService(version = "${integration.service.version}")
-public class CustomerStaffIntegrationServiceImpl implements CustomerStaffIntegrationService {
+public class CustomerStaffIntegrationServiceImpl implements CustomerStaffIntegrationService<PlatformCustomerStaff> {
 
     @Autowired
-    private CustomerStaffEndpoint customerStaffEndpoint;
+    private CustomerStaffEndpoint<PlatformCustomerStaff> customerStaffEndpoint;
 
     @Override
     public List<PlatformCustomerStaff> fetchCustomerStaffs(OutsourcingSystemDTO outsourcingSystemDTO) {

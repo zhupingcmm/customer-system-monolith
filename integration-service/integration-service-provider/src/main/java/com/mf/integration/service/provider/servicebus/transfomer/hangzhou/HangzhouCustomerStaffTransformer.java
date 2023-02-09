@@ -3,9 +3,9 @@ package com.mf.integration.service.provider.servicebus.transfomer.hangzhou;
 import com.alibaba.fastjson.JSON;
 import com.mf.integration.service.provider.servicebus.router.hangzhou.dto.HangzhouCustomerStaff;
 import com.mf.integration.service.provider.servicebus.transfomer.CustomerStaffTransformer;
+import com.mf.projects.cs.infrastructure.base.enums.Gender;
+import com.mf.projects.cs.infrastructure.base.enums.Status;
 import domain.PlatformCustomerStaff;
-import domain.enums.Gender;
-import domain.enums.Status;
 import lombok.val;
 import org.springframework.stereotype.Service;
 

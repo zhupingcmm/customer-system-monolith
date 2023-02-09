@@ -4,11 +4,10 @@ package com.mf.integration.service.provider.servicebus.endpoint;
 
 
 import domain.OutsourcingSystemDTO;
-import domain.PlatformCustomerStaff;
 
 import java.util.List;
 
-public interface CustomerStaffEndpoint {
+public interface CustomerStaffEndpoint<T> {
 
-    List<PlatformCustomerStaff> fetchCustomerStaffs(OutsourcingSystemDTO outsourcingSystem);
+    List<T> fetchCustomerStaffs(OutsourcingSystemDTO outsourcingSystem);
 }

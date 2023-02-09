@@ -78,10 +78,11 @@ public class CustomerStaffServiceImpl implements ICustomerStaffService {
 
     @Override
     public void syncOutsourcingCustomerStaffsBySystemId(Long systemId) {
-
+        // 获取外部系统信息
         val outsourcingSystem = outsourcingSystemService.findOutsourcingSystemById(systemId);
-
+        // 通过外部系统信息，获取外部客户系统的客户信息
         List<CustomerStaff> customerStaffs = integrationClient.getCustomerStaffs(outsourcingSystem);
+        // 更新DB
         customerStaffMapper.createCustomerStaffs(customerStaffs);
     }
 }
