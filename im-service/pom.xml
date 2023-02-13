@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>custemsystem-basic</artifactId>
+        <groupId>com.mf.projects</groupId>
+        <version>1.0.0</version>
+        <relativePath>../pom.xml</relativePath>
+    </parent>
+
+    <modelVersion>4.0.0</modelVersion>
+    <artifactId>im-service</artifactId>
+    <packaging>pom</packaging>
+    <modules>
+        <module>im-client</module>
+        <module>im-common</module>
+        <module>im-server</module>
+        <module>im-router</module>
+    </modules>
+
+</project>
