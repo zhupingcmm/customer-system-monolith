@@ -1,8 +1,10 @@
 package com.mf.im.server.server;
 
+import com.mf.im.server.handler.HeartBeatHandler;
 import com.mf.im.server.handler.LoginRequestHandler;
 import com.mf.im.server.handler.MessageRequestHandler;
 import com.mf.projects.im.handler.PacketCodecHandler;
+import com.mf.projects.im.handler.ServerHandler;
 import io.netty.bootstrap.ServerBootstrap;
 import io.netty.channel.ChannelFutureListener;
 import io.netty.channel.ChannelHandler;
@@ -33,10 +35,12 @@ public class Server {
         bootstrap.group(boss, worker).channel(NioServerSocketChannel.class)
                 .childHandler(new ChannelInitializer<NioSocketChannel>() {
                     @Override
-                    protected void initChannel(NioSocketChannel nioSocketChannel) throws Exception {
-                        nioSocketChannel.pipeline().addLast(PacketCodecHandler.getInstance());
-                        nioSocketChannel.pipeline().addLast(LoginRequestHandler.getInstance());
-                        nioSocketChannel.pipeline().addLast(MessageRequestHandler.getInstance());
+                    protected void initChannel(NioSocketChannel channel) throws Exception {
+                        channel.pipeline().addLast(new ServerHandler());
+                        channel.pipeline().addLast(HeartBeatHandler.getInstance());
+                        channel.pipeline().addLast(PacketCodecHandler.getInstance());
+                        channel.pipeline().addLast(LoginRequestHandler.getInstance());
+                        channel.pipeline().addLast(MessageRequestHandler.getInstance());
                     }
                 });
         val future = bootstrap.bind(port);

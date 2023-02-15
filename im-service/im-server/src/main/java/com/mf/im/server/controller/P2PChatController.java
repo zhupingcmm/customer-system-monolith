@@ -2,7 +2,6 @@ package com.mf.im.server.controller;
 
 import com.mf.projects.im.dto.ChatResponse;
 import com.mf.projects.im.dto.P2PChatRequest;
-import com.mf.projects.im.packet.LoginResponsePacket;
 import com.mf.projects.im.packet.MessageResponsePacket;
 import com.mf.projects.im.util.ChannelUtil;
 import com.mf.projects.im.util.SessionUtil;

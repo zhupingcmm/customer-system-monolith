@@ -1,9 +1,11 @@
 package com.mf.im.client.client;
 
+import com.mf.im.client.handler.ClientIdleHandler;
 import com.mf.im.client.handler.LoginHandler;
 import com.mf.im.client.handler.LoginResponseHandler;
 import com.mf.im.client.handler.MessageResponseHandler;
 import com.mf.projects.im.handler.PacketCodecHandler;
+import com.mf.projects.im.handler.ServerHandler;
 import io.netty.bootstrap.Bootstrap;
 import io.netty.channel.ChannelFuture;
 import io.netty.channel.ChannelFutureListener;
@@ -36,9 +38,9 @@ public class ClientTest {
                 .handler(new ChannelInitializer<SocketChannel>() {
                     @Override
                     protected void initChannel(SocketChannel channel) throws Exception {
-//                        channel.pipeline().addLast(new ServerIdleHandler());
+                        channel.pipeline().addLast(new ServerHandler());
                         channel.pipeline().addLast(PacketCodecHandler.getInstance());
-//                        channel.pipeline().addLast(new ClientIdleHandler());
+                        channel.pipeline().addLast(new ClientIdleHandler());
                         channel.pipeline().addLast(new LoginHandler(userid, username, password));
                         channel.pipeline().addLast(LoginResponseHandler.getInstance());
                         channel.pipeline().addLast(MessageResponseHandler.getInstance());
