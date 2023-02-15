@@ -2,6 +2,7 @@ package com.mf.im.client.client;
 
 import com.mf.im.client.handler.LoginHandler;
 import com.mf.im.client.handler.LoginResponseHandler;
+import com.mf.im.client.handler.MessageResponseHandler;
 import com.mf.projects.im.handler.PacketCodecHandler;
 import io.netty.bootstrap.Bootstrap;
 import io.netty.channel.ChannelFuture;
@@ -34,10 +35,13 @@ public class ClientTest {
         bootstrap.group(worker).channel(NioSocketChannel.class)
                 .handler(new ChannelInitializer<SocketChannel>() {
                     @Override
-                    protected void initChannel(SocketChannel socketChannel) throws Exception {
-                        socketChannel.pipeline().addLast(PacketCodecHandler.getInstance());
-                        socketChannel.pipeline().addLast(new LoginHandler(userid, username, password));
-                        socketChannel.pipeline().addLast(LoginResponseHandler.getInstance());
+                    protected void initChannel(SocketChannel channel) throws Exception {
+//                        channel.pipeline().addLast(new ServerIdleHandler());
+                        channel.pipeline().addLast(PacketCodecHandler.getInstance());
+//                        channel.pipeline().addLast(new ClientIdleHandler());
+                        channel.pipeline().addLast(new LoginHandler(userid, username, password));
+                        channel.pipeline().addLast(LoginResponseHandler.getInstance());
+                        channel.pipeline().addLast(MessageResponseHandler.getInstance());
                     }
                 });
         val future = bootstrap.connect(host, port).addListener(new ChannelFutureListener() {

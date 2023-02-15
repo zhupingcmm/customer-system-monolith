@@ -1,6 +1,7 @@
 package com.mf.im.server.server;
 
 import com.mf.im.server.handler.LoginRequestHandler;
+import com.mf.im.server.handler.MessageRequestHandler;
 import com.mf.projects.im.handler.PacketCodecHandler;
 import io.netty.bootstrap.ServerBootstrap;
 import io.netty.channel.ChannelFutureListener;
@@ -35,14 +36,15 @@ public class Server {
                     protected void initChannel(NioSocketChannel nioSocketChannel) throws Exception {
                         nioSocketChannel.pipeline().addLast(PacketCodecHandler.getInstance());
                         nioSocketChannel.pipeline().addLast(LoginRequestHandler.getInstance());
+                        nioSocketChannel.pipeline().addLast(MessageRequestHandler.getInstance());
                     }
                 });
         val future = bootstrap.bind(port);
         future.addListener((ChannelFutureListener) channelFuture -> {
             if (channelFuture.isSuccess()) {
-                logger.info("server started! using port {}", port);
+                logger.info("netty server started! using port {}", port);
             } else {
-                logger.info("server start failed! using port {}", port);
+                logger.info("netty server start failed! using port {}", port);
                 channelFuture.cause().printStackTrace();
                 System.exit(0);
             }

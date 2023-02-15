@@ -15,10 +15,19 @@ public class SessionUtil {
         channel.attr(Attributes.SESSION).set(session);
     }
 
-
     public static boolean hasLogin(Channel channel) {
         val login = channel.attr(Attributes.LOGIN);
         return login.get() != null;
     }
+
+    public static Session getSessionByChannel(Channel channel) {
+        return channel.attr(Attributes.SESSION).get();
+    }
+
+    public static Channel getChannelByUserId(String userId){
+       return sessionMap.get(userId);
+    }
+
+
 
 }

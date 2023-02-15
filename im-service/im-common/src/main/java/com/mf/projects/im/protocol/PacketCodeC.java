@@ -1,7 +1,6 @@
 package com.mf.projects.im.protocol;
 
-import com.mf.projects.im.packet.LoginRequestPacket;
-import com.mf.projects.im.packet.LoginResponsePacket;
+import com.mf.projects.im.packet.*;
 import io.netty.buffer.ByteBuf;
 import io.netty.buffer.ByteBufAllocator;
 
@@ -28,12 +27,12 @@ public class PacketCodeC {
 
     static {
         packetTypeMap = new HashMap<Byte, Class<? extends Packet>>();
-//        packetTypeMap.put(Command.DEFAULT_ERROR, DefaultErrorPacket.class);
+        packetTypeMap.put(Command.DEFAULT_ERROR, DefaultErrorPacket.class);
 //        packetTypeMap.put(Command.HEART_BEAT, HeartBeatPacket.class);
         packetTypeMap.put(Command.LOGIN_REQUEST, LoginRequestPacket.class);
         packetTypeMap.put(Command.LOGIN_RESPONSE, LoginResponsePacket.class);
-//        packetTypeMap.put(Command.MESSAGE_REQUEST, MessageRequestPacket.class);
-//        packetTypeMap.put(Command.MESSAGE_RESPONSE, MessageResponsePacket.class);
+        packetTypeMap.put(Command.MESSAGE_REQUEST, MessageRequestPacket.class);
+        packetTypeMap.put(Command.MESSAGE_RESPONSE, MessageResponsePacket.class);
 
         serializerMap = new HashMap<Byte, Serializer>();
         Serializer serializer = new JsonSerializer();

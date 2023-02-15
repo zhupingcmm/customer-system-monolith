@@ -9,9 +9,13 @@ import io.netty.channel.ChannelHandler;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.SimpleChannelInboundHandler;
 import lombok.val;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 @ChannelHandler.Sharable
 public class LoginRequestHandler  extends SimpleChannelInboundHandler<LoginRequestPacket> {
+
+    private static Logger logger = LoggerFactory.getLogger(LoginRequestHandler.class);
 
 
     private LoginRequestHandler () {};
@@ -41,7 +45,7 @@ public class LoginRequestHandler  extends SimpleChannelInboundHandler<LoginReque
             LoginUtil.markAsLogin(ctx.channel());
             // session 和 channel 产生绑定关系， 并且把session的信息存储到channel中
             SessionUtil.bindSession(new Session(packet.getUserId(), packet.getUserName(), packet.getPassword()), ctx.channel());
-
+            logger.info("{}, {} login success", packet.getUserName(), packet.getUserId());
         } else {
             responsePacket.setCode("1001");
             responsePacket.setMsg("login failed");
