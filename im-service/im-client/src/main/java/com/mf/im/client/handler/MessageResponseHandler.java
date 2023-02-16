@@ -20,7 +20,7 @@ public class MessageResponseHandler extends SimpleChannelInboundHandler<MessageR
 
     @Override
     protected void channelRead0(ChannelHandlerContext channelHandlerContext, MessageResponsePacket responsePacket) throws Exception {
-        logger.info("received {} msg {}", responsePacket.getFromUserName(), responsePacket.getMsg());
+        logger.info("{}({}): msg {}", responsePacket.getFromUserName(), responsePacket.getFromUserId(), responsePacket.getMsg());
 
     }
 }

@@ -1,0 +1,9 @@
+
+POST localhost:18002/p2p/chat
+content-type: application/json
+
+{
+  "fromUserId" : "101",
+  "toUserId" : "100",
+  "msg" : "你好"
+}

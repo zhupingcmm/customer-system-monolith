@@ -22,7 +22,7 @@ public class ChatServiceImpl implements ChatService {
     @Override
     public ChatResponse p2pChat(P2PChatRequest request) {
         val loginInfo = loginService.getLoginInfo(request.getFromUserId());
-        val chatResponse = restTemplate.patchForObject("http://" + loginInfo.getServerHost() + ":" + loginInfo.getHttpPort() + "/p2p/chat",
+        val chatResponse = restTemplate.postForObject("http://" + loginInfo.getServerHost() + ":" + loginInfo.getHttpPort() + "/p2p/chat",
                 request, ChatResponse.class);
         return chatResponse;
     }

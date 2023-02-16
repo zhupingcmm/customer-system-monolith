@@ -20,8 +20,7 @@ public class ClientIdleHandler extends IdleStateHandler {
 
     @Override
     protected void channelIdle(ChannelHandlerContext ctx, IdleStateEvent evt) throws Exception {
-        logger.info("发送心跳");
-
+//        logger.debug("发送心跳");
         ctx.channel().writeAndFlush(new HeartBeatPacket());
     }
 }

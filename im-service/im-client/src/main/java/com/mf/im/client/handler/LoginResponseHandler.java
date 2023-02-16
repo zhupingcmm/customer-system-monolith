@@ -21,7 +21,7 @@ public class LoginResponseHandler extends SimpleChannelInboundHandler<LoginRespo
 
     @Override
     protected void channelRead0(ChannelHandlerContext ctx, LoginResponsePacket loginResponsePacket) throws Exception {
-        if (loginResponsePacket.success()) {
+        if (loginResponsePacket.success() || loginResponsePacket.relogin()) {
             logger.info("login success");
         } else {
             logger.error("failed to login");

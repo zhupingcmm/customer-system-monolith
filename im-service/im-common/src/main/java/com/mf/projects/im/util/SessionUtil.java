@@ -28,6 +28,11 @@ public class SessionUtil {
        return sessionMap.get(userId);
     }
 
+    public static void removeChannel(Channel channel){
+        sessionMap.values().remove(channel);
+        System.out.println(sessionMap);
+    }
+
 
 
 }

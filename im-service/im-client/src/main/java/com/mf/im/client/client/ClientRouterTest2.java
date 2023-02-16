@@ -17,11 +17,11 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.client.RestTemplate;
 
-public class ClientRouterTest1 {
+public class ClientRouterTest2 {
 
-    private static Logger logger = LoggerFactory.getLogger(ClientRouterTest1.class);
-    public static String userid = "101";
-    public static String username = "tianyalan";
+    private static Logger logger = LoggerFactory.getLogger(ClientRouterTest2.class);
+    public static String userid = "100";
+    public static String username = "zp";
 
     public static String password = "1234";
     public static String routeHost = "127.0.0.1";
@@ -51,14 +51,13 @@ public class ClientRouterTest1 {
         request.setNettyPort(imServerInfo.getNettyPort());
         val response = restTemplate.postForObject("http://" + routeHost + ":" + routePort + "/auth/login", request, IMLoginResponse.class);
 
-        if (response.success()) {
+        if (response.success() || response.relogin()) {
             logger.info("登陆成功");
         } else {
             logger.info("登陆失败");
             System.exit(0);
         }
     }
-
 
     private static void logout (String userId){
         RestTemplate restTemplate = new RestTemplate();
@@ -101,7 +100,6 @@ public class ClientRouterTest1 {
         });
 
         try {
-
             future.channel().closeFuture().sync();
             logout(userid);
             logger.info(" close the connection ");
