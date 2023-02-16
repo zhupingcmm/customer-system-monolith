@@ -1,6 +1,5 @@
 package com.mf.projects.im.handler;
 
-import com.mf.projects.im.packet.HeartBeatPacket;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.handler.timeout.IdleStateEvent;
 import io.netty.handler.timeout.IdleStateHandler;
