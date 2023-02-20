@@ -15,6 +15,7 @@
 
     <modules>
         <module>customer-service-definition</module>
+        <module>customer-service-provider</module>
     </modules>
 
 </project>

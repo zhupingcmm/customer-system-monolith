@@ -10,6 +10,7 @@ import com.mf.projects.cs.infrastructure.vo.Result;
 import lombok.extern.slf4j.Slf4j;
 import lombok.val;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cloud.client.loadbalancer.LoadBalancerClient;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.context.request.async.WebAsyncTask;
 
@@ -20,6 +21,16 @@ public class CustomerStaffController {
 
     @Autowired
     private ICustomerStaffService customerStaffService;
+
+
+    @Autowired
+    private LoadBalancerClient loadBalancerClient;
+
+    @GetMapping("/load")
+    public String getLoadBalance() {
+        val instance = loadBalancerClient.choose("integration-service-provider");
+        return instance.getHost() + ":" + instance.getPort();
+    }
 
     @PostMapping("/")
     public Result<Long> addCustomerStaff(@RequestBody CustomerStaffVO customerStaffVO) {

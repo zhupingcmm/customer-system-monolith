@@ -8,6 +8,10 @@ spring:
     url: jdbc:mysql://localhost:3306/customer_system?useInformationSchema=false&charset=utf8mb4&useSSL=false&allowMultiQueries=true&allowPublicKeyRetrieval=true
     username: root
     password: 1234
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 127.0.0.1:8849
 mybatis:
   type-aliases-package: com.mf.projects.customer.system.entity
   mapper-locations: classpath:mapping/*Mapper.xml
