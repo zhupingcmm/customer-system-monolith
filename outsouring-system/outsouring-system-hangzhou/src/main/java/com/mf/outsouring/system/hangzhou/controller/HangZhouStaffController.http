@@ -1,9 +1,9 @@
 #####
-POST localhost:8801/customerstatffs/hangzhou/
+POST localhost:10013/customerstatffs/hangzhou/
 Content-Type: application/json
 
 {
-  "nickname": "zp",
+  "nickname": "f",
   "avatar": "2.jpg",
   "phone": "13975569898",
   "gender": "MALE",
@@ -34,6 +34,14 @@ Content-Type: application/json
 
 ####
 GET localhost:8801/customerstatffs/hangzhou/
+Content-Type: application/json
+
+####
+GET localhost:10013/customerstatffs/hangzhou/count
+Content-Type: application/json
+
+####
+GET localhost:10013/customerstatffs/hangzhou/1/5
 Content-Type: application/json
 
 

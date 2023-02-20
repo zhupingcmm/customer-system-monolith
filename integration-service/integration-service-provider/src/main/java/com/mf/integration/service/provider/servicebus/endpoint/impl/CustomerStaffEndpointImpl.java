@@ -35,12 +35,12 @@ public class CustomerStaffEndpointImpl implements CustomerStaffEndpoint<Platform
     }
 
     @Override
-    public List<PlatformCustomerStaff> fetchCustomerStaffs(OutsourcingSystemDTO outsourcingSystem) {
+    public List<PlatformCustomerStaff> fetchCustomerStaffs(Integer currentPage, Integer pageSize, OutsourcingSystemDTO outsourcingSystem) {
         // 获取外部系统路由
         val outsourcingSystemRouter = outsourcingSystemRouterFactory.getOutsourcingSystemRouter(outsourcingSystem);
 
         // 获取外部系统客服信息
-        val originStaffs = outsourcingSystemRouter.fetchOutsourcingStaffs(outsourcingSystem.getSystemUrl());
+        val originStaffs = outsourcingSystemRouter.fetchOutsourcingStaffs(currentPage, pageSize, outsourcingSystem.getSystemUrl());
 
         // 获取 数据转换器
         val transformer = customerStaffTransformerFactory.getTransformer(outsourcingSystem);
@@ -57,6 +57,14 @@ public class CustomerStaffEndpointImpl implements CustomerStaffEndpoint<Platform
 
         log.info("origin staff {} {}", originStaffs, finalStaffs);
         return finalStaffs;
+    }
+
+    @Override
+    public Long getCustomerStaffCount(OutsourcingSystemDTO outsourcingSystem) {
+        // 获取外部系统路由
+        val outsourcingSystemRouter = outsourcingSystemRouterFactory.getOutsourcingSystemRouter(outsourcingSystem);
+
+        return outsourcingSystemRouter.getCustomerStaffCount(outsourcingSystem.getSystemUrl());
     }
 
 }

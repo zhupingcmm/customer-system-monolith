@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
 import java.util.Date;
+import java.util.List;
 
 @EnableWebMvc
 @RestController
@@ -36,8 +37,22 @@ public class HangZhouStaffController {
         return Result.success(customerStaffService.deleteCustomerStaffById(id));
     }
 
+
+    @GetMapping("/count")
+    public Result<Long> getCustomerStaffCount(){
+       return Result.success(customerStaffService.getCustomerCount());
+    }
+
+
+    @GetMapping("/{currentpage}/{pagesize}")
+    public Result<List<HangZhouCustomerStaffVO>> getCustomerStaffs(@PathVariable("currentpage") Integer currentPage, @PathVariable("pagesize") Integer pageSize){
+        val customerStaffs = customerStaffService.findCustomerStaffs(currentPage, pageSize);
+        return Result.success(HangZhouCustomerStaffConverter.INSTANCE.convertToListVO(customerStaffs));
+
+    }
+
     @GetMapping("/")
-    public Result<HangZhouCustomerStaffVO> getAllCustomerStaffs() {
+    public Result<List<HangZhouCustomerStaffVO>> getAllCustomerStaffs() {
         val customerStaffs = customerStaffService.findAllCustomerStaffs();
         return Result.success(HangZhouCustomerStaffConverter.INSTANCE.convertToListVO(customerStaffs));
     }

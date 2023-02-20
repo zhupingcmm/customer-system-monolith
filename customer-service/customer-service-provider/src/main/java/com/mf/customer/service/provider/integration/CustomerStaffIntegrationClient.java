@@ -18,13 +18,20 @@ public class CustomerStaffIntegrationClient {
     @DubboReference(version = "${integration.service.version}", timeout = 3000, retries = 3, mock = "com.mf.customer.service.provider.integration.mock.CustomerStaffIntegrationServiceMock")
     private CustomerStaffIntegrationService integrationService;
 
-    public List<CustomerStaff> getCustomerStaffs(OutsourcingSystem outsourcingSystem){
+    public List<CustomerStaff> getCustomerStaffs(Integer currentPage, Integer pageSize,  OutsourcingSystem outsourcingSystem){
         val dto = CustomerIntegrationConverter.INSTANCE.convertToDto(outsourcingSystem);
 
-        val staffs = integrationService.fetchCustomerStaffs(dto);
+        val staffs = integrationService.fetchCustomerStaffs( currentPage, pageSize, dto);
 
         return CustomerIntegrationConverter.INSTANCE.convertCustomerStaffListDTO(staffs);
 
     }
+
+
+    public Long getCustomerStaffCount(OutsourcingSystem outsourcingSystem){
+        val dto = CustomerIntegrationConverter.INSTANCE.convertToDto(outsourcingSystem);
+        return integrationService.getCustomerStaffCount(dto);
+    }
+
 
 }

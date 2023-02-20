@@ -9,5 +9,9 @@ import java.util.List;
 
 public interface CustomerStaffEndpoint<T> {
 
-    List<T> fetchCustomerStaffs(OutsourcingSystemDTO outsourcingSystem);
+    List<T> fetchCustomerStaffs(Integer currentPage, Integer pageSize, OutsourcingSystemDTO outsourcingSystem);
+
+    Long getCustomerStaffCount(OutsourcingSystemDTO outsourcingSystemDTO);
+
+
 }

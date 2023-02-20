@@ -81,26 +81,50 @@ public class CustomerStaffServiceImpl implements ICustomerStaffService {
 
     @Override
     public void syncOutsourcingCustomerStaffsBySystemId(Long systemId) {
+
+        int pageSize = 5;
+
+
         // 获取外部系统信息
         val outsourcingSystem = outsourcingSystemService.findOutsourcingSystemById(systemId);
 
-        // 通过外部系统信息，获取外部客户系统的客户信息
-        List<CustomerStaff> customerStaffs = integrationClient.getCustomerStaffs(outsourcingSystem);
 
-        customerStaffs.forEach(staff -> {
-            val dbStaff = customerStaffMapper.findCustomerStaff(staff.getAccountId(), staff.getSystemId());
-            log.debug("find staff from db {}", dbStaff);
-            if (dbStaff != null) {
-                // 在数据库中，比较 update time
-                if ( dbStaff.getUpdateTime() != null && staff.getUpdateTime() != dbStaff.getUpdateTime()) {
-                    // update time 不相等，说明数据发生了更新
-                    customerStaffMapper.updateCustomerStaff(staff);
+        // 获取外部系统需要同步数据的数量
+        val staffCounts = integrationClient.getCustomerStaffCount(outsourcingSystem);
+        log.info("will sync {} customer staffs from {}", staffCounts, outsourcingSystem.getSystemName());
+
+        int pages = 0;
+        if (staffCounts % pageSize != 0) {
+            pages = Math.toIntExact(staffCounts / pageSize) + 1;
+        } else {
+            pages = Math.toIntExact(staffCounts / pageSize);
+        }
+
+
+
+        for (int i = 0; i < pages ; i++) {
+            // 通过外部系统信息，获取外部客户系统的客户信息
+            List<CustomerStaff> customerStaffs = integrationClient.getCustomerStaffs(i, pageSize , outsourcingSystem);
+
+            log.info("sync {} customer staffs from {}", customerStaffs.size(), outsourcingSystem.getSystemName());
+
+            customerStaffs.forEach(staff -> {
+                val dbStaff = customerStaffMapper.findCustomerStaff(staff.getAccountId(), staff.getSystemId());
+                log.info("find staff from db {}", dbStaff);
+                if (dbStaff != null) {
+                    // 在数据库中，比较 update time
+                    if ( dbStaff.getUpdateTime() != null && staff.getUpdateTime() != dbStaff.getUpdateTime()) {
+                        // update time 不相等，说明数据发生了更新
+                        customerStaffMapper.updateCustomerStaff(staff);
+                    }
+                } else {
+                    // 不在数据库中，直接插入
+                    customerStaffMapper.createCustomerStaff(staff);
                 }
-            } else {
-                // 不在数据库中，直接插入
-                customerStaffMapper.createCustomerStaff(staff);
-            }
 
-        });
+            });
+
+        }
+
     }
 }

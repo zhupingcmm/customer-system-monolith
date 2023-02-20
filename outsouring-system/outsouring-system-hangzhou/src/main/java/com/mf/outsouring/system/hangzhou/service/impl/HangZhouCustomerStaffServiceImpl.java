@@ -5,8 +5,11 @@ import com.mf.outsouring.system.hangzhou.repository.HangzhouCustomerStaffReposit
 import com.mf.outsouring.system.hangzhou.service.HangZhouCustomerStaffService;
 import lombok.val;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -19,7 +22,28 @@ public class HangZhouCustomerStaffServiceImpl implements HangZhouCustomerStaffSe
 
     @Override
     public List<HangZhouCustomerStaff> findAllCustomerStaffs() {
+
+
+
         return customerStaffRepository.findByIsDeletedFalse();
+    }
+
+
+
+
+    @Override
+    public List<HangZhouCustomerStaff> findCustomerStaffs(Integer currentPage, Integer pageSize) {
+        List<HangZhouCustomerStaff> customerStaffs = new ArrayList<>();
+        Pageable pageable = PageRequest.of(currentPage, pageSize);
+
+        val page = customerStaffRepository.findAll(pageable);
+        customerStaffs.addAll(page.getContent());
+        return customerStaffs;
+    }
+
+    @Override
+    public Long getCustomerCount() {
+        return customerStaffRepository.count();
     }
 
     @Override

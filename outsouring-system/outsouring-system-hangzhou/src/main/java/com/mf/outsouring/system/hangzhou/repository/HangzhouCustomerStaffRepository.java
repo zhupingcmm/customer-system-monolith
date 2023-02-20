@@ -1,7 +1,9 @@
 package com.mf.outsouring.system.hangzhou.repository;
 
 import com.mf.outsouring.system.hangzhou.entity.HangZhouCustomerStaff;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 import java.util.Date;
@@ -13,5 +15,7 @@ public interface HangzhouCustomerStaffRepository extends JpaRepository<HangZhouC
     List<HangZhouCustomerStaff> findByIsDeletedFalse();
 
     List<HangZhouCustomerStaff> findByUpdateAtAfter(Date updateTime);
+
+
 
 }

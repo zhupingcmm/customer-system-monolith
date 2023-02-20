@@ -18,14 +18,27 @@ public class HangzhouOutsourcingSystemRouter implements OutsourcingRouter<Hangzh
     private RestTemplate restTemplate;
 
     @Override
-    public List<HangzhouCustomerStaff> fetchOutsourcingStaffs(String systemUrl) {
+    public List<HangzhouCustomerStaff> fetchOutsourcingStaffs(Integer currentPage, Integer pageSize, String systemUrl) {
+
         val response = restTemplate.exchange(
-                systemUrl,
+                systemUrl+ "/"+ currentPage + "/" + pageSize,
                 HttpMethod.GET,
                 null,
                 Result.class
         );
 
         return (List<HangzhouCustomerStaff>) response.getBody().getData();
+    }
+
+    @Override
+    public Long getCustomerStaffCount(String systemUrl) {
+
+        val response = restTemplate.exchange(
+                systemUrl + "/count",
+                HttpMethod.GET,
+                null,
+                Result.class
+        );
+        return Long.parseLong(response.getBody().getData().toString());
     }
 }

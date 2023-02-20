@@ -4,6 +4,8 @@ import java.util.List;
 
 public interface OutsourcingRouter<T> {
 
-    List<T> fetchOutsourcingStaffs(String systemUrl);
+    List<T> fetchOutsourcingStaffs(Integer currentPage, Integer pageSize, String systemUrl);
+
+    Long getCustomerStaffCount(String systemUrl);
 
 }

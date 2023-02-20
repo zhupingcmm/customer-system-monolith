@@ -9,7 +9,12 @@ import java.util.List;
 @Component(value = "shanghai_router")
 public class ShanghaiOutsourcingSystemRouter implements OutsourcingRouter<ShanghaiCustomerStaff> {
     @Override
-    public List<ShanghaiCustomerStaff> fetchOutsourcingStaffs(String systemUrl) {
+    public List<ShanghaiCustomerStaff> fetchOutsourcingStaffs(Integer currentPage, Integer pageSize, String systemUrl) {
+        return null;
+    }
+
+    @Override
+    public Long getCustomerStaffCount(String systemUrl) {
         return null;
     }
 }

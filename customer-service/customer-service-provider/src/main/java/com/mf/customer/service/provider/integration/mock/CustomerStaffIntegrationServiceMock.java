@@ -10,7 +10,13 @@ import java.util.List;
 @Slf4j
 public class CustomerStaffIntegrationServiceMock implements CustomerStaffIntegrationService<PlatformCustomerStaff> {
     @Override
-    public List<PlatformCustomerStaff> fetchCustomerStaffs(OutsourcingSystemDTO outsourcingSystemDTO) {
+    public List<PlatformCustomerStaff> fetchCustomerStaffs(Integer currentPage, Integer pageSize, OutsourcingSystemDTO outsourcingSystemDTO) {
         return null;
     }
+
+    @Override
+    public Long getCustomerStaffCount(OutsourcingSystemDTO outsourcingSystemDTO) {
+        return null;
+    }
+
 }

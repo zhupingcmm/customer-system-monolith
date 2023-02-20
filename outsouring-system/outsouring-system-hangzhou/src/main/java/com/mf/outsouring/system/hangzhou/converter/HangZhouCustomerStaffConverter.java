@@ -13,7 +13,6 @@ public interface HangZhouCustomerStaffConverter {
     HangZhouCustomerStaffConverter INSTANCE = Mappers.getMapper(HangZhouCustomerStaffConverter.class);
 
     // ENTITY -> VO
-
     HangZhouCustomerStaffVO convertToVO(HangZhouCustomerStaff entity);
     List<HangZhouCustomerStaffVO> convertToListVO(List<HangZhouCustomerStaff> list);
 

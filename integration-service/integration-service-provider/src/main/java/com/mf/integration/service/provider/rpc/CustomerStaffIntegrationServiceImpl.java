@@ -16,7 +16,13 @@ public class CustomerStaffIntegrationServiceImpl implements CustomerStaffIntegra
     private CustomerStaffEndpoint<PlatformCustomerStaff> customerStaffEndpoint;
 
     @Override
-    public List<PlatformCustomerStaff> fetchCustomerStaffs(OutsourcingSystemDTO outsourcingSystemDTO) {
-        return customerStaffEndpoint.fetchCustomerStaffs(outsourcingSystemDTO);
+    public List<PlatformCustomerStaff> fetchCustomerStaffs(Integer currentPage, Integer pageSize, OutsourcingSystemDTO outsourcingSystemDTO) {
+        return customerStaffEndpoint.fetchCustomerStaffs(currentPage, pageSize, outsourcingSystemDTO);
     }
+
+    @Override
+    public Long getCustomerStaffCount(OutsourcingSystemDTO outsourcingSystemDTO) {
+        return customerStaffEndpoint.getCustomerStaffCount(outsourcingSystemDTO);
+    }
+
 }
