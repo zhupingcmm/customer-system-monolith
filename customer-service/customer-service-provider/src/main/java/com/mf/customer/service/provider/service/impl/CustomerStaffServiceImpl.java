@@ -110,8 +110,9 @@ public class CustomerStaffServiceImpl implements ICustomerStaffService {
 
             customerStaffs.forEach(staff -> {
                 val dbStaff = customerStaffMapper.findCustomerStaff(staff.getAccountId(), staff.getSystemId());
-                log.info("find staff from db {}", dbStaff);
+
                 if (dbStaff != null) {
+                    log.debug("find {} staff from db", dbStaff);
                     // 在数据库中，比较 update time
                     if ( dbStaff.getUpdateTime() != null && staff.getUpdateTime() != dbStaff.getUpdateTime()) {
                         // update time 不相等，说明数据发生了更新
