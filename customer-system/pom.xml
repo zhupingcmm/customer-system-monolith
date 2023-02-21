@@ -116,8 +116,6 @@
 			<scope>test</scope>
 		</dependency>
 
-
-
 		<dependency>
 			<groupId>org.projectlombok</groupId>
 			<artifactId>lombok</artifactId>
@@ -153,8 +151,6 @@
 			<groupId>org.mapstruct</groupId>
 			<artifactId>mapstruct-processor</artifactId>
 		</dependency>
-
-
 
 		<dependency>
 			<groupId>com.xuxueli</groupId>

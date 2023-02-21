@@ -15,6 +15,7 @@
         <module>customer-service</module>
         <module>integration-service</module>
         <module>im-service</module>
+        <module>message-service</module>
     </modules>
 
     <properties>
