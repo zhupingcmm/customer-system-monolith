@@ -1,0 +1,24 @@
+
+POST localhost:38002/message/
+Content-Type: application/json
+
+{
+  "fromUserId" : "102",
+  "fromUsername" : "天涯兰",
+  "toUserId" : "103",
+  "toUsername" : "郑天民",
+  "businessTypeCode" : "ORDER",
+  "message" : "这是一条测试消息"
+}
+
+#####
+
+GET localhost:38001/message
+Content-Type: application/json
+
+###
+
+GET localhost:38001/message/99
+Content-Type: application/json
+
+###

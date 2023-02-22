@@ -12,9 +12,9 @@ public class ImMessage extends BaseBean {
 
     private Long id;
     private Long fromUserId;
-    private String fromUserName;
+    private String fromUsername;
     private Long toUserId;
-    private String toUserName;
+    private String toUsername;
     private String businessTypeCode;
     private String businessTypeName;
     private String message;

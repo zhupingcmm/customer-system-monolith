@@ -2,7 +2,7 @@
 -- Table structure for im_message
 -- ----------------------------
 DROP TABLE IF EXISTS `im_message`;
-CREATE TABLE `im_message` (
+CREATE TABLE `im_message2` (
                               `id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT '主键',
                               `from_user_id` bigint(20) NOT NULL COMMENT '消息发送方用户Id',
                               `from_username` varchar(45) DEFAULT NULL COMMENT '消息发送方用户名',

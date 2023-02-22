@@ -10,17 +10,11 @@
     </parent>
 
     <groupId>com.mf</groupId>
-    <artifactId>message-service-common</artifactId>
+    <artifactId>message-service-sharding</artifactId>
     <version>1.0.0</version>
-    <name>message-service-common</name>
-    <description>message-service-common</description>
+    <name>message-service-sharding</name>
+    <description>message-service-sharding</description>
 
-
-    <properties>
-        <mybatis.version>3.5.9</mybatis.version>
-        <mybatis-spring.version>2.0.5</mybatis-spring.version>
-        <mybatis-spring-boot.version>2.1.3</mybatis-spring-boot.version>
-    </properties>
 
     <dependencies>
         <dependency>
@@ -32,6 +26,11 @@
         <dependency>
             <groupId>com.mf.projects</groupId>
             <artifactId>message-service-definition</artifactId>
+            <version>1.0.0</version>
+        </dependency>
+        <dependency>
+            <groupId>com.mf</groupId>
+            <artifactId>message-service-common</artifactId>
             <version>1.0.0</version>
         </dependency>
 
@@ -113,41 +112,14 @@
         </dependency>
 
         <dependency>
-            <groupId>org.mybatis</groupId>
-            <artifactId>mybatis</artifactId>
-            <version>${mybatis.version}</version>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
         </dependency>
+
         <dependency>
-            <groupId>org.mybatis</groupId>
-            <artifactId>mybatis-spring</artifactId>
-            <version>${mybatis-spring.version}</version>
+            <groupId>com.alibaba</groupId>
+            <artifactId>druid</artifactId>
         </dependency>
-        <dependency>
-            <groupId>org.mybatis.spring.boot</groupId>
-            <artifactId>mybatis-spring-boot-starter</artifactId>
-            <version>${mybatis-spring-boot.version}</version>
-        </dependency>
-
-        <!--<dependency>-->
-        <!--<groupId>com.alibaba</groupId>-->
-        <!--<artifactId>druid-spring-boot-starter</artifactId>-->
-        <!--</dependency>-->
-
-        <!--<dependency>-->
-        <!--<groupId>com.baomidou</groupId>-->
-        <!--<artifactId>mybatis-plus-boot-starter</artifactId>-->
-        <!--</dependency>-->
-
-        <!--<dependency>-->
-        <!--<groupId>com.baomidou</groupId>-->
-        <!--<artifactId>mybatis-plus-boot-starter-test</artifactId>-->
-        <!--<scope>test</scope>-->
-        <!--</dependency>-->
-
-        <!--<dependency>-->
-        <!--<groupId>com.baomidou</groupId>-->
-        <!--<artifactId>dynamic-datasource-spring-boot-starter</artifactId>-->
-        <!--</dependency>-->
 
         <dependency>
             <groupId>org.mapstruct</groupId>
@@ -162,30 +134,14 @@
             <artifactId>mapstruct-processor</artifactId>
         </dependency>
 
-        <!--<dependency>-->
-        <!--<groupId>org.apache.dubbo</groupId>-->
-        <!--<artifactId>dubbo-spring-boot-starter</artifactId>-->
-        <!--</dependency>-->
-
-        <!--<dependency>-->
-        <!--<groupId>org.apache.dubbo</groupId>-->
-        <!--<artifactId>dubbo-dependencies-zookeeper</artifactId>-->
-        <!--<type>pom</type>-->
-        <!--<exclusions>-->
-        <!--<exclusion>-->
-        <!--<groupId>org.slf4j</groupId>-->
-        <!--<artifactId>slf4j-log4j12</artifactId>-->
-        <!--</exclusion>-->
-        <!--</exclusions>-->
-        <!--</dependency>-->
-
-        <!--&lt;!&ndash;替换curator默认版本，确保和Zookeeper服务器兼容&ndash;&gt;-->
-        <!--<dependency>-->
-        <!--<groupId>org.apache.curator</groupId>-->
-        <!--<artifactId>curator-framework</artifactId>-->
-        <!--<version>4.2.0</version>-->
-        <!--</dependency>-->
-
+        <dependency>
+            <groupId>org.apache.shardingsphere</groupId>
+            <artifactId>shardingsphere-jdbc-core-spring-boot-starter</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.mybatis.spring.boot</groupId>
+            <artifactId>mybatis-spring-boot-starter</artifactId>
+        </dependency>
     </dependencies>
 
     <build>
