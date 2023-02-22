@@ -1,0 +1,10 @@
+server:
+  port: 38002
+spring:
+  application:
+    name: message-service-sharding
+  profiles:
+    active: sharding-tables
+mybatis:
+  type-aliases-package: com.mf.message.service.entity
+  mapper-locations: classpath:mapping/*Mapper.xml
