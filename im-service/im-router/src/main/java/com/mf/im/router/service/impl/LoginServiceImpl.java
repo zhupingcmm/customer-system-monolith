@@ -4,6 +4,8 @@ import com.mf.im.router.service.LoginService;
 import com.mf.projects.im.handler.IMLoginRequest;
 import org.springframework.stereotype.Service;
 
+import java.util.Arrays;
+import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
@@ -32,5 +34,11 @@ public class LoginServiceImpl implements LoginService {
     @Override
     public IMLoginRequest getLoginInfo(String userId) {
         return loginRequestMap.get(userId);
+    }
+
+    @Override
+    public List<IMLoginRequest> getAllIMLoginRequests() {
+
+        return null;
     }
 }

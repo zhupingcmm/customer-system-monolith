@@ -3,6 +3,17 @@ server:
 spring:
   application:
     name: im-router
+  redis:
+    port: 6379
+    host: localhost
+    lettuce:
+      pool:
+        max-active: 8
+        max-wait: -1
+        max-idle: 8
+        min-idle: 0
+    timeout: 10000
+    database: 0
 
 dubbo:
   protocol:
