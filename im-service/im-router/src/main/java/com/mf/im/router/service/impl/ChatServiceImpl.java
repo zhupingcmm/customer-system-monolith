@@ -1,5 +1,6 @@
 package com.mf.im.router.service.impl;
 
+import com.mf.im.router.message.MessageClient;
 import com.mf.im.router.service.ChatService;
 import com.mf.im.router.service.LoginService;
 import com.mf.projects.im.dto.ChatResponse;
@@ -12,18 +13,25 @@ import org.springframework.web.client.RestTemplate;
 @Service
 public class ChatServiceImpl implements ChatService {
 
-
     @Autowired
     private RestTemplate restTemplate;
 
-
     @Autowired
     private LoginService loginService;
+
+    @Autowired
+    private MessageClient messageClient;
     @Override
     public ChatResponse p2pChat(P2PChatRequest request) {
+        // 获取 用户信息
         val loginInfo = loginService.getLoginInfo(request.getFromUserId());
+
+        // 发送 message 到 im server
         val chatResponse = restTemplate.postForObject("http://" + loginInfo.getServerHost() + ":" + loginInfo.getHttpPort() + "/p2p/chat",
                 request, ChatResponse.class);
+
+        // 存储 chat message
+        messageClient.saveMessage(request);
         return chatResponse;
     }
 }

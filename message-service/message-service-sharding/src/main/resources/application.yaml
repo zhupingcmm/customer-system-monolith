@@ -8,3 +8,15 @@ spring:
 mybatis:
   type-aliases-package: com.mf.message.service.entity
   mapper-locations: classpath:mapping/*Mapper.xml
+dubbo:
+  protocol:
+    name: dubbo
+    port: -1
+  registry:
+    address: zookeeper://127.0.0.1:2181
+    file: C:/dubbo/message-service/cache
+  scan:
+    base-packages: com.mf.message.service
+message:
+  service:
+    version: 1.0.0

@@ -25,7 +25,7 @@ public class LoginController {
         }
 
         loginService.login(request);
-        log.info("{}:({}) login success ", request.getUserName(), request.getUserId());
+        log.info("{}({}): login success ", request.getUserName(), request.getUserId());
         return response;
     }
 

@@ -1,5 +1,6 @@
 package com.mf.cs.project.message.domain;
 
+import com.mf.projects.cs.infrastructure.base.BaseBean;
 import lombok.Data;
 import lombok.experimental.Accessors;
 
@@ -7,7 +8,7 @@ import java.time.LocalDateTime;
 
 @Data
 @Accessors(chain = true)
-public class ImMessageDto {
+public class ImMessageDto extends BaseBean {
     private Long id;
     private Long fromUserId;
     private String fromUsername;
