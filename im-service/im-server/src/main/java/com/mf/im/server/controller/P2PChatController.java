@@ -42,6 +42,4 @@ public class P2PChatController {
         return chatResponse;
     }
 
-
-
 }

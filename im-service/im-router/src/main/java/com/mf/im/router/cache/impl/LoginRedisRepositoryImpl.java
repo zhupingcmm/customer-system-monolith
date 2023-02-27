@@ -8,6 +8,7 @@ import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 @Repository
 public class LoginRedisRepositoryImpl implements LoginRedisRepository {
@@ -24,7 +25,7 @@ public class LoginRedisRepositoryImpl implements LoginRedisRepository {
 
     @Override
     public void save(IMLoginRequest request) {
-        redisTemplate.opsForValue().set(getKey(request.getUserId()), request);
+        redisTemplate.opsForValue().set(getKey(request.getUserId()), request, 30, TimeUnit.MINUTES);
     }
 
     @Override

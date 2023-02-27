@@ -1,0 +1,10 @@
+
+####
+POST localhost:18003/auth/login
+content-type: application/json
+
+{
+  "userId": "101",
+  "userName": "cmm",
+  "password": "1234"
+}

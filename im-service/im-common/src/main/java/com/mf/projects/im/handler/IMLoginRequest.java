@@ -11,6 +11,7 @@ public class IMLoginRequest {
 
     private String userId;
     private String userName;
+    private String password;
     private String serverHost;
     private int nettyPort;
     private int httpPort;
