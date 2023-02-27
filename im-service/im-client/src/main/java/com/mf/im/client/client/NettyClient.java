@@ -6,6 +6,7 @@ import com.mf.im.client.handler.LoginResponseHandler;
 import com.mf.im.client.handler.MessageResponseHandler;
 import com.mf.im.client.service.ImRouterService;
 import com.mf.im.client.service.LoginService;
+import com.mf.im.client.util.FutureUtil;
 import com.mf.projects.im.handler.IMLoginRequest;
 import com.mf.projects.im.handler.IMServerInfo;
 import com.mf.projects.im.handler.PacketCodecHandler;
@@ -57,6 +58,8 @@ public class NettyClient {
                 }
             }
         });
+
+        FutureUtil.saveFuture(request.getUserId(), future);
 
         try {
             future.channel().closeFuture().sync();

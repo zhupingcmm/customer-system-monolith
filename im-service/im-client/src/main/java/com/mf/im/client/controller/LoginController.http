@@ -4,7 +4,12 @@ POST localhost:18003/auth/login
 content-type: application/json
 
 {
-  "userId": "101",
-  "userName": "cmm",
+  "userId": "100",
+  "userName": "zp",
   "password": "1234"
 }
+
+
+####
+DELETE localhost:18003/auth/logout/101
+content-type: application/json

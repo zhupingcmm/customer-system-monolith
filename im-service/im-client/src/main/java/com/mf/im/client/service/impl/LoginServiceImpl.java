@@ -3,6 +3,7 @@ package com.mf.im.client.service.impl;
 import com.mf.im.client.client.NettyClient;
 import com.mf.im.client.service.ImRouterService;
 import com.mf.im.client.service.LoginService;
+import com.mf.im.client.util.FutureUtil;
 import com.mf.projects.im.handler.IMLoginRequest;
 import com.mf.projects.im.handler.IMLoginResponse;
 import com.mf.projects.im.handler.IMServerInfo;
@@ -21,7 +22,6 @@ import java.util.concurrent.ExecutorService;
 public class LoginServiceImpl implements LoginService {
 
 
-    private ChannelFuture channelFuture;
 
     @Autowired
     private ImRouterService imRouterService;
@@ -40,21 +40,21 @@ public class LoginServiceImpl implements LoginService {
         val imRouterUri = imRouterService.getImRouterUri();
         val serverInfo = imRouterService.getIMServerInfo(imRouterUri);
         loginRoute(imRouterUri, serverInfo, request);
-        val future = executorService.submit(() -> {
+        executorService.submit(() -> {
             nettyClient.start(serverInfo, request);
         });
     }
 
     @Override
-    public void logout(String userId, IMServerInfo imServerInfo) {
-        try {
-            // 关闭 netty 客户端
-            channelFuture.channel().closeFuture().sync();
-            // 登出 im-router
-            imRouterService.logout(userId, imServerInfo);
-        } catch (InterruptedException e) {
-            throw new RuntimeException(e);
-        }
+    public void logout(String userId) {
+        // 关闭 netty 客户端
+        val channelFuture = FutureUtil.getFuture(userId);
+        channelFuture.channel().close();
+
+        // 登出 im-router
+        val imRouterUri = imRouterService.getImRouterUri();
+        val serverInfo = imRouterService.getIMServerInfo(imRouterUri);
+        imRouterService.logout(userId, serverInfo);
     }
 
 
