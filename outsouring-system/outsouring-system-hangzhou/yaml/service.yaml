@@ -3,10 +3,10 @@ kind: Service
 metadata:
   name: hangzhou-system-os
 spec:
-  type: ClusterIP
+  type: NodePort
   ports:
-    - port: 80
+    - port: 10011
       protocol: TCP
       name: http
   selector:
-    app: nginx
+    app: hangzhou
