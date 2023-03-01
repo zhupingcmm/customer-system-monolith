@@ -51,6 +51,4 @@ public class MessageConfirmCallback implements RabbitTemplate.ConfirmCallback
         log.error("returnedMessage: {}", returnedMessage);
     }
 
-
-
 }
