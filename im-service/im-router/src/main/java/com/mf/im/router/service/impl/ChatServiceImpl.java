@@ -24,7 +24,7 @@ public class ChatServiceImpl implements ChatService {
     private MessageClient messageClient;
 
     @Autowired
-    private RabbitTemplate amqpTemplate;
+    private RabbitTemplate rabbitTemplate;
     @Override
     public ChatResponse p2pChat(P2PChatRequest request) {
         // 获取 用户信息
@@ -36,7 +36,7 @@ public class ChatServiceImpl implements ChatService {
 
 //        // 存储 chat message
         messageClient.saveMessage(request);
-        amqpTemplate.convertAndSend("message_exchange", "im_messages_key", request);
+        rabbitTemplate.convertAndSend("message_exchange", "im_messages_key", request);
         return chatResponse;
     }
 }
