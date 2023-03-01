@@ -1,0 +1,8 @@
+server:
+  port: 18004
+spring:
+  application:
+    name: im-router
+  profiles:
+    active: dev
+

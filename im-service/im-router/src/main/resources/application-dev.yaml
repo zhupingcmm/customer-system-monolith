@@ -14,6 +14,12 @@ spring:
         min-idle: 0
     timeout: 10000
     database: 0
+  rabbitmq:
+    host: localhost
+    port: 5672
+    virtual-host: /hero_vh
+    username: hero
+    password: hero
 
 dubbo:
   protocol:
