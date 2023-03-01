@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: hangzhou-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: hangzhou
+  template:
+    metadata:
+      labels:
+        app: hangzhou
+    spec:
+      containers:
+        - name: nginx
+          image: pingzhu/hangzhou:v1.0
+#          readinessProbe:
+#            exec:
+#              command:
+#                - cat
+#                - /tmp/healthy
+#            initialDelaySeconds: 5
+#            periodSeconds: 5
