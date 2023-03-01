@@ -13,12 +13,30 @@ spec:
         app: hangzhou
     spec:
       containers:
-        - name: nginx
+        - name: hangzhou-os
           image: pingzhu/hangzhou:v1.0
-#          readinessProbe:
-#            exec:
-#              command:
-#                - cat
-#                - /tmp/healthy
-#            initialDelaySeconds: 5
-#            periodSeconds: 5
+          ports:
+            - containerPort: 10011
+          resources:
+            requests:
+              memory: "512Mi"
+              cpu: "100m"
+            limits:
+              memory: "1Gi"
+              cpu: "500m"
+          livenessProbe:
+            httpGet:
+              path: /actuator/health/liveness
+              port: 10011
+            initialDelaySeconds: 30
+            periodSeconds: 5
+            timeoutSeconds: 5
+            failureThreshold: 3
+          readinessProbe:
+            httpGet:
+              path: /actuator/health/readiness
+              port: 10011
+            initialDelaySeconds: 20
+            periodSeconds: 5
+            timeoutSeconds: 5
+            failureThreshold: 3
