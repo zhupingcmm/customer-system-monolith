@@ -1,6 +1,4 @@
 spring:
-  application:
-    name: hangzhou-system
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://172.30.60.1:3306/customer_hangzhou?characterEncoding=utf8&allowPublicKeyRetrieval=true&useSSL=false&serverTimezone=Asia/Shanghai
@@ -12,6 +10,12 @@ spring:
         server-addr: 172.30.60.1:8848
       username: nacos
       password: nacos
+    rabbitmq:
+      host: 172.30.60.1
+      port: 5672
+      virtual-host: /hero_vh
+      username: hero
+      password: hero
 management:
   endpoint:
     health:

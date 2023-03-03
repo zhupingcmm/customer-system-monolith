@@ -2,7 +2,6 @@ package com.mf.integration.service.provider.listener;
 
 import com.alibaba.fastjson.JSON;
 import com.mf.integration.service.provider.intergration.CustomerServiceClient;
-import com.mf.integration.service.provider.service.CustomerService;
 import com.mf.integration.service.provider.servicebus.endpoint.CustomerStaffEndpoint;
 import com.mf.integration.service.provider.servicebus.enums.OutSystem;
 import com.mf.integration.service.provider.servicebus.router.hangzhou.dto.HangzhouCustomerStaff;
