@@ -3,10 +3,11 @@ server:
 spring:
   application:
     name: customer-service-provider
+  profiles:
+    active: prod
 mybatis:
   type-aliases-package: com.mf.projects.customer.system.entity
   mapper-locations: classpath:mapping/*Mapper.xml
-
 
 
 
