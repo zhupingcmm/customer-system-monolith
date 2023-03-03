@@ -1,8 +1,7 @@
 package com.mf.integration.service.provider.servicebus.filter;
 
 
-
-import domain.PlatformCustomerStaff;
+import com.mf.projects.cs.infrastructure.domain.PlatformCustomerStaff;
 
 public interface CustomerStaffFilter {
 

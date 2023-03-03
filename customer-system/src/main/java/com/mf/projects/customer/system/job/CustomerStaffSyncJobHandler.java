@@ -13,7 +13,7 @@ import service.CustomerStaffSyncService;
 @Component
 public class CustomerStaffSyncJobHandler {
 
-    @DubboReference(version = "${customer.service.version}")
+    @DubboReference(version = "${customer.service.sync.version}")
     private CustomerStaffSyncService customerStaffSyncService;
 
     @XxlJob("syncCustomerStaff")

@@ -40,6 +40,9 @@ integration:
     version: 1.0.0
 customer:
   service:
-    version: 1.0.0
+    sync:
+      version: 1.0.0
+    update:
+      version: 1.0.0
 
 

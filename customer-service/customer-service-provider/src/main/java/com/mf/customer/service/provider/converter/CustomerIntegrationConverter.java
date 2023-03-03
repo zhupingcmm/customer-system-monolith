@@ -2,8 +2,8 @@ package com.mf.customer.service.provider.converter;
 
 import com.mf.customer.service.provider.entity.staff.CustomerStaff;
 import com.mf.customer.service.provider.entity.tenant.OutsourcingSystem;
+import com.mf.projects.cs.infrastructure.domain.PlatformCustomerStaff;
 import domain.OutsourcingSystemDTO;
-import domain.PlatformCustomerStaff;
 import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;
 
@@ -14,7 +14,9 @@ public interface CustomerIntegrationConverter {
     CustomerIntegrationConverter INSTANCE = Mappers.getMapper(CustomerIntegrationConverter.class);
 
     //DTO->Entity
-    List<CustomerStaff> convertCustomerStaffListDTO(List<PlatformCustomerStaff> dtos);
+    List<CustomerStaff> convertCustomerStaffListDTO(List<PlatformCustomerStaff> staffs);
+
+    CustomerStaff convertToCustomerStaff(PlatformCustomerStaff platformCustomerStaff);
 
 
     // ENTITY -> DTO

@@ -19,7 +19,8 @@ dubbo:
     base-packages: com.mf.projects.customer.system
 customer:
   service:
-    version: 1.0.0
+    sync:
+      version: 1.0.0
 
 xxl:
   job:

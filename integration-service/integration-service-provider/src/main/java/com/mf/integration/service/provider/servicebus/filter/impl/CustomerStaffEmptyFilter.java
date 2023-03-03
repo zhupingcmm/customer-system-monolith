@@ -1,7 +1,8 @@
 package com.mf.integration.service.provider.servicebus.filter.impl;
 
 import com.mf.integration.service.provider.servicebus.filter.AbstractCustomerStaffFilter;
-import domain.PlatformCustomerStaff;
+import com.mf.projects.cs.infrastructure.domain.PlatformCustomerStaff;
+
 
 import java.util.Objects;
 

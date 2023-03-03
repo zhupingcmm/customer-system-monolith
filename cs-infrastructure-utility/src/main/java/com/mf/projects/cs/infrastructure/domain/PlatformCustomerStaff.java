@@ -1,4 +1,4 @@
-package domain;
+package com.mf.projects.cs.infrastructure.domain;
 
 import com.mf.projects.cs.infrastructure.base.BaseBean;
 import com.mf.projects.cs.infrastructure.base.enums.Gender;

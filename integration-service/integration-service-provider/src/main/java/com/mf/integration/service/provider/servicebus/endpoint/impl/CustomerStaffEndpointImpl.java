@@ -1,14 +1,16 @@
 package com.mf.integration.service.provider.servicebus.endpoint.impl;
 
 
+
 import com.mf.integration.service.provider.servicebus.endpoint.CustomerStaffEndpoint;
 import com.mf.integration.service.provider.servicebus.filter.CustomerStaffFilterChain;
 import com.mf.integration.service.provider.servicebus.filter.impl.CustomerStaffEmptyFilter;
 import com.mf.integration.service.provider.servicebus.filter.impl.CustomerStaffSpecialCharactersFilter;
 import com.mf.integration.service.provider.servicebus.router.OutsourcingSystemRouterFactory;
+import com.mf.integration.service.provider.servicebus.router.hangzhou.dto.HangzhouCustomerStaff;
 import com.mf.integration.service.provider.servicebus.transfomer.CustomerStaffTransformerFactory;
+import com.mf.projects.cs.infrastructure.domain.PlatformCustomerStaff;
 import domain.OutsourcingSystemDTO;
-import domain.PlatformCustomerStaff;
 import lombok.extern.slf4j.Slf4j;
 import lombok.val;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -65,6 +67,16 @@ public class CustomerStaffEndpointImpl implements CustomerStaffEndpoint<Platform
         val outsourcingSystemRouter = outsourcingSystemRouterFactory.getOutsourcingSystemRouter(outsourcingSystem);
 
         return outsourcingSystemRouter.getCustomerStaffCount(outsourcingSystem.getSystemUrl());
+    }
+
+    @Override
+    public PlatformCustomerStaff getPlatformCustomerStaff(OutsourcingSystemDTO outsourcingSystem, HangzhouCustomerStaff customerStaff) {
+        // 获取 数据转换器
+        val transformer = customerStaffTransformerFactory.getTransformer(outsourcingSystem);
+        val platformCustomerStaff = transformer.transformCustomerStaff(outsourcingSystem.getAppId(), customerStaff);
+
+        // 进行过滤
+        return customerStaffFilterChain.execute(platformCustomerStaff);
     }
 
 }

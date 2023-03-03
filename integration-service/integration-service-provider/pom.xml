@@ -47,6 +47,11 @@
             <artifactId>integration-service-definition</artifactId>
             <version>1.0.0</version>
         </dependency>
+        <dependency>
+            <groupId>com.mf.projects</groupId>
+            <artifactId>customer-service-definition</artifactId>
+            <version>1.0.0</version>
+        </dependency>
 
         <!-- 工具方法类 -->
         <dependency>
@@ -187,6 +192,12 @@
         <dependency>
             <groupId>org.apache.rocketmq</groupId>
             <artifactId>rocketmq-spring-boot-starter</artifactId>
+        </dependency>
+
+        <!-- ampq -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-amqp</artifactId>
         </dependency>
 
     </dependencies>

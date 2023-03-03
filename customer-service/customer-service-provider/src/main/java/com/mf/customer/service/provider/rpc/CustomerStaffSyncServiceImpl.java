@@ -5,7 +5,7 @@ import org.apache.dubbo.config.annotation.DubboService;
 import org.springframework.beans.factory.annotation.Autowired;
 import service.CustomerStaffSyncService;
 
-@DubboService(version = "${customer.service.version}")
+@DubboService(version = "${customer.service.sync.version}")
 public class CustomerStaffSyncServiceImpl implements CustomerStaffSyncService {
 
     @Autowired
@@ -15,4 +15,5 @@ public class CustomerStaffSyncServiceImpl implements CustomerStaffSyncService {
     public void syncOutsourcingCustomerStaffsBySystemId(Long systemId) {
         customerStaffService.syncOutsourcingCustomerStaffsBySystemId(systemId);
     }
+
 }

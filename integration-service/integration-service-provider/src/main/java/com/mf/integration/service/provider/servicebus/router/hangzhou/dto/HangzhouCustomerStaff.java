@@ -1,5 +1,6 @@
 package com.mf.integration.service.provider.servicebus.router.hangzhou.dto;
 
+import com.mf.integration.service.provider.servicebus.common.CustomerStaff;
 import com.mf.projects.cs.infrastructure.base.BaseBean;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -11,7 +12,7 @@ import java.util.Date;
 @Data
 @EqualsAndHashCode(callSuper = true)
 @Accessors
-public class HangzhouCustomerStaff extends BaseBean {
+public class HangzhouCustomerStaff extends CustomerStaff {
     private Long id;
     private String nickname;
     private String avatar;

@@ -1,8 +1,8 @@
 package com.mf.integration.service.provider.rpc;
 
 import com.mf.integration.service.provider.servicebus.endpoint.CustomerStaffEndpoint;
+import com.mf.projects.cs.infrastructure.domain.PlatformCustomerStaff;
 import domain.OutsourcingSystemDTO;
-import domain.PlatformCustomerStaff;
 import org.apache.dubbo.config.annotation.DubboService;
 import org.springframework.beans.factory.annotation.Autowired;
 import service.CustomerStaffIntegrationService;

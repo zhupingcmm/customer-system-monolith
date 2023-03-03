@@ -1,0 +1,26 @@
+server:
+  port: 8083
+spring:
+  application:
+    name: integration-service-provider
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 172.30.60.1:8849
+  rabbitmq:
+    host: localhost
+    port: 5672
+    virtual-host: /hero_vh
+    username: hero
+    password: hero
+
+dubbo:
+  protocol:
+    name: dubbo
+    port: -1
+  registry:
+    address: zookeeper://172.30.60.1:2181
+    file: /opt/dubbo/middle-service/cache
+  scan:
+    base-packages: com.mf.integration.service.provider
+

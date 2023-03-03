@@ -5,13 +5,24 @@ import com.mf.projects.im.dto.P2PChatRequest;
 import com.rabbitmq.client.Channel;
 import lombok.extern.slf4j.Slf4j;
 import lombok.val;
+import org.springframework.amqp.core.AcknowledgeMode;
 import org.springframework.amqp.core.Message;
+import org.springframework.amqp.rabbit.annotation.RabbitHandler;
+import org.springframework.amqp.rabbit.annotation.RabbitListener;
 import org.springframework.amqp.rabbit.listener.api.ChannelAwareMessageListener;
 import org.springframework.stereotype.Component;
 
 @Slf4j
 @Component
 public class CustomAckConsumerListener implements ChannelAwareMessageListener {
+
+
+
+    @RabbitHandler
+    public void receivedMessageHandler() {
+
+    }
+
     @Override
     public void onMessage(Message message, Channel channel) throws Exception {
         val messageProperties = message.getMessageProperties();

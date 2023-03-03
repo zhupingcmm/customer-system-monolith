@@ -1,7 +1,8 @@
 package com.mf.customer.service.provider.integration.mock;
 
+import com.mf.projects.cs.infrastructure.domain.PlatformCustomerStaff;
 import domain.OutsourcingSystemDTO;
-import domain.PlatformCustomerStaff;
+
 import lombok.extern.slf4j.Slf4j;
 import service.CustomerStaffIntegrationService;
 

@@ -3,21 +3,12 @@ server:
 spring:
   application:
     name: integration-service-provider
-  cloud:
-    nacos:
-      discovery:
-        server-addr: 127.0.0.1:8849
-
-dubbo:
-  protocol:
-    name: dubbo
-    port: -1
-  registry:
-    address: zookeeper://127.0.0.1:2181
-    file: C:/dubbo/middle-service/cache
-  scan:
-    base-packages: com.mf.integration.service.provider
+  profiles:
+    active: dev
 integration:
   service:
     version: 1.0.0
-
+customer:
+  service:
+    update:
+      version: 1.0.0
