@@ -1,0 +1,47 @@
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://172.30.60.1:3306/customer_system?useInformationSchema=false&charset=utf8mb4&useSSL=false&allowMultiQueries=true&allowPublicKeyRetrieval=true
+    username: root
+    password: 1234
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 172.30.60.1:8848
+      username: nacos
+      password: nacos
+
+mybatis:
+  type-aliases-package: com.mf.projects.customer.system.entity
+  mapper-locations: classpath:mapping/*Mapper.xml
+
+xxl:
+  job:
+    accessToken: default_token
+    admin:
+      addresses: http://172.30.60.1:8080/xxl-job-admin
+    executor:
+      appname: customer-system
+      logpath: /opt/xxl-job-executor/logs
+      logretentiondays: 30
+
+dubbo:
+  protocol:
+    name: dubbo
+    port: -1
+  registry:
+    address: zookeeper://172.30.60.1:2181
+    file: /opt/dubbo/customer-service/cache
+  scan:
+    base-packages: com.mf.customer.service.provider
+integration:
+  service:
+    version: 1.0.0
+customer:
+  service:
+    sync:
+      version: 1.0.0
+    update:
+      version: 1.0.0
+
+
