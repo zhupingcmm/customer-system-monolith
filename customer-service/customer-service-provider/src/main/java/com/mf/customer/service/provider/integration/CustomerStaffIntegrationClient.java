@@ -15,7 +15,7 @@ public class CustomerStaffIntegrationClient {
 
     // timeout retries 服务容错
     // mock 服务降级
-    @DubboReference(version = "${integration.service.version}", timeout = 3000, retries = 3, mock = "com.mf.customer.service.provider.integration.mock.CustomerStaffIntegrationServiceMock")
+    @DubboReference(version = "${integration.service.version}", timeout = 3000, retries = 3, mock = "com.mf.customer.service.provider.integration.mock.CustomerStaffIntegrationServiceMock", check = false)
     private CustomerStaffIntegrationService integrationService;
 
     public List<CustomerStaff> getCustomerStaffs(Integer currentPage, Integer pageSize,  OutsourcingSystem outsourcingSystem){

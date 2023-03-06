@@ -10,6 +10,12 @@ spring:
         server-addr: 172.30.60.1:8848
       username: nacos
       password: nacos
+    rabbitmq:
+      host: 172.30.60.1
+      port: 5672
+      virtual-host: /hero_vh
+      username: hero
+      password: hero
 
 mybatis:
   type-aliases-package: com.mf.projects.customer.system.entity

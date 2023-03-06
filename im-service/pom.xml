@@ -17,6 +17,7 @@
         <module>im-common</module>
         <module>im-server</module>
         <module>im-router</module>
+        <module>im-event</module>
     </modules>
 
 </project>

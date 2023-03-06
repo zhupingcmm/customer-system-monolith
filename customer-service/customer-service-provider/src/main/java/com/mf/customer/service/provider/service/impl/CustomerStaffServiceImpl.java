@@ -3,11 +3,14 @@ package com.mf.customer.service.provider.service.impl;
 
 
 import com.mf.customer.service.provider.entity.staff.CustomerStaff;
+import com.mf.customer.service.provider.event.CustomerStaffChangedEvent;
+import com.mf.customer.service.provider.event.EventChangeService;
 import com.mf.customer.service.provider.integration.CustomerStaffIntegrationClient;
 import com.mf.customer.service.provider.mapper.CustomerStaffMapper;
 import com.mf.customer.service.provider.service.ICustomerStaffService;
 import com.mf.customer.service.provider.service.IOutsourcingSystemService;
 import com.mf.projects.cs.infrastructure.page.PageObject;
+import event.Operation;
 import lombok.extern.slf4j.Slf4j;
 import lombok.val;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,6 +27,9 @@ public class CustomerStaffServiceImpl implements ICustomerStaffService {
 
     @Autowired
     private IOutsourcingSystemService outsourcingSystemService;
+
+    @Autowired
+    private EventChangeService<CustomerStaff> eventChangeService;
 
     @Autowired
     private CustomerStaffIntegrationClient integrationClient;
@@ -64,6 +70,10 @@ public class CustomerStaffServiceImpl implements ICustomerStaffService {
     @Override
     public Boolean createCustomerStaff(CustomerStaff customerStaff) {
         customerStaffMapper.createCustomerStaff(customerStaff);
+        CustomerStaffChangedEvent customerStaffChangedEvent = new CustomerStaffChangedEvent();
+        customerStaffChangedEvent.setOperation(Operation.ADD);
+        customerStaffChangedEvent.setMessage(customerStaff);
+        eventChangeService.send("customer.service", "customer.staff", customerStaffChangedEvent);
         return true;
     }
 

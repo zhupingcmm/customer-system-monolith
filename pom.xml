@@ -16,6 +16,7 @@
         <module>integration-service</module>
         <module>im-service</module>
         <module>message-service</module>
+        <module>ticket-service</module>
     </modules>
 
     <properties>

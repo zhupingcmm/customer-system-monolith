@@ -17,6 +17,7 @@
         <module>message-service-common</module>
         <module>message-service-definition</module>
         <module>message-service-sharding</module>
+        <module>message-service-traditional</module>
     </modules>
 
 </project>

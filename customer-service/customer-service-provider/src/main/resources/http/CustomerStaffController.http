@@ -1,12 +1,12 @@
 ###
-POST localhost:8081/customerStaffs/
+POST localhost:8082/customerStaffs/
 Content-Type: application/json
 
 {
   "groupId" : 1,
-  "nickname" : "tianyalan",
+  "nickname" : "zp",
   "accountId" : "100",
-  "staffName" : "tianyalan",
+  "staffName" : "zp",
   "avatar" : "1.jpg",
   "phone" : "13355667789",
   "gender" : "MALE",

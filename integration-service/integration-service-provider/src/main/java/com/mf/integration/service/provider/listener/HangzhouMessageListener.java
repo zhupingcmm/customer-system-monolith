@@ -33,19 +33,18 @@ public class HangzhouMessageListener {
 
     @RabbitHandler
     public void receivedMessageHandler(@Payload byte[] message, @Header(AmqpHeaders.DELIVERY_TAG) long deliveryTag, Channel channel) throws IOException {
-
+        val hangzhouStaff = (HangzhouCustomerStaff) JSON.parseObject(message, HangzhouCustomerStaff.class);
+        log.info("received hangzhou staff : {}", hangzhouStaff);
         try {
-            val hangzhouStaff = JSON.parseObject(message, HangzhouCustomerStaff.class);
-            log.info("received hangzhou staff : {}", hangzhouStaff);
-
             OutsourcingSystemDTO outsourcingSystemDTO = new OutsourcingSystemDTO();
             outsourcingSystemDTO.setAppId(OutSystem.HANGZHOU.getId());
             outsourcingSystemDTO.setSystemName("hangzhou");
 
-            val platformCustomerStaff = customerStaffEndpoint.getPlatformCustomerStaff(outsourcingSystemDTO, (HangzhouCustomerStaff) hangzhouStaff);
+            val platformCustomerStaff = customerStaffEndpoint.getPlatformCustomerStaff(outsourcingSystemDTO,  hangzhouStaff);
             customerServiceClient.updateCustomerStaff(platformCustomerStaff);
             channel.basicAck(deliveryTag, false);
         } catch (Exception ex) {
+            log.info("failed consumer the message {}, and return the dead letter queue!", hangzhouStaff);
             channel.basicNack(deliveryTag, false, true);
         }
     }
