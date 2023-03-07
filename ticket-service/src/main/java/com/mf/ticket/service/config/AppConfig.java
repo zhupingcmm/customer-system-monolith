@@ -24,7 +24,7 @@ public class AppConfig {
     public RabbitListenerContainerFactory<?> rabbitListenerContainerFactory(CachingConnectionFactory cachingConnectionFactory) {
         SimpleRabbitListenerContainerFactory factory = new SimpleRabbitListenerContainerFactory();
         factory.setConnectionFactory(cachingConnectionFactory);
-        factory.setMessageConverter(new Jackson2JsonMessageConverter());
+//        factory.setMessageConverter(new Jackson2JsonMessageConverter());
         factory.setPrefetchCount(1);
         factory.setAcknowledgeMode(AcknowledgeMode.MANUAL);
         return factory;

@@ -70,6 +70,7 @@ public class CustomerStaffServiceImpl implements ICustomerStaffService {
     @Override
     public Boolean createCustomerStaff(CustomerStaff customerStaff) {
         customerStaffMapper.createCustomerStaff(customerStaff);
+
         CustomerStaffChangedEvent customerStaffChangedEvent = new CustomerStaffChangedEvent();
         customerStaffChangedEvent.setOperation(Operation.ADD);
         customerStaffChangedEvent.setMessage(customerStaff);
@@ -80,12 +81,26 @@ public class CustomerStaffServiceImpl implements ICustomerStaffService {
     @Override
     public Boolean updateCustomerStaff(CustomerStaff customerStaff) {
         customerStaffMapper.updateCustomerStaff(customerStaff);
+
+        CustomerStaffChangedEvent customerStaffChangedEvent = new CustomerStaffChangedEvent();
+        customerStaffChangedEvent.setOperation(Operation.UPDATE);
+        customerStaffChangedEvent.setMessage(customerStaff);
+        eventChangeService.send("customer.service", "customer.staff", customerStaffChangedEvent);
         return true;
     }
 
     @Override
     public Boolean deleteCustomerStaffById(Long staffId) {
+        val staff = customerStaffMapper.findCustomerStaffById(staffId);
         customerStaffMapper.deleteCustomerStaffById(staffId);
+
+        if(staff != null) {
+            CustomerStaffChangedEvent customerStaffChangedEvent = new CustomerStaffChangedEvent();
+            customerStaffChangedEvent.setOperation(Operation.UPDATE);
+            customerStaffChangedEvent.setMessage(staff);
+
+            eventChangeService.send("customer.service", "customer.staff", customerStaffChangedEvent);
+        }
         return true;
     }
 

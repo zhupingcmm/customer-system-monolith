@@ -10,8 +10,8 @@ import org.springframework.stereotype.Service;
 @Service
 public class LocalCustomerStaffServiceImpl extends ServiceImpl<LocalCustomerStaffMapper, LocalCustomerStaff> implements LocalCustomerStaffService {
 
-    @Autowired
-    private LocalCustomerStaffMapper localCustomerStaffMapper;
+//    @Autowired
+//    private LocalCustomerStaffMapper localCustomerStaffMapper;
 
 
     @Override
@@ -21,16 +21,16 @@ public class LocalCustomerStaffServiceImpl extends ServiceImpl<LocalCustomerStaf
 
     @Override
     public void updateLocalCustomerStaff(LocalCustomerStaff localCustomerStaff) {
-        baseMapper.updateById(localCustomerStaff);
+        baseMapper.updateLocalCustomerStaffByStaffId(localCustomerStaff);
     }
 
     @Override
     public void deleteLocalCustomerStaff(LocalCustomerStaff localCustomerStaff) {
-        baseMapper.deleteById(localCustomerStaff);
+        baseMapper.delByStaffId(localCustomerStaff);
     }
 
     @Override
     public LocalCustomerStaff findLocalCustomerStaffByStaffId(Long staffId) {
-        return localCustomerStaffMapper.findLocalCustomerStaffByStaffId(staffId);
+        return baseMapper.findLocalCustomerStaffByStaffId(staffId);
     }
 }

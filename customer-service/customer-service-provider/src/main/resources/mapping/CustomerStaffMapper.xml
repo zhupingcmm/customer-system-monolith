@@ -20,7 +20,7 @@
         <result property="createTime" column="create_time"/>
         <result property="updateTime" column="update_time"/>
     </resultMap>
-    <insert id="createCustomerStaff" parameterType="com.mf.customer.service.provider.entity.staff.CustomerStaff">
+    <insert id="createCustomerStaff" parameterType="com.mf.customer.service.provider.entity.staff.CustomerStaff" useGeneratedKeys="true" keyProperty="id" keyColumn="id">
         insert into `customer_system`.customer_staff
         (group_id, staff_name, nickname, account_id, system_id, avatar, phone, gender, good_at, is_auto_reply, welcome_message, status, remark, is_deleted)
         values
