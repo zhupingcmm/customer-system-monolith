@@ -2,6 +2,10 @@ package com.mf.customer.service.provider.entity.staff;
 
 
 
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateTimeDeserializer;
+import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateTimeSerializer;
 import com.mf.projects.cs.infrastructure.base.BaseBean;
 import com.mf.projects.cs.infrastructure.base.enums.Gender;
 import com.mf.projects.cs.infrastructure.base.enums.Status;
@@ -98,11 +102,15 @@ public class CustomerStaff extends BaseBean {
     /**
      * 创建时间
      */
+    @JsonDeserialize(using = LocalDateTimeDeserializer.class)
+    @JsonSerialize(using = LocalDateTimeSerializer.class)
     private LocalDateTime createTime;
 
     /**
      * 更新时间
      */
+    @JsonDeserialize(using = LocalDateTimeDeserializer.class)
+    @JsonSerialize(using = LocalDateTimeSerializer.class)
     private LocalDateTime updateTime;
 
 

@@ -22,7 +22,7 @@ PUT localhost:8082/customerStaffs/
 Content-Type: application/json
 
 {
-  "id": 11,
+  "id": 1,
   "groupId" : "1",
   "accountId" : "100",
   "staffName" : "kkkk",
@@ -46,7 +46,7 @@ GET localhost:8081/customerStaffs/page/20/1
 Content-Type: application/json
 
 #####
-DELETE localhost:8082/customerStaffs/11
+DELETE localhost:8082/customerStaffs/1
 Content-Type: application/json
 
 #####

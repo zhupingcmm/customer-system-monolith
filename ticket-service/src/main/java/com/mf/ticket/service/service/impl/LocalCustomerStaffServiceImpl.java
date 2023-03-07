@@ -4,15 +4,10 @@ import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.mf.ticket.service.entity.LocalCustomerStaff;
 import com.mf.ticket.service.mapper.LocalCustomerStaffMapper;
 import com.mf.ticket.service.service.LocalCustomerStaffService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
 public class LocalCustomerStaffServiceImpl extends ServiceImpl<LocalCustomerStaffMapper, LocalCustomerStaff> implements LocalCustomerStaffService {
-
-//    @Autowired
-//    private LocalCustomerStaffMapper localCustomerStaffMapper;
-
 
     @Override
     public void insertLocalCustomerStaff(LocalCustomerStaff localCustomerStaff) {

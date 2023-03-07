@@ -96,7 +96,7 @@ public class CustomerStaffServiceImpl implements ICustomerStaffService {
 
         if(staff != null) {
             CustomerStaffChangedEvent customerStaffChangedEvent = new CustomerStaffChangedEvent();
-            customerStaffChangedEvent.setOperation(Operation.UPDATE);
+            customerStaffChangedEvent.setOperation(Operation.DELETE);
             customerStaffChangedEvent.setMessage(staff);
 
             eventChangeService.send("customer.service", "customer.staff", customerStaffChangedEvent);

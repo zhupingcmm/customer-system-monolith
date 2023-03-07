@@ -9,6 +9,6 @@ import org.mapstruct.factory.Mappers;
 public interface CustomerTicketConverter {
     CustomerTicketConverter INSTANCE = Mappers.getMapper(CustomerTicketConverter.class);
 
-    CustomerTicket convertToEnrtity(TicketVO ticketVO);
+    CustomerTicket convertToEntity(TicketVO ticketVO);
 
 }
