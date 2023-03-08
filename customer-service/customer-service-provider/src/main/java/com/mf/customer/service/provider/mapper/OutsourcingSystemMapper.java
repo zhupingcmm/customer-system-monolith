@@ -9,4 +9,6 @@ public interface OutsourcingSystemMapper {
     void addOutsourcingSystem(OutsourcingSystem outsourcingSystem);
 
     OutsourcingSystem findOutsourcingSystemById(Long systemId);
+
+    int deleteBySystemId(Long systemId);
 }

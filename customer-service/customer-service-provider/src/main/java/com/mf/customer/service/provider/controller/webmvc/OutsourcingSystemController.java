@@ -16,15 +16,22 @@ public class OutsourcingSystemController {
     private IOutsourcingSystemService outsourcingSystemService;
 
     @PostMapping
-    public Result addOutsourcingSystem(@RequestBody OutsourcingSystemVO outsourcingSystemVO){
+    public Result<Boolean> addOutsourcingSystem(@RequestBody OutsourcingSystemVO outsourcingSystemVO){
         val outsourcingSystem = OutsourcingSystemConverter.INSTANCE.convertToEntity(outsourcingSystemVO);
         outsourcingSystemService.addOutsourcingSystem(outsourcingSystem);
-        return Result.success();
+        return Result.success(true);
     }
 
     @GetMapping("/{systemid}")
     public Result<OutsourcingSystemVO> findOutsourcingSystemById(@PathVariable("systemid") Long systemId){
         val customerStaffVO = OutsourcingSystemConverter.INSTANCE.convertToVO(outsourcingSystemService.findOutsourcingSystemById(systemId));
         return Result.success(customerStaffVO);
+    }
+
+
+    @DeleteMapping("{systemid}")
+    public Result<Boolean> deleteBySystemId(@PathVariable("systemid") Long systemId){
+        outsourcingSystemService.deleteBySystemId(systemId);
+        return Result.success(true);
     }
 }

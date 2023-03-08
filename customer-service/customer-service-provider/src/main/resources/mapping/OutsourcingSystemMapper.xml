@@ -4,7 +4,6 @@
     <resultMap id="OutsourcingSystemMap" type="com.mf.customer.service.provider.entity.tenant.OutsourcingSystem">
         <result property="id" column="id"/>
         <result property="systemName" column="system_name"/>
-<!--        <result property="systemCode" column="system_code"/>-->
         <result property="description" column="description"/>
         <result property="systemUrl" column="system_url"/>
         <result property="appId" column="app_id"/>
@@ -14,7 +13,7 @@
         <result property="createTime" column="create_time"/>
         <result property="updateTime" column="update_time"/>
     </resultMap>
-    <insert id="addOutsourcingSystem" parameterType="com.mf.customer.service.provider.entity.tenant.OutsourcingSystem">
+    <insert id="addOutsourcingSystem" parameterType="com.mf.customer.service.provider.entity.tenant.OutsourcingSystem" useGeneratedKeys="true" keyColumn="id" keyProperty="id">
         insert into `customer_system`.outsourcing_system
             (system_name, description, system_url, app_id, app_key, app_secret, is_deleted)
         values
@@ -26,4 +25,7 @@
             app_id = #{systemId}
         </where>
     </select>
+    <delete id="deleteBySystemId" parameterType="long">
+        delete from `customer_system`.outsourcing_system where app_id = #{systemId}
+    </delete>
 </mapper>

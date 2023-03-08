@@ -22,6 +22,9 @@ import java.util.List;
 @Service
 public class CustomerStaffServiceImpl implements ICustomerStaffService {
 
+    private static final String EXCHANGE = "customer.service";
+    private static final String ROTING_KEY = "customer.staff";
+
     @Autowired
     private CustomerStaffMapper customerStaffMapper;
 
@@ -74,7 +77,7 @@ public class CustomerStaffServiceImpl implements ICustomerStaffService {
         CustomerStaffChangedEvent customerStaffChangedEvent = new CustomerStaffChangedEvent();
         customerStaffChangedEvent.setOperation(Operation.ADD);
         customerStaffChangedEvent.setMessage(customerStaff);
-        eventChangeService.send("customer.service", "customer.staff", customerStaffChangedEvent);
+        eventChangeService.send(EXCHANGE, ROTING_KEY, customerStaffChangedEvent);
         return true;
     }
 
@@ -85,7 +88,7 @@ public class CustomerStaffServiceImpl implements ICustomerStaffService {
         CustomerStaffChangedEvent customerStaffChangedEvent = new CustomerStaffChangedEvent();
         customerStaffChangedEvent.setOperation(Operation.UPDATE);
         customerStaffChangedEvent.setMessage(customerStaff);
-        eventChangeService.send("customer.service", "customer.staff", customerStaffChangedEvent);
+        eventChangeService.send(EXCHANGE, ROTING_KEY, customerStaffChangedEvent);
         return true;
     }
 
@@ -99,7 +102,7 @@ public class CustomerStaffServiceImpl implements ICustomerStaffService {
             customerStaffChangedEvent.setOperation(Operation.DELETE);
             customerStaffChangedEvent.setMessage(staff);
 
-            eventChangeService.send("customer.service", "customer.staff", customerStaffChangedEvent);
+            eventChangeService.send(EXCHANGE, ROTING_KEY, customerStaffChangedEvent);
         }
         return true;
     }

@@ -5,8 +5,10 @@ import com.mf.customer.service.provider.entity.tenant.OutsourcingSystem;
 
 public interface IOutsourcingSystemService {
 
-    void addOutsourcingSystem(OutsourcingSystem outsourcingSystem);
+    OutsourcingSystem addOutsourcingSystem(OutsourcingSystem outsourcingSystem);
 
     OutsourcingSystem findOutsourcingSystemById(Long systemId);
+
+    void deleteBySystemId(Long systemId);
 
 }
