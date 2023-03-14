@@ -4,20 +4,20 @@
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
-        <artifactId>im-service</artifactId>
+        <artifactId>cs-middleground-im-service</artifactId>
         <groupId>com.mf.projects</groupId>
         <version>1.0.0</version>
         <relativePath>../pom.xml</relativePath>
     </parent>
 
     <groupId>com.mf</groupId>
-    <artifactId>im-server</artifactId>
+    <artifactId>im-client</artifactId>
     <version>1.0.0</version>
-    <name>im-server</name>
-    <description>im-server</description>
-
+    <name>im-client</name>
+    <description>im-client</description>
 
     <dependencies>
+
         <!--cloud -->
         <dependency>
             <groupId>org.springframework.cloud</groupId>
@@ -46,10 +46,14 @@
             <groupId>io.netty</groupId>
             <artifactId>netty-all</artifactId>
         </dependency>
-
         <dependency>
             <groupId>com.mf.projects</groupId>
             <artifactId>im-common</artifactId>
+            <version>1.0.0</version>
+        </dependency>
+        <dependency>
+            <groupId>com.mf.projects</groupId>
+            <artifactId>cs-infrastructure-utility</artifactId>
             <version>1.0.0</version>
         </dependency>
 

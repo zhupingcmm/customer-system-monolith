@@ -16,6 +16,7 @@
     <modules>
         <module>cs-middleground-customer-service</module>
         <module>cs-middleground-task</module>
+        <module>cs-middleground-im-service</module>
     </modules>
 
 </project>

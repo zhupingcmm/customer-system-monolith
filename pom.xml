@@ -12,7 +12,6 @@
         <module>cs-middleground</module>
         <module>cs-infrastructure-utility</module>
         <module>outsouring-system</module>
-        <module>im-service</module>
         <module>message-service</module>
         <module>ticket-service</module>
         <module>cs-integration</module>
