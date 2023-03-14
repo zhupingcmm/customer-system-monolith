@@ -7,6 +7,7 @@ import com.xxl.job.core.handler.annotation.XxlJob;
 import lombok.extern.slf4j.Slf4j;
 import lombok.val;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cloud.client.loadbalancer.LoadBalancerClient;
 import org.springframework.stereotype.Component;
 
 @Slf4j
@@ -16,8 +17,13 @@ public class CustomerStaffSyncJobHandler {
     @Autowired
     private CustomerStaffControllerApi customerStaffControllerApi;
 
+    @Autowired
+    private LoadBalancerClient loadBalancerClient;
+
     @XxlJob("syncCustomerStaff")
     public ReturnT<String> syncCustomerStaff(){
+        val instances = loadBalancerClient.choose("customer-service");
+        log.info("instances, {}", instances);
         val jobParam = XxlJobHelper.getJobParam();
         log.info("start sync customer staff data from outsourcing system and system id is {}", jobParam);
         customerStaffControllerApi.syncOutsourcingCustomerStaffsBySystemId(Long.parseLong(jobParam));

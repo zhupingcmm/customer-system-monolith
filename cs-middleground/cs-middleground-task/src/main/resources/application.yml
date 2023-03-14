@@ -1,7 +1,9 @@
 server:
-  port: 8081
+  port: ${port:8081}
 spring:
   application:
     name: task-service
   profiles:
     active: dev
+tag:
+  cs
