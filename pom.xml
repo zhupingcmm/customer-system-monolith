@@ -9,14 +9,13 @@
 
     <modules>
         <module>cs-dependency</module>
-        <module>customer-system</module>
+        <module>cs-middleground</module>
         <module>cs-infrastructure-utility</module>
         <module>outsouring-system</module>
-        <module>customer-service</module>
-        <module>integration-service</module>
         <module>im-service</module>
         <module>message-service</module>
         <module>ticket-service</module>
+        <module>cs-integration</module>
     </modules>
 
     <properties>
