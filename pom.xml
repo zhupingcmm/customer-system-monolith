@@ -11,10 +11,10 @@
         <module>cs-dependency</module>
         <module>cs-middleground</module>
         <module>cs-infrastructure-utility</module>
+        <module>cs-integration</module>
         <module>outsouring-system</module>
         <module>message-service</module>
-        <module>ticket-service</module>
-        <module>cs-integration</module>
+
     </modules>
 
     <properties>

@@ -3,14 +3,14 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <parent>
-        <artifactId>custemsystem-basic</artifactId>
         <groupId>com.mf.projects</groupId>
+        <artifactId>cs-middleground</artifactId>
         <version>1.0.0</version>
         <relativePath>../pom.xml</relativePath>
     </parent>
 
-    <groupId>com.mf</groupId>
-    <artifactId>ticket-service</artifactId>
+<!--    <groupId>com.mf</groupId>-->
+    <artifactId>cs-middleground-ticket-service</artifactId>
     <version>1.0.0</version>
     <name>${project.artifactId}</name>
     <description>${project.artifactId}</description>
