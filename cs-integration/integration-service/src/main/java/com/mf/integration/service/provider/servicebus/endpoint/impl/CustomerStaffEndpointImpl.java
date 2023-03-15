@@ -2,6 +2,7 @@ package com.mf.integration.service.provider.servicebus.endpoint.impl;
 
 
 import com.mf.integration.service.api.dto.OutsourcingSystemDTO;
+import com.mf.integration.service.provider.servicebus.common.CustomerStaff;
 import com.mf.integration.service.provider.servicebus.endpoint.CustomerStaffEndpoint;
 import com.mf.integration.service.provider.servicebus.filter.CustomerStaffFilterChain;
 import com.mf.integration.service.provider.servicebus.filter.impl.CustomerStaffEmptyFilter;
@@ -69,7 +70,7 @@ public class CustomerStaffEndpointImpl implements CustomerStaffEndpoint<Platform
     }
 
     @Override
-    public PlatformCustomerStaff getPlatformCustomerStaff(OutsourcingSystemDTO outsourcingSystem, HangzhouCustomerStaff customerStaff) {
+    public PlatformCustomerStaff getPlatformCustomerStaff(OutsourcingSystemDTO outsourcingSystem, CustomerStaff customerStaff) {
         // 获取 数据转换器
         val transformer = customerStaffTransformerFactory.getTransformer(outsourcingSystem);
         val platformCustomerStaff = transformer.transformCustomerStaff(outsourcingSystem.getAppId(), customerStaff);

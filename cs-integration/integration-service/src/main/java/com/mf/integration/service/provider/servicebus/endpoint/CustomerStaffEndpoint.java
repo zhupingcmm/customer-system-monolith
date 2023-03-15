@@ -2,8 +2,8 @@ package com.mf.integration.service.provider.servicebus.endpoint;
 
 
 import com.mf.integration.service.api.dto.OutsourcingSystemDTO;
-import com.mf.integration.service.provider.servicebus.router.hangzhou.dto.HangzhouCustomerStaff;
-import com.mf.projects.cs.infrastructure.domain.PlatformCustomerStaff;
+import com.mf.integration.service.provider.servicebus.common.CustomerStaff;
+
 
 import java.util.List;
 
@@ -13,7 +13,7 @@ public interface CustomerStaffEndpoint<T> {
 
     Long getCustomerStaffCount(OutsourcingSystemDTO outsourcingSystemDTO);
 
-    PlatformCustomerStaff getPlatformCustomerStaff(OutsourcingSystemDTO outsourcingSystemDTO, HangzhouCustomerStaff customerStaff);
+    T getPlatformCustomerStaff(OutsourcingSystemDTO outsourcingSystemDTO, CustomerStaff customerStaff);
 
 
 }

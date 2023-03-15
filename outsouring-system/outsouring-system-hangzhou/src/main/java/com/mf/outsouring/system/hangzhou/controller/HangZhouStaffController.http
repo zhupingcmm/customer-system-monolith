@@ -3,7 +3,7 @@ POST localhost:10011/customerstatffs/hangzhou/
 Content-Type: application/json
 
 {
-  "nickname": "f",
+  "nickname": "ppp",
   "avatar": "2.jpg",
   "phone": "13975569898",
   "gender": "MALE",

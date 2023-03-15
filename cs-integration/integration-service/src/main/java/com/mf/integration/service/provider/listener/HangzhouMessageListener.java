@@ -2,6 +2,8 @@ package com.mf.integration.service.provider.listener;
 
 import com.alibaba.fastjson.JSON;
 import com.mf.integration.service.api.dto.OutsourcingSystemDTO;
+import com.mf.integration.service.provider.service.CustomerService;
+import com.mf.integration.service.provider.servicebus.common.CustomerStaff;
 import com.mf.integration.service.provider.servicebus.endpoint.CustomerStaffEndpoint;
 import com.mf.integration.service.provider.servicebus.enums.OutSystem;
 import com.mf.integration.service.provider.servicebus.router.hangzhou.dto.HangzhouCustomerStaff;
@@ -23,27 +25,24 @@ import java.io.IOException;
 @Component
 @RabbitListener(queues = "hangzhou", ackMode = "MANUAL")
 public class HangzhouMessageListener {
-//
-//    @Autowired
-//    private CustomerServiceClient customerServiceClient;
+
 
     @Autowired
-    private CustomerStaffEndpoint<PlatformCustomerStaff> customerStaffEndpoint;
+    private CustomerService customerService;
 
     @RabbitHandler
     public void receivedMessageHandler(@Payload byte[] message, @Header(AmqpHeaders.DELIVERY_TAG) long deliveryTag, Channel channel) throws IOException {
         val hangzhouStaff = (HangzhouCustomerStaff) JSON.parseObject(message, HangzhouCustomerStaff.class);
-        log.info("received hangzhou staff : {}", hangzhouStaff);
+//        log.info("received hangzhou staff : {}", hangzhouStaff);
         try {
             OutsourcingSystemDTO outsourcingSystemDTO = new OutsourcingSystemDTO();
             outsourcingSystemDTO.setAppId(OutSystem.HANGZHOU.getId());
             outsourcingSystemDTO.setSystemName("hangzhou");
 
-            val platformCustomerStaff = customerStaffEndpoint.getPlatformCustomerStaff(outsourcingSystemDTO,  hangzhouStaff);
-//            customerServiceClient.updateCustomerStaff(platformCustomerStaff);
+            customerService.push(hangzhouStaff, outsourcingSystemDTO);
             channel.basicAck(deliveryTag, false);
         } catch (Exception ex) {
-            log.info("failed consumer the message {}, and return the dead letter queue!", hangzhouStaff);
+            log.error("failed consumer the message {}, and return the dead letter queue and with {}", hangzhouStaff, ex.getMessage());
             channel.basicNack(deliveryTag, false, true);
         }
     }

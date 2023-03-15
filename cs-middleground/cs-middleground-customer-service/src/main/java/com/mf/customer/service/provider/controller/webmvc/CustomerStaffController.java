@@ -5,6 +5,7 @@ package com.mf.customer.service.provider.controller.webmvc;
 import com.mf.customer.service.provider.controller.vo.CustomerStaffVO;
 import com.mf.customer.service.provider.converter.CustomerStaffConverter;
 import com.mf.customer.service.provider.service.ICustomerStaffService;
+import com.mf.projects.cs.infrastructure.domain.PlatformCustomerStaff;
 import com.mf.projects.cs.infrastructure.page.PageObject;
 import com.mf.projects.cs.infrastructure.vo.Result;
 import lombok.extern.slf4j.Slf4j;
@@ -33,24 +34,24 @@ public class CustomerStaffController {
     }
 
     @PostMapping("/")
-    public Result<Long> addCustomerStaff(@RequestBody CustomerStaffVO customerStaffVO) {
-        val customerStaff = CustomerStaffConverter.INSTANCE.covertToEntity(customerStaffVO);
+    public Result<Long> addCustomerStaff(@RequestBody PlatformCustomerStaff platformCustomerStaff) {
+        val customerStaff = CustomerStaffConverter.INSTANCE.covertToEntity(platformCustomerStaff);
         customerStaffService.createCustomerStaff(customerStaff);
         return Result.success(customerStaff.getId());
     }
 
 
     @PutMapping("/")
-    public Result<Boolean> updateCustomerStaff(@RequestBody CustomerStaffVO customerStaffVO){
-        val customerStaff = CustomerStaffConverter.INSTANCE.covertToEntity(customerStaffVO);
+    public Result<Boolean> updateCustomerStaff(@RequestBody PlatformCustomerStaff platformCustomerStaff){
+        val customerStaff = CustomerStaffConverter.INSTANCE.covertToEntity(platformCustomerStaff);
         val isUpdate = customerStaffService.updateCustomerStaff(customerStaff);
         return Result.success(isUpdate);
     }
 
 
     @PutMapping("/status")
-    public Result<Boolean> updateCustomerStaffStatus(@RequestBody CustomerStaffVO customerStaffVO){
-        val customerStaff = CustomerStaffConverter.INSTANCE.covertToEntity(customerStaffVO);
+    public Result<Boolean> updateCustomerStaffStatus(@RequestBody PlatformCustomerStaff platformCustomerStaff){
+        val customerStaff = CustomerStaffConverter.INSTANCE.covertToEntity(platformCustomerStaff);
         val isUpdate = customerStaffService.updateCustomerStaff(customerStaff);
         return Result.success(isUpdate);
     }

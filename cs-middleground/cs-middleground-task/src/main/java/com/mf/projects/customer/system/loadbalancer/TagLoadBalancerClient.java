@@ -3,6 +3,7 @@ package com.mf.projects.customer.system.loadbalancer;
 import cn.hutool.core.collection.CollUtil;
 import com.alibaba.cloud.nacos.balancer.NacosBalancer;
 import com.mf.projects.cs.infrastructure.tag.TagUtils;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.ObjectProvider;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cloud.client.ServiceInstance;
@@ -20,6 +21,7 @@ import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
+@Slf4j
 public class TagLoadBalancerClient implements ReactorServiceInstanceLoadBalancer {
 
     @Value("${tag}")
@@ -47,7 +49,7 @@ public class TagLoadBalancerClient implements ReactorServiceInstanceLoadBalancer
 
         List<ServiceInstance> chooseInstances = filterList(instances, instance -> tagValue.equals(TagUtils.getTag(instance)));
         if (CollUtil.isEmpty(chooseInstances)) {
-            System.out.println("没有满足tag:" + tagValue + "的服务实例列表，直接使用所有服务实例列表");
+            log.info("没有满足tag: {} 的服务实例列表，直接使用所有服务实例列表", tagValue );
             chooseInstances = instances;
         }
 
