@@ -1,6 +1,8 @@
 server:
   port: 18003
 spring:
+  main:
+    allow-bean-definition-overriding: true
   application:
     name: im-client
   profiles:

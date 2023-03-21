@@ -22,17 +22,17 @@ public class LoginController {
 
 
     @PostMapping("/login")
-    public IMLoginResponse login(@RequestBody IMLoginRequest request) {
+    public Result<IMLoginResponse> login(@RequestBody IMLoginRequest request) {
         IMLoginResponse response = new IMLoginResponse();
         if (loginService.isLogin(request.getUserId())){
             response.setCode("2001");
             response.setMsg("重复登陆");
-            return response;
+            return Result.success(response);
         }
 
         loginService.login(request);
         log.info("{}({}): login success ", request.getUserName(), request.getUserId());
-        return response;
+        return Result.success(response);
     }
 
     @PostMapping("/logout/{userid}")

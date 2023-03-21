@@ -63,7 +63,7 @@ public class NettyClient {
 
         try {
             future.channel().closeFuture().sync();
-            imRouterService.logout(request.getUserId(), serverInfo);
+            imRouterService.logout(request.getUserId());
             log.info("{}:({}) close the connection with netty server ", request.getUserName(), request.getUserId());
         } catch (InterruptedException e) {
             throw new RuntimeException(e);

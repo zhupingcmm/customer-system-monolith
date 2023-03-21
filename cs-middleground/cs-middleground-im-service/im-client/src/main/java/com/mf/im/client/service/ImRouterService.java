@@ -8,9 +8,9 @@ public interface ImRouterService {
 
     URI getImRouterUri();
 
-    IMServerInfo getIMServerInfo(URI imRouterUrl);
+    IMServerInfo getIMServerInfo();
 
 
-    void logout(String userId, IMServerInfo imServerInfo);
+    void logout(String userId);
 
 }

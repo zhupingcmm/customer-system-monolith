@@ -15,19 +15,3 @@ spring:
     timeout: 10000
     database: 0
 
-dubbo:
-  protocol:
-    name: dubbo
-    port: -1
-  registry:
-    address: zookeeper://127.0.0.1:2181
-    file: C:/dubbo/im-router/cache
-  scan:
-    base-packages: com.mf.im.router
-im-router:
-  service:
-    version: 1.0.0
-message:
-  service:
-    version: 1.0.0
-

@@ -16,7 +16,7 @@ import java.util.List;
 public interface CustomerIntegrationServiceApi {
 
     @PostMapping("/{currentpage}/{pagesize}")
-    public Result<List<PlatformCustomerStaff>> fetchCustomerStaffs(@PathVariable("currentpage") Integer currentPage, @PathVariable("pagesize") Integer pageSize, @RequestBody OutsourcingSystemDTO outsourcingSystemDTO);
+    Result<List<PlatformCustomerStaff>> fetchCustomerStaffs(@PathVariable("currentpage") Integer currentPage, @PathVariable("pagesize") Integer pageSize, @RequestBody OutsourcingSystemDTO outsourcingSystemDTO);
     @PostMapping("/counts")
     Result<Long> getCustomerStaffCount(@RequestBody OutsourcingSystemDTO outsourcingSystemDTO);
 }

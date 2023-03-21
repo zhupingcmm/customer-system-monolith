@@ -31,23 +31,5 @@ xxl:
       logpath: /opt/xxl-job-executor/logs
       logretentiondays: 30
 
-dubbo:
-  protocol:
-    name: dubbo
-    port: -1
-  registry:
-    address: zookeeper://172.30.60.1:2181
-    file: /opt/dubbo/customer-service/cache
-  scan:
-    base-packages: com.mf.customer.service.provider
-integration:
-  service:
-    version: 1.0.0
-customer:
-  service:
-    sync:
-      version: 1.0.0
-    update:
-      version: 1.0.0
 
 

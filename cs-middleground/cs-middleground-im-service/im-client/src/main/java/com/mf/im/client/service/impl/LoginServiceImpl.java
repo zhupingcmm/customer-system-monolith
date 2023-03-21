@@ -1,6 +1,7 @@
 package com.mf.im.client.service.impl;
 
 import com.mf.im.client.client.NettyClient;
+import com.mf.im.client.feign.LoginControllerFeignClient;
 import com.mf.im.client.service.ImRouterService;
 import com.mf.im.client.service.LoginService;
 import com.mf.im.client.util.FutureUtil;
@@ -27,19 +28,22 @@ public class LoginServiceImpl implements LoginService {
     private ImRouterService imRouterService;
 
     @Autowired
-    private RestTemplate restTemplate;
-
-    @Autowired
     private NettyClient nettyClient;
 
     @Autowired
     private ExecutorService executorService;
 
+    @Autowired
+    private LoginControllerFeignClient loginControllerFeignClient;
+
     @Override
     public void login(IMLoginRequest request) {
-        val imRouterUri = imRouterService.getImRouterUri();
-        val serverInfo = imRouterService.getIMServerInfo(imRouterUri);
-        loginRoute(imRouterUri, serverInfo, request);
+        // 获取 im-server的信息
+        val serverInfo = imRouterService.getIMServerInfo();
+        // 登陆 im-router
+        loginRoute(serverInfo, request);
+
+        // 启动netty client 连接 netty server
         executorService.submit(() -> {
             nettyClient.start(serverInfo, request);
         });
@@ -52,17 +56,15 @@ public class LoginServiceImpl implements LoginService {
         channelFuture.channel().close();
 
         // 登出 im-router
-        val imRouterUri = imRouterService.getImRouterUri();
-        val serverInfo = imRouterService.getIMServerInfo(imRouterUri);
-        imRouterService.logout(userId, serverInfo);
+        imRouterService.logout(userId);
     }
 
 
-    private void loginRoute (URI imRouterUri, IMServerInfo imServerInfo, IMLoginRequest request){
+    private void loginRoute (IMServerInfo imServerInfo, IMLoginRequest request){
         request.setServerHost(imServerInfo.getHost());
         request.setHttpPort(imServerInfo.getHttpPort());
         request.setNettyPort(imServerInfo.getNettyPort());
-        val response = restTemplate.postForObject(imRouterUri + "/auth/login", request, IMLoginResponse.class);
+        val response = loginControllerFeignClient.login(request).getData();
 
         if (response.success() || response.relogin()) {
             log.info("{}:({}) login im-router success ", request.getUserName(), request.getUserId());

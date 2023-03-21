@@ -20,13 +20,7 @@ import org.slf4j.LoggerFactory;
 public class Server {
     private static Logger logger = LoggerFactory.getLogger(Server.class);
 
-    private static int port = 8888;
-
-    public static void main(String[] args) {
-        start();
-    }
-
-    public static void start() {
+    public static void start(int port) {
         NioEventLoopGroup boss = new NioEventLoopGroup();
 
         NioEventLoopGroup worker = new NioEventLoopGroup();

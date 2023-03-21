@@ -1,5 +1,7 @@
 package com.mf.im.client.service.impl;
 
+import com.mf.im.client.feign.LoginControllerFeignClient;
+import com.mf.im.client.feign.ServerInfoControllerFeignClient;
 import com.mf.im.client.service.ImRouterService;
 import com.mf.projects.im.handler.IMServerInfo;
 import lombok.val;
@@ -17,7 +19,12 @@ public class ImRouterServiceImpl implements ImRouterService {
     private LoadBalancerClient loadBalancerClient;
 
     @Autowired
-    private RestTemplate restTemplate;
+    private ServerInfoControllerFeignClient serverInfoControllerFeignClient;
+
+    @Autowired
+    private LoginControllerFeignClient loginControllerFeignClient;
+
+
 
     @Override
     public URI getImRouterUri() {
@@ -26,12 +33,12 @@ public class ImRouterServiceImpl implements ImRouterService {
     }
 
     @Override
-    public IMServerInfo getIMServerInfo(URI uri) {
-        return restTemplate.getForObject(uri + "/serverinfo", IMServerInfo.class);
+    public IMServerInfo getIMServerInfo() {
+        return serverInfoControllerFeignClient.getServerInfo().getData();
     }
 
     @Override
-    public void logout(String userId, IMServerInfo imServerInfo) {
-        restTemplate.postForObject("http://" + imServerInfo.getHost() + ":" + imServerInfo.getHttpPort() + "/auth/logout/" + userId, null, Object.class );
+    public void logout(String userId) {
+        loginControllerFeignClient.logout(userId);
     }
 }
