@@ -1,9 +1,9 @@
 spring:
-  datasource:
-    driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/message_service?useInformationSchema=false&charset=utf8mb4&useSSL=false&allowMultiQueries=true&allowPublicKeyRetrieval=true
-    username: root
-    password: 1234
+#  datasource:
+#    driver-class-name: com.mysql.cj.jdbc.Driver
+#    url: jdbc:mysql://localhost:3306/message_service?useInformationSchema=false&charset=utf8mb4&useSSL=false&allowMultiQueries=true&allowPublicKeyRetrieval=true
+#    username: root
+#    password: 1234
   cloud:
     nacos:
       discovery:
@@ -14,3 +14,5 @@ spring:
     virtual-host: /hero_vh
     username: hero
     password: hero
+  profiles:
+    active: sharding-tables

@@ -4,7 +4,7 @@ spring:
   application:
     name: im-event
   profiles:
-    active: dev
+    active: sharding-tables
 
 mybatis:
   type-aliases-package: com.mf.im.event.entity

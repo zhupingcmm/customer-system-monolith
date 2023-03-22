@@ -1,0 +1,43 @@
+spring:
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 127.0.0.1:8849
+  rabbitmq:
+    host: localhost
+    port: 5672
+    virtual-host: /hero_vh
+    username: hero
+    password: hero
+  shardingsphere:
+    datasource:
+      names: ds
+      ds:
+        type: com.alibaba.druid.pool.DruidDataSource
+        driver-class-name: com.mysql.jdbc.Driver
+        url: jdbc:mysql://localhost:3306/ds?useInformationSchema=false&charset=utf8mb4&useSSL=false&allowMultiQueries=true&allowPublicKeyRetrieval=true
+        username: root
+        password: 1234
+    rules:
+      sharding:
+        tables:
+          im_message:
+            actual-data-nodes: ds.im_message$->{0..2}
+            table-strategy:
+              standard:
+                sharding-column: to_user_id
+                sharding-algorithm-name: im_message-inline
+            key-generate-strategy:
+              column: id
+              key-generator-name: snowflake
+        broadcast-tables: im_business_type
+        sharding-algorithms:
+          im_message-inline:
+            type: INLINE
+            props:
+              algorithm-expression: im_message$->{to_user_id % 3}
+        key-generators:
+          snowflake:
+            type: SNOWFLAKE
+    props:
+      sql-show: true
