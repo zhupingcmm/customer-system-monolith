@@ -2,7 +2,10 @@ server:
   port: 18004
 spring:
   application:
-    name: im-router
+    name: im-event
   profiles:
     active: dev
 
+mybatis:
+  type-aliases-package: com.mf.im.event.entity
+  mapper-locations: classpath:mapping/*Mapper.xml

@@ -26,6 +26,12 @@
         </dependency>
 
         <dependency>
+            <groupId>com.mf.projects</groupId>
+            <artifactId>cs-infrastructure-utility</artifactId>
+            <version>1.0.0</version>
+        </dependency>
+
+        <dependency>
             <groupId>io.netty</groupId>
             <artifactId>netty-all</artifactId>
         </dependency>

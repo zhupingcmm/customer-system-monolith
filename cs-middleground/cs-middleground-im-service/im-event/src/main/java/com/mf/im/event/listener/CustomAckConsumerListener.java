@@ -1,6 +1,8 @@
 package com.mf.im.event.listener;
 
 import com.alibaba.fastjson.JSON;
+import com.mf.im.event.entity.ImMessage;
+import com.mf.im.event.service.ImMessageService;
 import com.mf.projects.im.dto.P2PChatRequest;
 import com.rabbitmq.client.Channel;
 import lombok.extern.slf4j.Slf4j;
@@ -10,6 +12,7 @@ import org.springframework.amqp.core.Message;
 import org.springframework.amqp.rabbit.annotation.RabbitHandler;
 import org.springframework.amqp.rabbit.annotation.RabbitListener;
 import org.springframework.amqp.rabbit.listener.api.ChannelAwareMessageListener;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @Slf4j
@@ -17,11 +20,8 @@ import org.springframework.stereotype.Component;
 public class CustomAckConsumerListener implements ChannelAwareMessageListener {
 
 
-
-    @RabbitHandler
-    public void receivedMessageHandler() {
-
-    }
+    @Autowired
+    private ImMessageService imMessageService;
 
     @Override
     public void onMessage(Message message, Channel channel) throws Exception {
@@ -31,12 +31,20 @@ public class CustomAckConsumerListener implements ChannelAwareMessageListener {
         val routingKey = messageProperties.getReceivedRoutingKey();
         val queue = messageProperties.getConsumerQueue();
         val body = message.getBody();
-        val request = JSON.parseObject(body, P2PChatRequest.class);
+        val request = (P2PChatRequest)JSON.parseObject(body, P2PChatRequest.class);
 
         try {
 
 
             log.info("message {} from exchange: {} use routingKey: {} with queue: {}", request, exchange, routingKey, queue);
+
+
+            ImMessage imMessage = new ImMessage();
+            imMessage.setMessage(request.getMsg());
+            imMessage.setFromUserId(Long.valueOf(request.getFromUserId()));
+            imMessage.setToUserId(Long.valueOf(request.getToUserId()));
+
+            imMessageService.saveImMessage(imMessage);
             /**
              * 签收消息
              * deliveryTag： 投递标签

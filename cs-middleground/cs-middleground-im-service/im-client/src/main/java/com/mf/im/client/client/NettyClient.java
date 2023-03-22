@@ -52,7 +52,7 @@ public class NettyClient {
             @Override
             public void operationComplete(ChannelFuture channelFuture) throws Exception {
                 if (channelFuture.isSuccess()) {
-                    log.info("{}:({}) connect to netty server success", request.getUserName(), request.getUserId());
+                    log.info("{}:({}) success connect to netty server (host: {}, netty port: {}, server port: {})", request.getUserName(), request.getUserId(), serverInfo.getHost(), serverInfo.getNettyPort(), serverInfo.getHttpPort());
                 } else {
                     log.info("{}:({}) failed to netty connect the server", request.getUserName(), request.getUserId());
                 }

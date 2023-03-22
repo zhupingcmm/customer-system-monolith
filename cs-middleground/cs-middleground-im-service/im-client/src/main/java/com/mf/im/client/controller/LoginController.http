@@ -5,7 +5,7 @@ content-type: application/json
 
 {
   "userId": "100",
-  "userName": "zp",
+  "userName": "ZP",
   "password": "1234"
 }
 

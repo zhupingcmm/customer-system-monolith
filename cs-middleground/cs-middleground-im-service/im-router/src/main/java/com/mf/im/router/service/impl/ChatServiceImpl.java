@@ -34,7 +34,7 @@ public class ChatServiceImpl implements ChatService {
         val chatResponse = restTemplate.postForObject("http://" + loginInfo.getServerHost() + ":" + loginInfo.getHttpPort() + "/p2p/chat",
                 request, ChatResponse.class);
         // 存储 chat message
-//        rabbitTemplate.convertAndSend(MESSAGE_EXCHANGE, IM_MESSAGE_KEY, request);
+        rabbitTemplate.convertAndSend(MESSAGE_EXCHANGE, IM_MESSAGE_KEY, request);
         return chatResponse;
     }
 }
