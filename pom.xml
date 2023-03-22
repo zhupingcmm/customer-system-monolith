@@ -13,8 +13,6 @@
         <module>cs-infrastructure-utility</module>
         <module>cs-integration</module>
         <module>outsouring-system</module>
-        <module>message-service</module>
-
     </modules>
 
     <properties>
