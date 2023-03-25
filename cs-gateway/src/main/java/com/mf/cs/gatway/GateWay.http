@@ -1,0 +1,3 @@
+###
+GET localhost:18080/baidu/
+Content-Type: application/json

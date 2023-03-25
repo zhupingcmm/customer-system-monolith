@@ -12,6 +12,8 @@
         <module>cs-middleground</module>
         <module>cs-infrastructure-utility</module>
         <module>cs-integration</module>
+        <module>cs-gateway</module>
+        <module>cs-frontend</module>
         <module>outsouring-system</module>
     </modules>
 
