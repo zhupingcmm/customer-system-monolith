@@ -1,3 +1,8 @@
 ###
 GET localhost:18080/baidu/
 Content-Type: application/json
+
+
+####
+GET localhost:18080/chat/
+Content-Type: application/json
