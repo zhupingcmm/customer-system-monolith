@@ -5,6 +5,20 @@ spring:
     name: gateway-server
   main:
     web-application-type: reactive
+  datasource:
+    dynamic:
+      primary: master
+      druid:
+        initial-size: 3
+        min-idle: 3
+        max-active: 40
+        max-wait: 60000
+      datasource:
+        master:
+          driver-class-name: com.mysql.cj.jdbc.Driver
+          url: jdbc:mysql://127.0.0.1:3306/gateway_server?useInformationSchema=false&charset=utf8mb4&useSSL=false&allowMultiQueries=true&allowPublicKeyRetrieval=true
+          username: root
+          password: 1234
   cloud:
     nacos:
       discovery:
@@ -41,7 +55,13 @@ management:
     web:
       exposure:
         include: "*"
+mybatis-plus:
+  mapper-locations: classpath:mapperXml/*.xml
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
 logging:
   level:
     org.springframework.cloud.gateway: debug
+    org.springframework.jdbc.core.JdbcTemplate: DEBUG
+
 

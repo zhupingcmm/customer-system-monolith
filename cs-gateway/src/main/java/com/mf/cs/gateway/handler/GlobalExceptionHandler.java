@@ -1,4 +1,4 @@
-package com.mf.cs.gatway.handler;
+package com.mf.cs.gateway.handler;
 
 import com.alibaba.fastjson.JSON;
 import com.mf.projects.cs.infrastructure.vo.Result;
