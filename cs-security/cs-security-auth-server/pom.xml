@@ -4,15 +4,16 @@
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <groupId>com.mf.projects</groupId>
-        <artifactId>cs-frontend</artifactId>
+        <artifactId>cs-security</artifactId>
         <version>1.0.0</version>
         <relativePath>../pom.xml</relativePath>
     </parent>
 
-    <artifactId>cs-chat-service</artifactId>
+
+    <artifactId>cs-security-auth-server</artifactId>
     <version>${project.parent.version}</version>
-    <name>cs-chat-service</name>
-    <description>cs-chat-service</description>
+    <name>cs-security-auth-server</name>
+    <description>cs-security-auth-server</description>
 
 
     <dependencies>
@@ -21,17 +22,12 @@
             <artifactId>cs-infrastructure-utility</artifactId>
             <version>1.0.0</version>
         </dependency>
+
         <dependency>
             <groupId>com.mf.projects</groupId>
             <artifactId>cs-security-auth-common</artifactId>
             <version>1.0.0</version>
         </dependency>
-        <dependency>
-            <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-oauth2</artifactId>
-            <version>2.2.5.RELEASE</version>
-        </dependency>
-
 
         <dependency>
             <groupId>com.alibaba.cloud</groupId>
@@ -44,8 +40,31 @@
         </dependency>
 
         <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-oauth2</artifactId>
+            <version>2.2.5.RELEASE</version>
+        </dependency>
+
+        <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-configuration-processor</artifactId>
+            <optional>true</optional>
+        </dependency>
+
+        <dependency>
+            <groupId>com.h2database</groupId>
+            <artifactId>h2</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <optional>true</optional>
         </dependency>
 
         <dependency>
@@ -53,16 +72,6 @@
             <artifactId>spring-boot-devtools</artifactId>
             <scope>runtime</scope>
             <optional>true</optional>
-        </dependency>
-        <dependency>
-            <groupId>org.projectlombok</groupId>
-            <artifactId>lombok</artifactId>
-            <optional>true</optional>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-test</artifactId>
-            <scope>test</scope>
         </dependency>
     </dependencies>
 
