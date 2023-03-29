@@ -66,4 +66,7 @@ public class AuthorizationServerConfigurer extends AuthorizationServerConfigurer
                 .checkTokenAccess("permitAll")
                 .allowFormAuthenticationForClients();
     }
+
+
+
 }

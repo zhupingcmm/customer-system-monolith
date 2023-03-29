@@ -1,0 +1,13 @@
+###
+POST localhost:18001/user
+Content-Type: application/json
+
+{
+  "username": "zp",
+  "password": 1234,
+  "passwordEncoderType": "",
+  "authorities": [
+    "ADMIN",
+    "USER"
+  ]
+}

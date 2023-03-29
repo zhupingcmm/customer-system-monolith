@@ -1,6 +1,11 @@
 spring:
   application:
     name: auth-server
+  jpa:
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQLDialect
+    show-sql: true
   profiles:
     active: dev
 server:
