@@ -8,4 +8,6 @@ public class AuthorityVO extends BaseBean {
     private Long id;
 
     private String name;
+
+    private Long userId;
 }

@@ -2,6 +2,7 @@ package com.mf.cs.security.auth.server.domain;
 
 
 import lombok.Data;
+import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.*;
 import java.util.List;
@@ -9,7 +10,7 @@ import java.util.List;
 @Entity
 @Table(name = "user")
 @Data
-public class User {
+public class User  {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -21,6 +22,9 @@ public class User {
     @Enumerated(EnumType.STRING)
     private PasswordEncoderType passwordEncoderType;
 
-    @OneToMany(mappedBy = "user", fetch = FetchType.EAGER)
+    @OneToMany (cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @JoinTable(name = "authority", joinColumns = @JoinColumn(name = "user_id", referencedColumnName = "id"),
+    inverseJoinColumns = @JoinColumn(name = "id", referencedColumnName = "user_id"))
     private List<Authority> authorities;
+
 }

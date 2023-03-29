@@ -1,6 +1,7 @@
 package com.mf.cs.security.auth.server.domain;
 
 import lombok.Data;
+import org.springframework.security.core.GrantedAuthority;
 
 import javax.persistence.*;
 
@@ -16,7 +17,5 @@ public class Authority {
 
     @Column(name = "user_id")
     private Long userId;
-    @ManyToOne
-    @JoinColumn(name = "user", referencedColumnName = "id")
-    private User user;
+
 }
