@@ -15,5 +15,6 @@ spring:
     active: dev
 server:
   port: 18001
-#logging:
-#  level:
+logging:
+  level:
+    com.mf.cs.security.auth.server: debug

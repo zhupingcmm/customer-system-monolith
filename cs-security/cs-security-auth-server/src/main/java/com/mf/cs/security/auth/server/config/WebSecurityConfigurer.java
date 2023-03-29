@@ -1,5 +1,6 @@
 package com.mf.cs.security.auth.server.config;
 
+import com.mf.cs.security.auth.server.service.impl.AuthenticationProviderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -8,13 +9,12 @@ import org.springframework.security.config.annotation.authentication.builders.Au
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.core.userdetails.UserDetailsService;
 
-import javax.sql.DataSource;
-
 @Configuration
 public class WebSecurityConfigurer extends WebSecurityConfigurerAdapter {
 
+
     @Autowired
-    private DataSource dataSource;
+    private AuthenticationProviderService authenticationProvider;
 
     @Override
     @Bean
@@ -29,10 +29,7 @@ public class WebSecurityConfigurer extends WebSecurityConfigurerAdapter {
     }
 
     @Override
-    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-        auth.jdbcAuthentication()
-                .dataSource(dataSource)
-                .usersByUsernameQuery("")
-                .authoritiesByUsernameQuery("");
+    protected void configure(AuthenticationManagerBuilder auth) {
+        auth.authenticationProvider(authenticationProvider);
     }
 }
