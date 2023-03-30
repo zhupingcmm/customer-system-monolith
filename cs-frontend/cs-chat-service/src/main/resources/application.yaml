@@ -7,3 +7,13 @@ spring:
     nacos:
       discovery:
         server-addr: 127.0.0.1:8848
+logging:
+  level:
+    # 基础web相关日志级别
+    org.springframework.web: DEBUG
+    # security相关日志级别
+    org.springframework.security: DEBUG
+    # oauth2相关日志界别
+    org.springframework.security.oauth2: DEBUG
+    # spring-boot自动配置日志级别
+    org.springframework.boot.autoconfigure: INFO

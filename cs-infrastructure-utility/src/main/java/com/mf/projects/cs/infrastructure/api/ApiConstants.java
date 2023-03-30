@@ -10,4 +10,6 @@ public class ApiConstants {
 
     public static final String IM_ROUTER = "im-router";
 
+    public static final String AUTH_SERVER = "auth-server";
+
 }

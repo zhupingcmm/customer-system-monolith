@@ -1,6 +1,7 @@
 package com.mf.cs.security.auth.server.config;
 
 import com.mf.cs.security.auth.server.service.impl.AuthenticationProviderService;
+import lombok.SneakyThrows;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -28,6 +29,7 @@ public class WebSecurityConfigurer extends WebSecurityConfigurerAdapter {
         return super.userDetailsServiceBean();
     }
 
+    @SneakyThrows
     @Override
     protected void configure(AuthenticationManagerBuilder auth) {
         auth.authenticationProvider(authenticationProvider);

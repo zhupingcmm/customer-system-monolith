@@ -50,6 +50,10 @@ spring:
           filters:
             - StripPrefix=1 #????URL????????
             - PrefixPath=/chats #???????
+        - id: auth-server
+          uri: lb://auth-server
+          predicates:
+            - Path=/oauth/**
 management:
   endpoints:
     web:

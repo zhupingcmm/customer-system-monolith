@@ -42,7 +42,7 @@ public class GlobalExceptionHandler implements ErrorWebExceptionHandler {
     private Result<?> globalExceptionHandler(ServerWebExchange exchange, Throwable ex) {
         ServerHttpRequest request = exchange.getRequest();
         log.error("[globalExceptionHandler][uri({}/{}) 发生异常]", request.getURI(), request.getMethod(), ex);
-        return Result.error(500, "服务网关全局异常");
+        return Result.error(500, "[服务网关全局异常] 请求 url: " + request.getURI() + "请求方法：" +request.getMethod() + "失败原因: " + ex.getCause());
 
     }
 

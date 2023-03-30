@@ -5,9 +5,7 @@ import com.mf.cs.security.auth.server.converter.UserConverter;
 import com.mf.cs.security.auth.server.service.UserService;
 import com.mf.projects.cs.infrastructure.vo.Result;
 import lombok.val;
-import org.hibernate.annotations.Parameter;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.repository.query.Param;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -26,7 +24,9 @@ public class UserController {
 
     @GetMapping
     public Result<UserVO> getUserByUsername() {
-        return Result.success(UserConverter.INSTANCE.convertToVo(userService.findUserByName("zp")));
+        val customerUserDetails = userService.findUserByName("zp");
+        val userVO = UserConverter.INSTANCE.convertToVo(customerUserDetails.getUser());
+        return Result.success(userVO);
 
     }
 }

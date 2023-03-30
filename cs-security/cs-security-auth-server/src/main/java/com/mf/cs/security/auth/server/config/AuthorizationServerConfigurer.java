@@ -41,6 +41,7 @@ public class AuthorizationServerConfigurer extends AuthorizationServerConfigurer
         tokenEnhancerChain.setTokenEnhancers(Arrays.asList(jwtTokenEnhancer, jwtAccessTokenConverter));
 
         endpoints.tokenStore(tokenStore)
+                .reuseRefreshTokens(false)
                 .accessTokenConverter(jwtAccessTokenConverter)
                 .tokenEnhancer(tokenEnhancerChain)
                 .authenticationManager(authenticationManager)

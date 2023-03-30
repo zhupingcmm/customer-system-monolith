@@ -8,8 +8,8 @@ spring:
     show-sql: true
     database: mysql
     generate-ddl: true
-    hibernate:
-      ddl-auto: create
+#    hibernate:
+#      ddl-auto: update
 
   profiles:
     active: dev
@@ -17,4 +17,11 @@ server:
   port: 18001
 logging:
   level:
-    com.mf.cs.security.auth.server: debug
+    # ??web??????
+    org.springframework.web: DEBUG
+    # security??????
+    org.springframework.security: DEBUG
+    # oauth2??????
+    org.springframework.security.oauth2: DEBUG
+    # spring-boot????????
+    org.springframework.boot.autoconfigure: INFO

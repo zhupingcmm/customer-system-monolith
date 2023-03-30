@@ -22,10 +22,9 @@
             <artifactId>cs-infrastructure-utility</artifactId>
             <version>1.0.0</version>
         </dependency>
-
         <dependency>
             <groupId>com.mf.projects</groupId>
-            <artifactId>cs-security-auth-common</artifactId>
+            <artifactId>cs-security-auth-starter</artifactId>
             <version>1.0.0</version>
         </dependency>
 
