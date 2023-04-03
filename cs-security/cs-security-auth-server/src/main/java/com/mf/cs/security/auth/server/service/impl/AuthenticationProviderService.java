@@ -30,7 +30,6 @@ public class AuthenticationProviderService implements AuthenticationProvider {
 
     @Override
     public Authentication authenticate(Authentication authentication) throws AuthenticationException {
-        System.out.println(authentication);
         val username = authentication.getName();
         val password = authentication.getCredentials().toString();
         val user = userService.findUserByName(username);

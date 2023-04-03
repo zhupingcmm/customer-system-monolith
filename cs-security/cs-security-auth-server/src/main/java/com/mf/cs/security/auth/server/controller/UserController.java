@@ -23,8 +23,8 @@ public class UserController {
     }
 
     @GetMapping
-    public Result<UserVO> getUserByUsername() {
-        val customerUserDetails = userService.findUserByName("zp");
+    public Result<UserVO> getUserByUsername(@RequestParam(value = "username") String username) {
+        val customerUserDetails = userService.findUserByName(username);
         val userVO = UserConverter.INSTANCE.convertToVo(customerUserDetails.getUser());
         return Result.success(userVO);
 
