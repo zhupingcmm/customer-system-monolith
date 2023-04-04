@@ -3,9 +3,6 @@ package com.mf.cs.security.auth.server.domain;
 import lombok.Data;
 
 import javax.persistence.*;
-import java.util.List;
-import java.util.Set;
-
 
 @Data
 @Entity
@@ -22,29 +19,27 @@ public class ClientDetail {
     @Column(name = "client_secret")
     private String clientSecret;
 
+    @Column(name = "resource_ids")
+    private String resourceIds;
+
+    @Column(name = "authorized_grant_types")
+    private String authorizedGrantTypes;
+
+    @Column(name = "web_server_redirect_uris")
+    private String webServerRedirectUris;
+
+    @Column(name = "authorities")
+    private String authorities;
+
+    @Column(name = "auto_approve")
+    private String autoApprove;
+
     @Column(name = "access_token_validity")
     private Integer accessTokenValidity;
 
     @Column(name = "refresh_token_validity")
     private Integer refreshTokenValidity;
 
-    @Column(name = "auto_approve")
-    private Boolean autoApprove;
-
-    @OneToMany (targetEntity = ResourceId.class, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    @JoinColumn(name = "client_id", referencedColumnName = "id", unique = true)
-    private Set<ResourceId> resourceIds;
-
-    @OneToMany (targetEntity = Scope.class, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    @JoinColumn(name = "client_id", referencedColumnName = "id", unique = true)
-    private Set<Scope> scope;
-
-    @OneToMany (targetEntity = AuthorizedGrantType.class, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    @JoinColumn(name = "client_id", referencedColumnName = "id", unique = true)
-    private Set<AuthorizedGrantType> authorizedGrantTypes;
-
-    @OneToMany (targetEntity = WebServerRedirectUri.class, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    @JoinColumn(name = "client_id", referencedColumnName = "id", unique = true)
-    private Set<WebServerRedirectUri> redirectUri;
+    private String scope;
 
 }

@@ -2,10 +2,9 @@ package com.mf.cs.security.auth.server.converter;
 
 import com.mf.cs.security.auth.server.controller.vo.UserVO;
 import com.mf.cs.security.auth.server.domain.User;
-import com.mf.cs.security.auth.server.model.CustomerUserDetails;
 import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;
-import org.springframework.security.core.userdetails.UserDetails;
+
 
 @Mapper
 public interface UserConverter {
@@ -17,5 +16,4 @@ public interface UserConverter {
     // entity -> vo
     UserVO convertToVo(User user);
 
-    UserVO convertToVo(CustomerUserDetails user);
 }

@@ -58,13 +58,13 @@ public class AuthorizationServerConfigurer extends AuthorizationServerConfigurer
     @Override
     public void configure(ClientDetailsServiceConfigurer clients) throws Exception {
         clients.withClientDetails(clientDetailsService);
-//        clients.inMemory()
-//                .withClient("cs_client")
-//                .secret("{noop}cs_secret")
-//                .autoApprove(true)
-//                .authorizedGrantTypes("password", "refresh_token", "client_credentials", "implicit", "authorization_code")
-//                .redirectUris("http://localhost:18001/login/callback")
-//                .scopes("webclient", "mobileclient");
+        clients.inMemory()
+                .withClient("cs_client")
+                .secret("{noop}cs_secret")
+                .autoApprove(true)
+                .authorizedGrantTypes("password", "refresh_token", "client_credentials", "implicit", "authorization_code")
+                .redirectUris("http://localhost:18001/login/callback")
+                .scopes("webclient", "mobileclient");
     }
 
 

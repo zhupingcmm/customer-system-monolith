@@ -2,31 +2,29 @@ package com.mf.cs.security.auth.server.controller.vo;
 
 import lombok.Data;
 
-import javax.persistence.*;
-import java.util.List;
-import java.util.Set;
-
-
 @Data
 public class ClientDetailVO {
     private Long id;
 
     private String clientId;
 
-    private Set<ResourceIdVO> resourceIds;
-
     private String clientSecret;
 
-    private Set<ScopeVO> scope;
+    private String resourceIds;
 
-    private Set<AuthorizedGrantTypeVO> authorizedGrantTypes;
+    private String authorizedGrantTypes;
 
-    private Set<WebServerRedirectUriVO> redirectUri;
+    private String webServerRedirectUris;
+
+
+    private String authorities;
+
+    private String autoApprove;
 
     private Integer accessTokenValidity;
 
     private Integer refreshTokenValidity;
 
-    private Boolean autoApprove;
+    private String scope;
 
 }

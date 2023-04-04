@@ -26,13 +26,10 @@ public class LoginController {
     }
 
     @GetMapping("/callback")
-    public Result<String> callback(@RequestParam(required = false) String code) {
+    public Result<OAuth2AccessToken> callback(@RequestParam(required = false) String code) {
         log.info("code {} ", code);
-
         val object = restTemplate.postForObject("http://localhost:18001/oauth/token?client_id=cs_client&client_secret=cs_secret&grant_type=authorization_code&code="+code+"&redirect_uri=http://localhost:18001/login/callback", null, OAuth2AccessToken.class);
-
         log.info("object {}", object);
-
         return Result.success(object);
 
     }
