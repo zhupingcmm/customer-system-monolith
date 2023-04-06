@@ -1,4 +1,4 @@
-package com.mf.cs.ticket.service.controller.vo;
+package com.mf.cs.business.controller.vo;
 
 import com.mf.projects.cs.infrastructure.base.BaseBean;
 import lombok.Data;

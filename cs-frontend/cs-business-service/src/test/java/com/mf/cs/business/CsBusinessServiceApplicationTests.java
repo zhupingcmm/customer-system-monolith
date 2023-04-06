@@ -1,4 +1,4 @@
-package com.mf.cs.business.service;
+package com.mf.cs.business;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

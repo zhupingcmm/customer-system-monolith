@@ -1,0 +1,12 @@
+####
+POST localhost:18079/business
+Content-Type: application/json
+
+{
+  "ticketNo": "ticketNo",
+  "inquire": "inquire",
+  "userId": 101,
+  "staffId": 102,
+  "status": 1,
+  "score": 10
+}
