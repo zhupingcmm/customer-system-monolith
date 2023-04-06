@@ -1,0 +1,15 @@
+###
+POST localhost:18078/chatrecord
+Content-Type: application/json
+
+{
+  "userId" : "100",
+  "staffId" : "202",
+  "lastMessage" : "你好，测试",
+  "ticketNo": "abc"
+}
+
+
+###
+GET localhost:18078/test
+Content-Type: application/json

@@ -7,13 +7,27 @@ spring:
     nacos:
       discovery:
         server-addr: 127.0.0.1:8848
+        enabled: true
+      config:
+        server-addr: 127.0.0.1:8848
+  datasource:
+    dynamic:
+      primary: master
+      druid:
+        initial-size: 3
+        min-idle: 3
+        max-active: 40
+        max-wait: 60000
+      datasource:
+        master:
+          driver-class-name: com.mysql.cj.jdbc.Driver
+          url: jdbc:mysql://127.0.0.1:3306/chat_at?characterEncoding=utf8&allowPublicKeyRetrieval=true&useSSL=false&serverTimezone=Asia/Shanghai
+          username: root
+          password: 1234
+mybatis-plus:
+  mapper-locations: classpath:mapperXml/*.xml
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
 logging:
   level:
-    # 基础web相关日志级别
-    org.springframework.web: DEBUG
-    # security相关日志级别
-    org.springframework.security: DEBUG
-    # oauth2相关日志界别
-    org.springframework.security.oauth2: DEBUG
-    # spring-boot自动配置日志级别
-    org.springframework.boot.autoconfigure: INFO
+    org.springframework.jdbc.core.JdbcTemplate: DEBUG

@@ -16,6 +16,8 @@
 
     <modules>
         <module>cs-chat-service</module>
+        <module>cs-ticket-service</module>
+        <module>cs-business-service</module>
     </modules>
 
     <properties>
