@@ -5,6 +5,7 @@ import com.mf.cs.business.controller.vo.CustomerTicketVO;
 import com.mf.cs.business.feignclient.ChatRecordClient;
 import com.mf.cs.business.feignclient.TicketClient;
 import com.mf.cs.business.service.BusinessService;
+import io.seata.spring.annotation.GlobalTransactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -17,6 +18,7 @@ public class BusinessServiceImpl implements BusinessService {
     private TicketClient ticketClient;
 
     @Override
+    @GlobalTransactional
     public void generateTicket(CustomerTicketVO customerTicketVO) {
         ChatRecordVO chatRecordVO = new ChatRecordVO();
         chatRecordVO.setStaffId(customerTicketVO.getStaffId());
