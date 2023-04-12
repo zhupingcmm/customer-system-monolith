@@ -12,6 +12,7 @@ public class CustomerTicketServiceImpl extends ServiceImpl<CustomerTicketMapper,
     @Override
     @Transactional
     public void insertTicket(CustomerTicket customerTicket) {
+
         this.save(customerTicket);
 
     }

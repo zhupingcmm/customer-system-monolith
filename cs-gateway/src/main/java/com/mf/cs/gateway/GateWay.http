@@ -11,3 +11,18 @@ Content-Type: application/json
 ###
 GET localhost:18080/record/1/2
 Content-Type: application/json
+
+
+####
+POST localhost:18080/business-service/business
+Content-Type: application/json
+
+{
+  "ticketNo": "ticketNo",
+  "inquire": "inquire",
+  "userId": 101,
+  "staffId": 102,
+  "status": 1,
+  "score": 10
+}
+

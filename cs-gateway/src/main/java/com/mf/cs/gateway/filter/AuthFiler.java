@@ -48,12 +48,12 @@ public class AuthFiler implements GlobalFilter{
 
         val authorizationToken = request.getHeaders().get("authorization");
 
-        if (authorizationToken == null) {
-
-            if (!isGeneratorTokenRequest(request)) {
-                throw new BizException(MessageCode.INVALID_TOKEN, "无效token");
-            }
-        }
+//        if (authorizationToken == null) {
+//
+//            if (!isGeneratorTokenRequest(request)) {
+//                throw new BizException(MessageCode.INVALID_TOKEN, "无效token");
+//            }
+//        }
         return chain.filter(exchange);
     }
 
