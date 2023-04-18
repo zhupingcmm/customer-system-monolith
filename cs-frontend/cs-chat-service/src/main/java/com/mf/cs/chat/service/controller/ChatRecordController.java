@@ -20,7 +20,8 @@ public class ChatRecordController {
     @PostMapping
     public Result<Boolean> insertChatRecord(@RequestBody ChatRecordVO chatRecordVO) {
 
-        chatRecordService.insertChat(ChatRecordConverter.INSTANCE.convertToEntity(chatRecordVO));
+//        chatRecordService.insertChat(ChatRecordConverter.INSTANCE.convertToEntity(chatRecordVO));
+        chatRecordService.generateChatRecord(ChatRecordConverter.INSTANCE.convertToEntity(chatRecordVO));
         return Result.success(true);
     }
 }
