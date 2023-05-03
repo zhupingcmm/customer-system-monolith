@@ -22,6 +22,7 @@ public class P2PChatController {
         ChatResponse chatResponse = new ChatResponse();
 
         val toUserId = p2PChatRequest.getToUserId();
+        // 获取 channel
         val channel = SessionUtil.getChannelByUserId(toUserId);
         if (channel == null) {
             chatResponse.setCode("4001");
@@ -29,14 +30,16 @@ public class P2PChatController {
             return chatResponse;
         }
 
+        // 获取到 session
         val session = SessionUtil.getSessionByChannel(channel);
 
+        // 组装 response
         MessageResponsePacket responsePacket = new MessageResponsePacket();
         responsePacket.setFromUserName(session.getUserName());
         responsePacket.setFromUserId(p2PChatRequest.getFromUserId());
         responsePacket.setMsg(p2PChatRequest.getMsg());
 
-        // 向客户端写入数据
+        // 通过chanel 向客户端写入数据
         ChannelUtil.writeAndFlush(channel, responsePacket);
 
         return chatResponse;

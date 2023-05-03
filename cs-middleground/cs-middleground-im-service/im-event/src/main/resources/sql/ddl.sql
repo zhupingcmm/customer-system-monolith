@@ -1,4 +1,4 @@
--- ----------------------------
+下-- ----------------------------
 -- Table structure for im_message
 -- ----------------------------
 DROP TABLE IF EXISTS `im_message`;

@@ -42,7 +42,6 @@ public class LoginServiceImpl implements LoginService {
         val serverInfo = imRouterService.getIMServerInfo();
         // 登陆 im-router
         loginRoute(serverInfo, request);
-
         // 启动netty client 连接 netty server
         executorService.submit(() -> {
             nettyClient.start(serverInfo, request);
