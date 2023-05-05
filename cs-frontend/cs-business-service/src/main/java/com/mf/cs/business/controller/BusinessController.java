@@ -1,5 +1,7 @@
 package com.mf.cs.business.controller;
 
+import com.alibaba.csp.sentinel.annotation.SentinelResource;
+import com.mf.cs.business.controller.fallback.BusinessFallback;
 import com.mf.cs.business.controller.vo.CustomerTicketVO;
 import com.mf.cs.business.service.BusinessService;
 import com.mf.projects.cs.infrastructure.vo.Result;
@@ -17,11 +19,13 @@ public class BusinessController {
     private BusinessService businessService;
 
     @PostMapping
+    @SentinelResource(value = "generateTicket", fallbackClass = BusinessFallback.class)
     public Result<Boolean> generateTicket (@RequestBody CustomerTicketVO customerTicketVO) {
         businessService.generateTicket(customerTicketVO);
         return Result.success(true);
-
     }
+
+
 
 
 }

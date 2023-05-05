@@ -4,17 +4,40 @@ spring:
   application:
     name: business-service
   cloud:
+    sentinel:
+      eager: true # 该配置能够使dashboard主动发现该应用
+      transport:
+        dashboard: 127.0.0.1:8888 # sentinel注册地址：指定服务端Dashboard的暴露端口
+        port: 8719 # 服务接收sentinel的配置端口：接收服务端配置的当前服务端口
     nacos:
       discovery:
         server-addr: 127.0.0.1:8848
         enabled: true
       config:
         server-addr: 127.0.0.1:8848
+feign:
+#  circuit-breaker:
+#    enabled: true # 配置开启熔断器
+  sentinel:
+    enabled: true
+  compression:
+    request:
+      enabled: true #請求壓縮
+      mime-types: text/xml,application/xml,application/json # 压缩的类型
+      min-request-size: 2048 # 请求最小压缩的阈值
+    response:
+      enabled: true #响应压缩
+      useGzipDecoder: true #使用gzip解码器，解码响应数据
+  client:
+    config:
+      default:
+        connectionTimeOut: 5000
+        readTimeOut: 5000
 
 seata:
   enable-auto-data-source-proxy: true
   application-id: ${spring.application.name}
-  tx-service-group: business_service_group
+  tx-service-group: my_test_tx_group
   service:
     vgroupMapping:
       business_service_group: default

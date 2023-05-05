@@ -11,7 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
 public class ChatRecordServiceImpl extends ServiceImpl<ChatRecordMapper, ChatRecord> implements IChatRecordService {
 
     @Override
-    @Transactional
+//    @Transactional
     public void insertChat(ChatRecord chatRecord) {
         this.save(chatRecord);
     }

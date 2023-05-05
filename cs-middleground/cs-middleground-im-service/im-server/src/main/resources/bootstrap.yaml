@@ -1,0 +1,21 @@
+spring:
+  port: ${port:18001}
+  application:
+    name: im-server
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 127.0.0.1:8848
+        metadata:
+          netty-port: 8888
+      config:
+        group: DEFAULT_GROUP
+        server-addr: 127.0.0.1:8848
+        file-extension: yaml
+# 配置日志
+logging:
+  pattern:
+    console: level-%level %msg%n
+  level:
+    root: info
+    com.mf.im.server: debug

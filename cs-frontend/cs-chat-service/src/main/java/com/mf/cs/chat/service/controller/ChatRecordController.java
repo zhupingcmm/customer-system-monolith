@@ -5,6 +5,7 @@ import com.mf.cs.chat.service.converter.ChatRecordConverter;
 import com.mf.cs.chat.service.service.IChatRecordService;
 import com.mf.projects.cs.infrastructure.vo.Result;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -18,6 +19,7 @@ public class ChatRecordController {
     IChatRecordService chatRecordService;
 
     @PostMapping
+    @Transactional
     public Result<Boolean> insertChatRecord(@RequestBody ChatRecordVO chatRecordVO) {
 
         chatRecordService.insertChat(ChatRecordConverter.INSTANCE.convertToEntity(chatRecordVO));

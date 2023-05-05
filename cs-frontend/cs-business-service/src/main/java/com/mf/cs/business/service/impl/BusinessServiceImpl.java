@@ -1,5 +1,6 @@
 package com.mf.cs.business.service.impl;
 
+import com.alibaba.csp.sentinel.annotation.SentinelResource;
 import com.mf.cs.business.controller.vo.ChatRecordVO;
 import com.mf.cs.business.controller.vo.CustomerTicketVO;
 import com.mf.cs.business.feignclient.ChatRecordClient;
@@ -29,7 +30,8 @@ public class BusinessServiceImpl implements BusinessService {
         chatRecordClient.insertChatRecord(chatRecordVO);
 
         ticketClient.addTicket(customerTicketVO);
-
-
     }
+
+
+
 }

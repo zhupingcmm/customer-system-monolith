@@ -35,7 +35,7 @@ logging:
 seata:
   enable-auto-data-source-proxy: true
   application-id: ${spring.application.name}
-  tx-service-group: ticket_service_group
+  tx-service-group: my_test_tx_group
   service:
     vgroupMapping:
       ticket_service_group: default

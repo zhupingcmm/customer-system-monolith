@@ -10,6 +10,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.client.loadbalancer.LoadBalancerClient;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.concurrent.TimeUnit;
+
 @Slf4j
 @RestController
 @RequestMapping("/serverinfo")
@@ -25,16 +27,22 @@ public class ServerInfoController {
 
     @GetMapping
     public Result<IMServerInfo> getServerInfo() {
+//        try {
+//            TimeUnit.SECONDS.sleep(5);
+//        } catch (InterruptedException e) {
+//            throw new RuntimeException(e);
+//        }
+        throw new RuntimeException("an");
         // 从 nacos 中获取 im-server 节点信息
-        val instance = loadBalancerClient.choose(ApiConstants.IM_SERVER);
-        val nettyPort = instance.getMetadata().get(NETTY_PORT);
-
-        // 封装 server 的信息
-        IMServerInfo imServerInfo = new IMServerInfo();
-        imServerInfo.setHost(instance.getHost());
-        imServerInfo.setNettyPort(Integer.parseInt(nettyPort));
-        imServerInfo.setHttpPort(instance.getPort());
-        return Result.success(imServerInfo);
+//        val instance = loadBalancerClient.choose(ApiConstants.IM_SERVER);
+//        val nettyPort = instance.getMetadata().get(NETTY_PORT);
+//
+//        // 封装 server 的信息
+//        IMServerInfo imServerInfo = new IMServerInfo();
+//        imServerInfo.setHost(instance.getHost());
+//        imServerInfo.setNettyPort(Integer.parseInt(nettyPort));
+//        imServerInfo.setHttpPort(instance.getPort());
+//        return Result.success(imServerInfo);
     }
 
     @PostMapping("/{userid}")

@@ -7,3 +7,6 @@ spring:
     name: im-client
   profiles:
     active: dev
+logging:
+  level:
+    com.mf.im.client: debug

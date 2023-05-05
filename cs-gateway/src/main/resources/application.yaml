@@ -27,9 +27,24 @@ spring:
       enabled: true
       discovery:
         locator:
+          # 配置开启与DiscoveryClient整合
           enabled: true
           lower-case-service-id: true
+#      default-filters:
+#        - name: CircuitBreaker
+#          args:
+#            name: myCircuitBreaker
+#            fallbackUri: forward:/fallback
       routes:
+        - id: circuitBreaker_filter
+          uri: http://localhost:8888
+          predicates:
+            - Path=/**
+          filters:
+            - name: CircuitBreaker
+              args:
+                name: myCircuitBreaker
+                fallbackUri: forward:/fallback
         - id: chat-service
           uri: lb://chat-service
           predicates:
@@ -44,10 +59,6 @@ spring:
           filters:
             - StripPrefix=1
             - PrefixPath=/chats
-        - id: auth-server
-          uri: lb://auth-server
-          predicates:
-            - Path=/oauth/**
 management:
   endpoints:
     web:

@@ -3,3 +3,19 @@ spring:
     nacos:
       discovery:
         server-addr: 127.0.0.1:8848
+feign:
+  circuit-breaker:
+    enabled: true # 配置开启熔断器
+  compression:
+    request:
+      enabled: true #請求壓縮
+      mime-types: text/xml,application/xml,application/json # 压缩的类型
+      min-request-size: 2048 # 请求最小压缩的阈值
+    response:
+      enabled: true #响应压缩
+      useGzipDecoder: true #使用gzip解码器，解码响应数据
+  client:
+    config:
+      default:
+        connectionTimeOut: 5000
+        readTimeOut: 5000
