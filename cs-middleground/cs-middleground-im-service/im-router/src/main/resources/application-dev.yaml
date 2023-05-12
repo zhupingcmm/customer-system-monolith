@@ -15,6 +15,8 @@ spring:
     timeout: 10000
     database: 0
   rabbitmq:
+    publisher-confirms: true # 开启生产者确认模式：(confirm),投递到交换机，不论失败或者成功都回调
+    publisher-returns: true
     host: localhost
     port: 5672
     virtual-host: /hero_vh

@@ -14,9 +14,9 @@ import org.springframework.web.client.RestTemplate;
 @Service
 public class ChatServiceImpl implements ChatService {
 
-    private static final String MESSAGE_EXCHANGE = "message_exchange";
+    private static final String MESSAGE_EXCHANGE = "message.exchange";
 
-    private static final String IM_MESSAGE_KEY = "im_messages_key";
+    private static final String IM_MESSAGE_KEY = "im.messages.key";
     @Autowired
     private RestTemplate restTemplate;
 

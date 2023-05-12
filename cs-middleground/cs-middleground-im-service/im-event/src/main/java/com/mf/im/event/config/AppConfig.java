@@ -27,7 +27,7 @@ public class AppConfig {
         SimpleMessageListenerContainer container = new SimpleMessageListenerContainer();
         container.setMessageListener(messageListenerAdapter);
         container.setConnectionFactory(connectionFactory);
-        container.setQueueNames("im_messages");
+        container.setQueueNames("im.messages");
         container.setAcknowledgeMode(AcknowledgeMode.MANUAL);
         container.setPrefetchCount(1);
         return container;

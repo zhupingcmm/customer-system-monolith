@@ -63,9 +63,10 @@ public class LoginServiceImpl implements LoginService {
         request.setServerHost(imServerInfo.getHost());
         request.setHttpPort(imServerInfo.getHttpPort());
         request.setNettyPort(imServerInfo.getNettyPort());
-        val response = loginControllerFeignClient.login(request).getData();
+        val response = loginControllerFeignClient.login(request);
+        val res = response.getData();
 
-        if (response.success() || response.relogin()) {
+        if (res.success() || res.relogin()) {
             log.info("{}:({}) login im-router success ", request.getUserName(), request.getUserId());
         } else {
             log.info("{}:({}) login im-router failed", request.getUserName(), request.getUserId());

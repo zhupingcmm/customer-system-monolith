@@ -11,7 +11,7 @@ import java.util.List;
 public class LoginControllerFeignClientFallback implements LoginControllerFeignClient {
     @Override
     public Result<IMLoginResponse> login(IMLoginRequest request) {
-        return null;
+        return Result.success(new IMLoginResponse());
     }
 
     @Override

@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 
 import java.util.List;
 
-@FeignClient(path = "/auth", value = ApiConstants.IM_ROUTER, configuration = FeignConfiguration.class, fallback = LoginControllerFeignClientFallback.class)
+@FeignClient(path = "/auth", value = ApiConstants.IM_ROUTER, configuration = FeignConfiguration.class)
 public interface LoginControllerFeignClient {
     @PostMapping("/login")
     Result<IMLoginResponse> login(@RequestBody IMLoginRequest request);
