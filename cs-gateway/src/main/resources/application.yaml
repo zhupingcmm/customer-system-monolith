@@ -23,6 +23,11 @@ spring:
     nacos:
       discovery:
         server-addr: 127.0.0.1:8848
+    sentinel:
+      eager: true
+      transport:
+        dashboard: localhost:8888
+        port: 8719
     gateway:
       enabled: true
       discovery:
@@ -36,15 +41,15 @@ spring:
 #            name: myCircuitBreaker
 #            fallbackUri: forward:/fallback
       routes:
-        - id: circuitBreaker_filter
-          uri: http://localhost:8888
-          predicates:
-            - Path=/**
-          filters:
-            - name: CircuitBreaker
-              args:
-                name: myCircuitBreaker
-                fallbackUri: forward:/fallback
+#        - id: circuitBreaker_filter
+#          uri: http://localhost:8888
+#          predicates:
+#            - Path=/**
+#          filters:
+#            - name: CircuitBreaker
+#              args:
+#                name: myCircuitBreaker
+#                fallbackUri: forward:/fallback
         - id: chat-service
           uri: lb://chat-service
           predicates:
@@ -52,13 +57,13 @@ spring:
           filters:
             - StripPrefix=1
             - PrefixPath=/chats
-        - id: chat-service
-          uri: lb://chat-service
-          predicates:
-            - Path=/chats/**
-          filters:
-            - StripPrefix=1
-            - PrefixPath=/chats
+#        - id: chat-service
+#          uri: lb://chat-service
+#          predicates:
+#            - Path=/chats/**
+#          filters:
+#            - StripPrefix=1
+#            - PrefixPath=/chats
 management:
   endpoints:
     web:
@@ -70,7 +75,7 @@ mybatis-plus:
     log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
 logging:
   level:
-    org.springframework.cloud.gateway: debug
-    org.springframework.jdbc.core.JdbcTemplate: DEBUG
+    org.springframework.cloud.gateway: INFO
+    org.springframework.jdbc.core.JdbcTemplate: INFO
 
 
