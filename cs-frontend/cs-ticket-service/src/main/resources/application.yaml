@@ -4,6 +4,11 @@ spring:
   application:
     name: ticket-service
   cloud:
+    sentinel:
+      eager: true # 该配置能够使dashboard主动发现该应用
+      transport:
+        dashboard: 127.0.0.1:8888 # sentinel注册地址：指定服务端Dashboard的暴露端口
+        port: 8719 # 服务接收sentinel的配置端口：接收服务端配置的当前服务端口
     nacos:
       discovery:
         server-addr: 127.0.0.1:8848

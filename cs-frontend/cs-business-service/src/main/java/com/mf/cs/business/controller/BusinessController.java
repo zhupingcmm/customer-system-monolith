@@ -19,13 +19,10 @@ public class BusinessController {
     private BusinessService businessService;
 
     @PostMapping
-    @SentinelResource(value = "generateTicket", fallbackClass = BusinessFallback.class)
+    @SentinelResource(value = "generateTicket", fallbackClass = BusinessFallback.class, fallback = "generateTicketFallback")
     public Result<Boolean> generateTicket (@RequestBody CustomerTicketVO customerTicketVO) {
         businessService.generateTicket(customerTicketVO);
         return Result.success(true);
     }
-
-
-
 
 }

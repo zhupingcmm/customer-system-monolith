@@ -9,6 +9,7 @@ import org.springframework.stereotype.Component;
 public class ChatRecordClientFallback implements ChatRecordClient {
     @Override
     public Result<Boolean> insertChatRecord(ChatRecordVO chatRecordVO) {
+
         return Result.success(false);
     }
 }
